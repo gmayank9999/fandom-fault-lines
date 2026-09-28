@@ -1,0 +1,9 @@
+subreddit,talk_target,mean,count
+DC_Cinematic,both,0.473948275862069,116
+DC_Cinematic,general,0.07831424856994279,7692
+DC_Cinematic,rival_talk,0.21226475409836065,122
+DC_Cinematic,self_talk,0.1693503113325031,1606
+marvelstudios,both,0.215492,25
+marvelstudios,general,0.053840805809323024,8538
+marvelstudios,rival_talk,0.029047916666666663,96
+marvelstudios,self_talk,0.24926660447761192,1072

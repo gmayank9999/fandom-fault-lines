@@ -1,0 +1,4 @@
+comparison,n_a,n_b,statistic,p_value,significant_at_0.05,note
+sentiment: r/marvelstudios vs r/DC_Cinematic (overall),9731,9536,44739513.5,1.4805569458274843e-05,True,
+sentiment: self-talk vs rival-talk within r/marvelstudios,1072,96,65973.0,4.4762513179755195e-06,True,
+sentiment: self-talk vs rival-talk within r/DC_Cinematic,1606,122,94636.5,0.5305107377407652,False,
