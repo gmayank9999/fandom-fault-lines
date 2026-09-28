@@ -4,4 +4,5 @@ __pycache__/
 *.pyc
 logs/
 .vscode/
+.claude/
 IMPLEMENTATION_PLAN.md
