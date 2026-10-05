@@ -1,0 +1,3 @@
+subreddit,nodes,edges,total_comments,resolvable_parent,missing_parent,coverage_pct,replies_to_posts,coverage_replies_to_posts_pct,replies_to_comments,coverage_replies_to_comments_pct,self_loops_dropped
+marvelstudios,8307,9199,9552,9544,8,99.92,4274,99.88,5278,99.94,26
+DC_Cinematic,6626,8950,9542,9540,2,99.98,3847,100.0,5695,99.96,32

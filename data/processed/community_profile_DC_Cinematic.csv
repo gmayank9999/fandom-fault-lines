@@ -1,81 +1,49 @@
-community_id,num_users,num_comments,mean_sentiment,modal_topic
-2,310,829,0.03514837153196622,"hal, john, ring, lantern, green, sinestro, jordan, episode"
-26,285,529,0.10070831758034027,"like, just, don, people, think, really, know, make"
-7,213,555,0.0035983783783783765,"like, just, don, people, think, really, know, make"
-6,199,463,0.13473218142548596,"like, just, don, people, think, really, know, make"
-57,180,306,0.13060196078431371,"like, just, don, people, think, really, know, make"
-4,173,334,0.09178922155688622,"like, just, don, people, think, really, know, make"
-13,171,662,0.08716570996978852,"like, just, don, people, think, really, know, make"
-29,167,355,0.2071487323943662,"batman, superman, dcu, reeves, want, universe, gunn, dc"
-12,167,406,0.08361995073891626,"like, just, don, people, think, really, know, make"
-18,148,446,0.0947280269058296,"like, just, don, people, think, really, know, make"
-56,146,203,0.1521832512315271,"like, just, don, people, think, really, know, make"
-5,140,160,-0.01920375,"like, just, don, people, think, really, know, make"
-24,129,277,0.1819667870036101,"like, just, don, people, think, really, know, make"
-21,122,301,0.13662491694352158,"like, just, don, people, think, really, know, make"
-10,116,175,0.12215371428571428,"like, just, don, people, think, really, know, make"
-23,108,241,0.09786597510373443,"like, just, don, people, think, really, know, make"
-8,104,340,0.09474470588235294,"like, just, don, people, think, really, know, make"
-19,95,156,0.11674615384615383,"like, just, don, people, think, really, know, make"
-22,90,294,0.09023775510204082,"hal, john, ring, lantern, green, sinestro, jordan, episode"
-27,88,273,0.05176959706959707,"like, just, don, people, think, really, know, make"
-15,87,275,0.12428545454545455,"like, just, don, people, think, really, know, make"
-38,87,164,0.1010408536585366,"like, just, don, people, think, really, know, make"
-48,81,169,0.062270414201183434,"like, just, don, people, think, really, know, make"
-33,79,152,0.15089013157894737,"like, just, don, people, think, really, know, make"
-17,77,157,0.07501910828025476,"like, just, don, people, think, really, know, make"
-34,72,156,0.19574615384615385,"batman, superman, dcu, reeves, want, universe, gunn, dc"
-14,71,232,0.1282362068965517,"like, just, don, people, think, really, know, make"
-0,70,172,0.14233546511627906,"like, just, don, people, think, really, know, make"
-37,67,161,0.17416708074534162,"like, just, don, people, think, really, know, make"
-47,64,150,0.102242,"like, just, don, people, think, really, know, make"
-30,46,73,0.06399315068493151,"like, just, don, people, think, really, know, make"
-45,41,77,0.1270896103896104,"hal, john, ring, lantern, green, sinestro, jordan, episode"
-31,27,35,0.14183428571428572,"like, just, don, people, think, really, know, make"
-49,3,3,0.37376666666666675,"batman, superman, dcu, reeves, want, universe, gunn, dc"
-51,2,3,0.3031333333333333,"good, movies, wonder, woman, wasn, looks, pretty, gal"
-74,2,2,0.1591,"like, just, don, people, think, really, know, make"
-52,2,5,0.33586,"like, just, don, people, think, really, know, make"
-50,2,2,0.877,"batman, superman, dcu, reeves, want, universe, gunn, dc"
-53,2,3,-0.6405333333333334,"like, just, don, people, think, really, know, make"
-77,2,2,0.2997,"hal, john, ring, lantern, green, sinestro, jordan, episode"
-69,2,2,-0.20095,"batman, superman, dcu, reeves, want, universe, gunn, dc"
-58,2,3,0.8024999999999999,"like, just, don, people, think, really, know, make"
-71,2,2,0.67445,"batman, superman, dcu, reeves, want, universe, gunn, dc"
-61,2,3,-0.1589,"good, movies, wonder, woman, wasn, looks, pretty, gal"
-63,2,2,0.54105,"hal, john, ring, lantern, green, sinestro, jordan, episode"
-65,2,2,0.20490000000000003,"hal, john, ring, lantern, green, sinestro, jordan, episode"
-70,2,2,-0.3141,"hal, john, ring, lantern, green, sinestro, jordan, episode"
-67,2,2,0.1385,"like, just, don, people, think, really, know, make"
-59,2,3,0.6058333333333333,"good, movies, wonder, woman, wasn, looks, pretty, gal"
-79,2,2,0.40005,"like, just, don, people, think, really, know, make"
-46,2,10,-0.25307,"like, just, don, people, think, really, know, make"
-35,2,2,0.17550000000000002,"like, just, don, people, think, really, know, make"
-42,2,2,0.0,"like, just, don, people, think, really, know, make"
-3,2,3,0.8000333333333334,"batman, superman, dcu, reeves, want, universe, gunn, dc"
-44,2,2,-0.0258,"like, just, don, people, think, really, know, make"
-11,2,5,-0.15062000000000003,"like, just, don, people, think, really, know, make"
-1,2,7,-0.06324285714285714,"movie, bad, superman, supergirl, best, great, wonder, gunn"
-39,2,2,0.3612,"like, just, don, people, think, really, know, make"
-32,2,2,-0.2261,"like, just, don, people, think, really, know, make"
-16,1,1,0.7037,"hal, john, ring, lantern, green, sinestro, jordan, episode"
-72,1,1,-0.2612,"good, movies, wonder, woman, wasn, looks, pretty, gal"
-9,1,1,0.5719,"batman, superman, dcu, reeves, want, universe, gunn, dc"
-73,1,1,0.0,"batman, superman, dcu, reeves, want, universe, gunn, dc"
-68,1,1,-0.7906,"hal, john, ring, lantern, green, sinestro, jordan, episode"
-75,1,1,-0.6124,"hal, john, ring, lantern, green, sinestro, jordan, episode"
-76,1,1,0.4019,"like, just, don, people, think, really, know, make"
-78,1,1,0.3802,"movie, bad, superman, supergirl, best, great, wonder, gunn"
-20,1,1,0.0,"like, just, don, people, think, really, know, make"
-28,1,1,0.25,"movie, bad, superman, supergirl, best, great, wonder, gunn"
-25,1,1,0.2732,"like, just, don, people, think, really, know, make"
-66,1,1,0.3612,"batman, superman, dcu, reeves, want, universe, gunn, dc"
-64,1,1,0.0,"like, just, don, people, think, really, know, make"
-62,1,1,0.0,"batman, superman, dcu, reeves, want, universe, gunn, dc"
-60,1,1,0.0,"like, just, don, people, think, really, know, make"
-36,1,1,0.7845,"hal, john, ring, lantern, green, sinestro, jordan, episode"
-41,1,1,-0.8314,"like, just, don, people, think, really, know, make"
-55,1,1,0.34,"like, just, don, people, think, really, know, make"
-54,1,1,0.0,"like, just, don, people, think, really, know, make"
-43,1,1,-0.3802,"like, just, don, people, think, really, know, make"
-40,1,1,0.9184,"good, movies, wonder, woman, wasn, looks, pretty, gal"
+community_id,num_users,num_comments,mean_sentiment,share_negative,share_rival_talk,modal_topic,modal_topic_share,distinctive_topic,distinctive_topic_lift
+28,222,535,0.06120803738317758,0.3364485981308411,0.011214953271028037,"gunn, character, right, dcu, mean, point, snyder, sure",0.6109422492401215,"superman, man, supergirl, steel, man steel, clark, zod, peacemaker",1.388143015600916
+23,189,279,0.11820824372759857,0.27598566308243727,0.010752688172043012,"gunn, character, right, dcu, mean, point, snyder, sure",0.5348837209302325,"hal, john, ring, guy, sinestro, guardians, manhunter, jordan",1.6921099585689663
+64,165,366,0.17371256830601092,0.22950819672131148,0.01092896174863388,"gunn, character, right, dcu, mean, point, snyder, sure",0.6035242290748899,"superman, man, supergirl, steel, man steel, clark, zod, peacemaker",1.8820907363717976
+5,165,318,0.10814025157232705,0.2893081761006289,0.018867924528301886,"gunn, character, right, dcu, mean, point, snyder, sure",0.6919191919191919,"batman, dcu, suit, dark, best, dark knight, knight, bruce",1.4996532489069803
+27,155,327,0.10304220183486239,0.26605504587155965,0.012232415902140673,"gunn, character, right, dcu, mean, point, snyder, sure",0.5706806282722513,"green, lantern, green lantern, lanterns, green lanterns, comics, power, guy",1.3251801819804698
+4,155,350,0.09697514285714286,0.28285714285714286,0.008571428571428572,"gunn, character, right, dcu, mean, point, snyder, sure",0.5555555555555556,"hal, john, ring, guy, sinestro, guardians, manhunter, jordan",1.630212932192415
+0,147,314,0.12394140127388535,0.2770700636942675,0.01592356687898089,"gunn, character, right, dcu, mean, point, snyder, sure",0.59375,"batman, dcu, suit, dark, best, dark knight, knight, bruce",2.029804104477612
+88,144,227,0.04404405286343613,0.3303964757709251,0.004405286343612335,"gunn, character, right, dcu, mean, point, snyder, sure",0.5827814569536424,"green, lantern, green lantern, lanterns, green lanterns, comics, power, guy",2.0952766122373325
+14,137,254,0.08729291338582677,0.33858267716535434,0.003937007874015748,"gunn, character, right, dcu, mean, point, snyder, sure",0.43315508021390375,"hal, john, ring, guy, sinestro, guardians, manhunter, jordan",2.248103307997747
+9,132,243,0.07876995884773663,0.31275720164609055,0.012345679012345678,"gunn, character, right, dcu, mean, point, snyder, sure",0.5365853658536586,"batman, dcu, suit, dark, best, dark knight, knight, bruce",1.9237167819439387
+67,118,316,0.09280727848101267,0.3512658227848101,0.00949367088607595,"gunn, character, right, dcu, mean, point, snyder, sure",0.5373831775700935,"superman, man, supergirl, steel, man steel, clark, zod, peacemaker",1.9964233511981215
+56,116,238,0.09832268907563026,0.31512605042016806,0.0,"gunn, character, right, dcu, mean, point, snyder, sure",0.5870967741935483,"better, dceu, agree, supergirl, probably, villain, suit, shows",1.4623319892473117
+22,113,211,0.11093838862559242,0.2796208530805687,0.023696682464454975,"gunn, character, right, dcu, mean, point, snyder, sure",0.6122448979591837,"did, watch, did watch, use, happen, marvel, job, lmao",1.6497081101944322
+11,112,164,0.1642481707317073,0.2621951219512195,0.0,"gunn, character, right, dcu, mean, point, snyder, sure",0.5688073394495413,"green, lantern, green lantern, lanterns, green lanterns, comics, power, guy",1.8867100870742586
+58,108,193,0.03626683937823834,0.3160621761658031,0.015544041450777202,"gunn, character, right, dcu, mean, point, snyder, sure",0.5619834710743802,"love, hate, agree, cool, real, man, design, series",2.043529301277235
+12,105,218,0.08434724770642202,0.3165137614678899,0.009174311926605505,"gunn, character, right, dcu, mean, point, snyder, sure",0.5562913907284768,"better, dceu, agree, supergirl, probably, villain, suit, shows",2.7877000551876376
+96,105,215,0.07171302325581394,0.3116279069767442,0.023255813953488372,"gunn, character, right, dcu, mean, point, snyder, sure",0.6,"green, lantern, green lantern, lanterns, green lanterns, comics, power, guy",1.4182855137316839
+18,103,184,0.06396521739130435,0.32065217391304346,0.016304347826086956,"gunn, character, right, dcu, mean, point, snyder, sure",0.6440677966101694,"better, dceu, agree, supergirl, probably, villain, suit, shows",1.9208598163841808
+19,101,222,0.11376486486486487,0.28378378378378377,0.0045045045045045045,"gunn, character, right, dcu, mean, point, snyder, sure",0.678082191780822,"love, hate, agree, cool, real, man, design, series",1.693609900373599
+15,100,225,0.041002666666666666,0.3511111111111111,0.008888888888888889,"gunn, character, right, dcu, mean, point, snyder, sure",0.4716981132075472,"hal, john, ring, guy, sinestro, guardians, manhunter, jordan",2.186381071554171
+106,99,141,0.0965127659574468,0.2907801418439716,0.014184397163120567,"gunn, character, right, dcu, mean, point, snyder, sure",0.6551724137931034,"better, dceu, agree, supergirl, probably, villain, suit, shows",3.349676724137931
+80,95,235,0.05326425531914893,0.3276595744680851,0.00425531914893617,"gunn, character, right, dcu, mean, point, snyder, sure",0.6312056737588653,"superman, man, supergirl, steel, man steel, clark, zod, peacemaker",2.612097072367315
+40,95,179,0.15537150837988825,0.22346368715083798,0.00558659217877095,"gunn, character, right, dcu, mean, point, snyder, sure",0.6050420168067226,"superman, man, supergirl, steel, man steel, clark, zod, peacemaker",1.857003464893066
+39,87,173,-0.03820867052023121,0.42196531791907516,0.028901734104046242,"gunn, character, right, dcu, mean, point, snyder, sure",0.42424242424242425,"batman, dcu, suit, dark, best, dark knight, knight, bruce",2.6712573496155585
+7,84,112,0.11171964285714286,0.3125,0.017857142857142856,"gunn, character, right, dcu, mean, point, snyder, sure",0.4675324675324675,"hal, john, ring, guy, sinestro, guardians, manhunter, jordan",2.204870552074713
+42,84,178,0.12447752808988764,0.3146067415730337,0.02247191011235955,"gunn, character, right, dcu, mean, point, snyder, sure",0.6636363636363637,"batman, dcu, suit, dark, best, dark knight, knight, bruce",1.6871099050203526
+33,83,154,0.15034285714285714,0.2857142857142857,0.006493506493506494,"gunn, character, right, dcu, mean, point, snyder, sure",0.5813953488372093,"batman, dcu, suit, dark, best, dark knight, knight, bruce",3.0211037834085386
+115,78,112,0.18698035714285716,0.23214285714285715,0.03571428571428571,"gunn, character, right, dcu, mean, point, snyder, sure",0.7272727272727273,"batman, dcu, suit, dark, best, dark knight, knight, bruce",1.6871099050203526
+35,78,129,0.08301162790697675,0.3643410852713178,0.0,"gunn, character, right, dcu, mean, point, snyder, sure",0.5975609756097561,"superman, man, supergirl, steel, man steel, clark, zod, peacemaker",1.9762744191422956
+61,76,150,0.06393066666666668,0.32,0.0,"gunn, character, right, dcu, mean, point, snyder, sure",0.7252747252747253,"batman, dcu, suit, dark, best, dark knight, knight, bruce",1.631490897162539
+46,75,121,0.09120495867768595,0.24793388429752067,0.008264462809917356,"gunn, character, right, dcu, mean, point, snyder, sure",0.5675675675675675,"did, watch, did watch, use, happen, marvel, job, lmao",1.7875215641173088
+59,72,128,0.09559453125,0.28125,0.015625,"gunn, character, right, dcu, mean, point, snyder, sure",0.5679012345679012,"green, lantern, green lantern, lanterns, green lanterns, comics, power, guy",1.757704269154651
+30,70,109,0.08017339449541283,0.30275229357798167,0.009174311926605505,"gunn, character, right, dcu, mean, point, snyder, sure",0.6133333333333333,"batman, dcu, suit, dark, best, dark knight, knight, bruce",3.464199004975124
+66,66,134,0.050985820895522393,0.3283582089552239,0.0,"gunn, character, right, dcu, mean, point, snyder, sure",0.43478260869565216,"hal, john, ring, guy, sinestro, guardians, manhunter, jordan",2.3726324419064855
+37,65,130,0.16014461538461539,0.23076923076923078,0.0,"gunn, character, right, dcu, mean, point, snyder, sure",0.5375,"batman, dcu, suit, dark, best, dark knight, knight, bruce",1.6238432835820893
+48,63,112,0.028383928571428574,0.3125,0.0,"gunn, character, right, dcu, mean, point, snyder, sure",0.5774647887323944,"batman, dcu, suit, dark, best, dark knight, knight, bruce",1.8296825730502415
+13,62,91,0.02795824175824176,0.32967032967032966,0.01098901098901099,"gunn, character, right, dcu, mean, point, snyder, sure",0.5689655172413793,"love, hate, agree, cool, real, man, design, series",3.04516065830721
+34,62,103,0.030355339805825245,0.3786407766990291,0.02912621359223301,"gunn, character, right, dcu, mean, point, snyder, sure",0.6235294117647059,"hal, john, ring, guy, sinestro, guardians, manhunter, jordan",1.5217930084907825
+51,57,102,0.14396078431372547,0.2647058823529412,0.00980392156862745,"gunn, character, right, dcu, mean, point, snyder, sure",0.7164179104477612,"gunn, character, right, dcu, mean, point, snyder, sure",1.2209347996857816
+17,56,117,-0.040165811965811975,0.4017094017094017,0.008547008547008548,"gunn, character, right, dcu, mean, point, snyder, sure",0.6470588235294118,"gunn, character, right, dcu, mean, point, snyder, sure",1.1027315531475748
+16,54,109,0.0725119266055046,0.3944954128440367,0.01834862385321101,"gunn, character, right, dcu, mean, point, snyder, sure",0.6111111111111112,"did, watch, did watch, use, happen, marvel, job, lmao",1.5309791174152876
+1,44,89,-0.08461460674157303,0.4943820224719101,0.011235955056179775,"gunn, character, right, dcu, mean, point, snyder, sure",0.639344262295082,"did, watch, did watch, use, happen, marvel, job, lmao",1.8070573189164048
+74,44,78,-0.05413974358974359,0.38461538461538464,0.0,"gunn, character, right, dcu, mean, point, snyder, sure",0.639344262295082,"superman, man, supergirl, steel, man steel, clark, zod, peacemaker",2.173607334317458
+2,41,100,0.12478100000000002,0.31,0.02,"gunn, character, right, dcu, mean, point, snyder, sure",0.6301369863013698,"did, watch, did watch, use, happen, marvel, job, lmao",1.8120081608860388
+31,39,92,0.0552304347826087,0.3804347826086957,0.021739130434782608,"gunn, character, right, dcu, mean, point, snyder, sure",0.6307692307692307,"hal, john, ring, guy, sinestro, guardians, manhunter, jordan",1.7412823847154149
+73,38,80,-0.03136375,0.375,0.0125,"gunn, character, right, dcu, mean, point, snyder, sure",0.603448275862069,"hal, john, ring, guy, sinestro, guardians, manhunter, jordan",1.3938836823460834
+20,36,83,-0.07277469879518073,0.4819277108433735,0.024096385542168676,"gunn, character, right, dcu, mean, point, snyder, sure",0.5238095238095238,"green, lantern, green lantern, lanterns, green lanterns, comics, power, guy",2.2599054889131227
+83,33,79,0.015120253164556959,0.3291139240506329,0.012658227848101266,"gunn, character, right, dcu, mean, point, snyder, sure",0.6037735849056604,"hal, john, ring, guy, sinestro, guardians, manhunter, jordan",1.0677675000613391

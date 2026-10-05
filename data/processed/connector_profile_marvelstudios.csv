@@ -1,0 +1,41 @@
+scope,rank,user,betweenness_centrality,degree_centrality,replies_received,replies_written,posts_authored,comments_authored,role,mean_sentiment,main_topic,community_id,community_size,also_active_in_rival_sub
+top overall,1,user_09fbbe2cb6,0.015150407851736,0.0169756802311581,101,54,36,55,thread starter,0.19920727272727273,"avengers, endgame, thanos, hulk, new, right, war, infinity",3,257,False
+top overall,2,user_171feb4bf7,0.0088140829275259,0.010113171201541,66,26,24,26,thread starter,0.16102307692307694,"avengers, endgame, thanos, hulk, new, right, war, infinity",27,191,False
+top overall,3,user_7ae43dfaf7,0.0078187683027205,0.0058993498675656,30,27,13,27,thread starter,0.03328518518518519,"mcu, comics, characters, character, best, love, definitely, favorite",7,185,False
+top overall,4,user_414c20aa5d,0.0058548371366829,0.0018059234288466,9,8,1,8,thread starter,0.462725,"avengers, endgame, thanos, hulk, new, right, war, infinity",7,185,False
+top overall,5,user_d59de6ed5d,0.0054045547069749,0.001926318324103,8,8,6,8,reply bridge,-0.0706,"avengers, endgame, thanos, hulk, new, right, war, infinity",2,160,False
+top overall,6,user_e0752097e8,0.0049277553236289,0.0040934264387189,19,17,0,19,reply bridge,0.18618947368421052,"avengers, endgame, thanos, hulk, new, right, war, infinity",7,185,False
+top overall,7,user_4568f4aae3,0.0046711819219516,0.0058993498675656,35,41,2,41,reply bridge,-0.22713658536585365,"thor, loki, love, thunder, love thunder, ragnarok, gorr, god",2,160,False
+top overall,8,user_0fb91b8347,0.0044032221996713,0.0043342162292318,23,23,0,23,reply bridge,0.19486956521739132,"thor, loki, love, thunder, love thunder, ragnarok, gorr, god",2,160,True
+top overall,9,user_c71dc2c80e,0.0043644708350536,0.0013243438478208,6,5,1,5,thread starter,-0.08703999999999999,"avengers, endgame, thanos, hulk, new, right, war, infinity",7,185,False
+top overall,10,user_be64071183,0.0043071946079704,0.0061401396580784,49,6,36,6,thread starter,0.3420666666666667,"mcu, comics, characters, character, best, love, definitely, favorite",7,185,False
+top overall,11,user_ea8bb49a2f,0.0037680298461218,0.0018059234288466,9,9,0,9,reply bridge,0.21415555555555554,"avengers, endgame, thanos, hulk, new, right, war, infinity",41,110,True
+top overall,12,user_63664a20f4,0.0034833231391196,0.0055381651817962,12,34,0,34,reply bridge,0.09129705882352941,"avengers, endgame, thanos, hulk, new, right, war, infinity",62,124,False
+top overall,13,user_585fe3fdbd,0.0034269308981139,0.0026486876956417,9,16,1,16,reply bridge,0.279925,"avengers, endgame, thanos, hulk, new, right, war, infinity",3,257,False
+top overall,14,user_b0c0b25cb1,0.0033340368764006,0.0012039489525644,5,7,0,7,reply bridge,0.26644285714285715,"avengers, endgame, thanos, hulk, new, right, war, infinity",8,166,False
+top overall,15,user_b5eb0eeb35,0.0030525436033872,0.0075848784011557,61,5,30,5,thread starter,0.29428,"avengers, endgame, thanos, hulk, new, right, war, infinity",10,169,False
+top overall,16,user_7d639b2d8a,0.0028261782296006,0.0018059234288466,12,10,0,10,reply bridge,0.13103,"avengers, endgame, thanos, hulk, new, right, war, infinity",2,160,False
+top overall,17,user_eb0d6f13e3,0.0028007596230922,0.0044546111244883,15,24,1,24,reply bridge,0.016783333333333334,"avengers, endgame, thanos, hulk, new, right, war, infinity",8,166,False
+top overall,18,user_bf4fb8bb39,0.0027347540322391,0.0015651336383337,7,6,0,6,reply bridge,0.1887,"avengers, endgame, thanos, hulk, new, right, war, infinity",142,145,False
+top overall,19,user_52148ad906,0.002676833583798,0.0027690825908981,18,7,5,7,thread starter,-0.08045714285714287,"avengers, endgame, thanos, hulk, new, right, war, infinity",40,213,False
+top overall,20,user_a513750592,0.0024315930324543,0.0034914519624367,26,3,7,4,thread starter,0.25075000000000003,"avengers, endgame, thanos, hulk, new, right, war, infinity",87,126,False
+top excluding post authors,1,user_e0752097e8,0.0049277553236289,0.0040934264387189,19,17,0,19,reply bridge,0.18618947368421052,"avengers, endgame, thanos, hulk, new, right, war, infinity",7,185,False
+top excluding post authors,2,user_0fb91b8347,0.0044032221996713,0.0043342162292318,23,23,0,23,reply bridge,0.19486956521739132,"thor, loki, love, thunder, love thunder, ragnarok, gorr, god",2,160,True
+top excluding post authors,3,user_ea8bb49a2f,0.0037680298461218,0.0018059234288466,9,9,0,9,reply bridge,0.21415555555555554,"avengers, endgame, thanos, hulk, new, right, war, infinity",41,110,True
+top excluding post authors,4,user_63664a20f4,0.0034833231391196,0.0055381651817962,12,34,0,34,reply bridge,0.09129705882352941,"avengers, endgame, thanos, hulk, new, right, war, infinity",62,124,False
+top excluding post authors,5,user_b0c0b25cb1,0.0033340368764006,0.0012039489525644,5,7,0,7,reply bridge,0.26644285714285715,"avengers, endgame, thanos, hulk, new, right, war, infinity",8,166,False
+top excluding post authors,6,user_7d639b2d8a,0.0028261782296006,0.0018059234288466,12,10,0,10,reply bridge,0.13103,"avengers, endgame, thanos, hulk, new, right, war, infinity",2,160,False
+top excluding post authors,7,user_bf4fb8bb39,0.0027347540322391,0.0015651336383337,7,6,0,6,reply bridge,0.1887,"avengers, endgame, thanos, hulk, new, right, war, infinity",142,145,False
+top excluding post authors,8,user_7aebf3addc,0.0022026857831754,0.0007223693715386,3,4,0,4,reply bridge,0.326725,"man, spider, spider man, iron, iron man, ant, ant man, peter",37,154,True
+top excluding post authors,9,user_f881456a7f,0.0021291075179962,0.0034914519624367,8,28,0,28,reply bridge,0.025578571428571412,"avengers, endgame, thanos, hulk, new, right, war, infinity",3,257,False
+top excluding post authors,10,user_f08c93c97b,0.00204913324697,0.0055381651817962,22,25,0,25,reply bridge,-0.04807600000000001,"avengers, endgame, thanos, hulk, new, right, war, infinity",39,113,False
+top excluding post authors,11,user_a37ba1e9fc,0.0020043151791423,0.0021671081146159,6,12,0,12,reply bridge,-0.08935833333333333,"avengers, endgame, thanos, hulk, new, right, war, infinity",142,145,True
+top excluding post authors,12,user_00e982233f,0.0019882268122921,0.0021671081146159,6,12,0,12,reply bridge,-0.03916666666666667,"avengers, endgame, thanos, hulk, new, right, war, infinity",3,257,True
+top excluding post authors,13,user_a34e51faba,0.0019624564925367,0.0015651336383337,8,6,0,6,reply bridge,0.18871666666666664,"avengers, endgame, thanos, hulk, new, right, war, infinity",7,185,True
+top excluding post authors,14,user_c431506271,0.0019302328248153,0.0020467132193594,4,14,0,14,reply bridge,0.23317857142857143,"avengers, endgame, thanos, hulk, new, right, war, infinity",41,110,False
+top excluding post authors,15,user_a1979a1043,0.0016189548170394,0.0010835540573079,6,7,0,7,reply bridge,-0.30865714285714285,"thor, loki, love, thunder, love thunder, ragnarok, gorr, god",2,160,False
+top excluding post authors,16,user_99f758f66a,0.0015622600718556,0.0012039489525644,7,8,0,8,reply bridge,0.105075,"avengers, endgame, thanos, hulk, new, right, war, infinity",138,78,False
+top excluding post authors,17,user_31eab58eb3,0.0014685487013815,0.0016855285335901,4,12,0,12,reply bridge,0.358325,"marvel, captain, captain marvel, america, captain america, disney, best, watch",116,85,False
+top excluding post authors,18,user_d626c62493,0.0013724251431327,0.0016855285335901,5,15,0,15,reply bridge,0.10174666666666667,"avengers, endgame, thanos, hulk, new, right, war, infinity",2,160,False
+top excluding post authors,19,user_b5dd4d75be,0.0013548680009814,0.000842764266795,3,6,0,6,reply bridge,-0.07989999999999998,"man, spider, spider man, iron, iron man, ant, ant man, peter",41,110,False
+top excluding post authors,20,user_820ac4955c,0.0013042676703449,0.0007223693715386,4,3,0,3,reply bridge,-0.1589,"avengers, endgame, thanos, hulk, new, right, war, infinity",23,154,False

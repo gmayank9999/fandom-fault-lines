@@ -1,0 +1,41 @@
+scope,rank,user,betweenness_centrality,degree_centrality,replies_received,replies_written,posts_authored,comments_authored,role,mean_sentiment,main_topic,community_id,community_size,also_active_in_rival_sub
+top overall,1,user_f52e10bc6c,0.0179342786797676,0.0173584905660377,89,37,17,37,thread starter,0.21147297297297296,"gunn, character, right, dcu, mean, point, snyder, sure",64,189,False
+top overall,2,user_af078de613,0.0171821840400921,0.0212830188679245,139,11,62,11,thread starter,0.49328181818181815,"gunn, character, right, dcu, mean, point, snyder, sure",5,205,False
+top overall,3,user_15d9d2ae81,0.0162695690216091,0.0114716981132075,58,29,18,29,thread starter,0.09961724137931033,"gunn, character, right, dcu, mean, point, snyder, sure",96,122,False
+top overall,4,user_0490713ced,0.0149445805650941,0.0104150943396226,47,45,0,45,reply bridge,-0.02840222222222222,"gunn, character, right, dcu, mean, point, snyder, sure",4,189,False
+top overall,5,user_f6f5721949,0.0110539517570213,0.0081509433962264,35,21,14,21,thread starter,0.024280952380952382,"gunn, character, right, dcu, mean, point, snyder, sure",27,184,False
+top overall,6,user_48fdcf70b6,0.0095003239317465,0.0063396226415094,27,25,1,25,thread starter,0.07141199999999999,"gunn, character, right, dcu, mean, point, snyder, sure",5,205,False
+top overall,7,user_6b786b9c33,0.0089234960630473,0.0084528301886792,49,12,6,12,thread starter,0.129775,"gunn, character, right, dcu, mean, point, snyder, sure",4,189,False
+top overall,8,user_0c8b9a2842,0.0082272565311519,0.0070943396226415,23,26,0,26,reply bridge,0.06039230769230768,"gunn, character, right, dcu, mean, point, snyder, sure",27,184,False
+top overall,9,user_50201ce08e,0.008094575117902,0.0060377358490566,23,23,0,23,reply bridge,0.09651739130434782,"gunn, character, right, dcu, mean, point, snyder, sure",28,267,True
+top overall,10,user_fe753e5087,0.0077339973325905,0.0064905660377358,39,31,0,31,reply bridge,-0.19488064516129033,"gunn, character, right, dcu, mean, point, snyder, sure",28,267,False
+top overall,11,user_be610be82a,0.0073287907393718,0.0034716981132075,10,14,0,14,reply bridge,0.22875714285714285,"gunn, character, right, dcu, mean, point, snyder, sure",28,267,False
+top overall,12,user_7f2ac59622,0.006532670791007,0.0086037735849056,46,17,3,17,thread starter,0.3974705882352941,"superman, man, supergirl, steel, man steel, clark, zod, peacemaker",12,124,False
+top overall,13,user_8da589bc07,0.006256421329215,0.0054339622641509,21,15,1,15,thread starter,-0.08801333333333333,"gunn, character, right, dcu, mean, point, snyder, sure",1,58,False
+top overall,14,user_3411f39029,0.0058813825015569,0.0078490566037735,51,7,26,7,thread starter,-0.33749999999999997,"batman, dcu, suit, dark, best, dark knight, knight, bruce",28,267,False
+top overall,15,user_a07526ed54,0.0058499766981509,0.0063396226415094,38,6,2,6,thread starter,0.5323166666666667,"green, lantern, green lantern, lanterns, green lanterns, comics, power, guy",88,160,False
+top overall,16,user_4fed78bfa8,0.0051573674741872,0.0034716981132075,6,22,1,22,reply bridge,0.1595090909090909,"gunn, character, right, dcu, mean, point, snyder, sure",19,135,False
+top overall,17,user_71704f1c68,0.0050374166181125,0.0090566037735849,59,2,1,2,thread starter,-0.09035000000000001,"gunn, character, right, dcu, mean, point, snyder, sure",33,109,False
+top overall,18,user_5056171117,0.0049263141387609,0.0058867924528301,32,31,1,31,thread starter,0.2657225806451613,"gunn, character, right, dcu, mean, point, snyder, sure",28,267,False
+top overall,19,user_266041e0dc,0.0048789385170271,0.0058867924528301,33,7,1,7,thread starter,0.23377142857142855,"gunn, character, right, dcu, mean, point, snyder, sure",40,108,True
+top overall,20,user_c273db3f8a,0.0047647110633903,0.0084528301886792,51,9,13,9,thread starter,0.03402222222222222,"hal, john, ring, guy, sinestro, guardians, manhunter, jordan",39,111,False
+top excluding post authors,1,user_0490713ced,0.0149445805650941,0.0104150943396226,47,45,0,45,reply bridge,-0.02840222222222222,"gunn, character, right, dcu, mean, point, snyder, sure",4,189,False
+top excluding post authors,2,user_0c8b9a2842,0.0082272565311519,0.0070943396226415,23,26,0,26,reply bridge,0.06039230769230768,"gunn, character, right, dcu, mean, point, snyder, sure",27,184,False
+top excluding post authors,3,user_50201ce08e,0.008094575117902,0.0060377358490566,23,23,0,23,reply bridge,0.09651739130434782,"gunn, character, right, dcu, mean, point, snyder, sure",28,267,True
+top excluding post authors,4,user_fe753e5087,0.0077339973325905,0.0064905660377358,39,31,0,31,reply bridge,-0.19488064516129033,"gunn, character, right, dcu, mean, point, snyder, sure",28,267,False
+top excluding post authors,5,user_be610be82a,0.0073287907393718,0.0034716981132075,10,14,0,14,reply bridge,0.22875714285714285,"gunn, character, right, dcu, mean, point, snyder, sure",28,267,False
+top excluding post authors,6,user_051d6576e0,0.0046773812795454,0.0030188679245283,9,14,0,14,reply bridge,-0.1292642857142857,"gunn, character, right, dcu, mean, point, snyder, sure",12,124,True
+top excluding post authors,7,user_9fa77f24a6,0.0043330384874302,0.0004528301886792,2,1,0,1,reply bridge,0.0,"hal, john, ring, guy, sinestro, guardians, manhunter, jordan",58,129,False
+top excluding post authors,8,user_5104056974,0.0042277509224909,0.0031698113207547,12,11,0,11,reply bridge,0.16288181818181818,"gunn, character, right, dcu, mean, point, snyder, sure",19,135,False
+top excluding post authors,9,user_b1b14fea27,0.0040610779762366,0.0019622641509433,11,18,0,18,reply bridge,0.09495555555555556,"gunn, character, right, dcu, mean, point, snyder, sure",28,267,False
+top excluding post authors,10,user_1db8a6089c,0.0040284560148453,0.0019622641509433,6,9,0,9,reply bridge,-0.13873333333333332,"gunn, character, right, dcu, mean, point, snyder, sure",18,116,False
+top excluding post authors,11,user_bf1dcad748,0.0036843361937203,0.0016603773584905,7,5,0,5,reply bridge,-0.4596,"gunn, character, right, dcu, mean, point, snyder, sure",14,164,False
+top excluding post authors,12,user_e14aa10386,0.0035340754111325,0.0046792452830188,11,21,0,21,reply bridge,0.1428095238095238,"gunn, character, right, dcu, mean, point, snyder, sure",66,81,False
+top excluding post authors,13,user_6e894c92cc,0.0035029133859734,0.0028679245283018,21,19,0,19,reply bridge,-0.061268421052631576,"gunn, character, right, dcu, mean, point, snyder, sure",67,149,False
+top excluding post authors,14,user_c0022c20f7,0.0032671261319665,0.0036226415094339,9,15,0,15,reply bridge,-0.10564,"gunn, character, right, dcu, mean, point, snyder, sure",5,205,False
+top excluding post authors,15,user_1386d5cfe8,0.0031057956061806,0.0030188679245283,14,6,0,6,reply bridge,0.009650000000000006,"gunn, character, right, dcu, mean, point, snyder, sure",67,149,False
+top excluding post authors,16,user_797dc3b683,0.0030852108049307,0.002566037735849,8,12,0,12,reply bridge,0.2952416666666667,"gunn, character, right, dcu, mean, point, snyder, sure",0,177,False
+top excluding post authors,17,user_6b737b1bc5,0.0029872573886267,0.0018113207547169,7,5,0,5,reply bridge,0.37078,"gunn, character, right, dcu, mean, point, snyder, sure",18,116,False
+top excluding post authors,18,user_5a02fbb148,0.0028172366354624,0.0049811320754716,16,19,0,19,reply bridge,0.21306315789473682,"gunn, character, right, dcu, mean, point, snyder, sure",64,189,False
+top excluding post authors,19,user_d03b6d7016,0.0027627998369309,0.002566037735849,4,14,0,14,reply bridge,0.013885714285714279,"gunn, character, right, dcu, mean, point, snyder, sure",42,104,False
+top excluding post authors,20,user_67a3f70048,0.0027323987723957,0.0003018867924528,1,1,0,1,reply bridge,-0.128,"gunn, character, right, dcu, mean, point, snyder, sure",28,267,False

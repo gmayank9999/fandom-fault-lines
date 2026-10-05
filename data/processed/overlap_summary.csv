@@ -1,0 +1,4 @@
+definition,users_marvelstudios,users_DC_Cinematic,users_in_both,pct_of_marvelstudios,pct_of_DC_Cinematic,jaccard_pct
+commenters (>=1 comment),6040,5176,306,5.07,5.91,2.8
+active users (commented or posted),7942,6028,410,5.16,6.8,3.02
+repeat commenters (>=2 comments in that subreddit),1513,1595,73,4.82,4.58,2.41

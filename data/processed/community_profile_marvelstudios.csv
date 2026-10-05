@@ -1,125 +1,55 @@
-community_id,num_users,num_comments,mean_sentiment,modal_topic
-2,424,682,0.10717771260997068,"gif, giphy, love, guy, number, op, biggest, bring"
-61,233,382,-0.021628010471204186,"infinity, vision, imax, scene, scenes, saw, tva, screen"
-26,229,267,0.031811610486891385,"gif, giphy, love, guy, number, op, biggest, bring"
-21,204,389,0.10605835475578407,"movie, time, man, mcu, marvel, loki, movies, doom"
-12,204,342,0.10486432748538012,"movie, time, man, mcu, marvel, loki, movies, doom"
-47,194,311,0.17055916398713827,"movie, time, man, mcu, marvel, loki, movies, doom"
-40,175,430,0.09696813953488373,"movie, time, man, mcu, marvel, loki, movies, doom"
-19,169,307,0.09642214983713356,"movie, time, man, mcu, marvel, loki, movies, doom"
-1,167,350,0.025136285714285715,"movie, time, man, mcu, marvel, loki, movies, doom"
-16,148,399,0.002255137844611531,"movie, time, man, mcu, marvel, loki, movies, doom"
-45,144,347,0.12756974063400575,"movie, time, man, mcu, marvel, loki, movies, doom"
-38,143,319,0.05962601880877742,"movie, time, man, mcu, marvel, loki, movies, doom"
-74,136,292,0.06022636986301369,"movie, time, man, mcu, marvel, loki, movies, doom"
-50,135,242,0.07786900826446282,"movie, time, man, mcu, marvel, loki, movies, doom"
-68,134,247,0.11198502024291498,"movie, time, man, mcu, marvel, loki, movies, doom"
-3,132,251,0.03544541832669323,"movie, time, man, mcu, marvel, loki, movies, doom"
-0,128,260,0.011867692307692308,"movie, time, man, mcu, marvel, loki, movies, doom"
-11,121,237,0.06360548523206751,"movie, time, man, mcu, marvel, loki, movies, doom"
-51,121,241,-0.011660580912863072,"movie, time, man, mcu, marvel, loki, movies, doom"
-33,113,217,0.07832165898617512,"movie, time, man, mcu, marvel, loki, movies, doom"
-88,111,199,0.08010201005025126,"movie, time, man, mcu, marvel, loki, movies, doom"
-28,106,136,0.22498823529411766,"movie, time, man, mcu, marvel, loki, movies, doom"
-27,96,119,-0.07106386554621849,"movie, time, man, mcu, marvel, loki, movies, doom"
-10,86,155,-0.027148387096774196,"movie, time, man, mcu, marvel, loki, movies, doom"
-20,85,171,0.09867777777777777,"movie, time, man, mcu, marvel, loki, movies, doom"
-13,85,199,0.03924020100502512,"movie, time, man, mcu, marvel, loki, movies, doom"
-29,83,190,0.09472157894736842,"movie, time, man, mcu, marvel, loki, movies, doom"
-18,81,143,0.21857762237762238,"movie, time, man, mcu, marvel, loki, movies, doom"
-72,80,168,0.050055357142857144,"movie, time, man, mcu, marvel, loki, movies, doom"
-76,69,157,0.15203694267515924,"movie, time, man, mcu, marvel, loki, movies, doom"
-64,67,152,0.08112368421052632,"movie, time, man, mcu, marvel, loki, movies, doom"
-58,64,139,0.17715971223021582,"like, just, people, don, know, think, lol, did"
-36,63,69,0.2574144927536232,"movie, time, man, mcu, marvel, loki, movies, doom"
-37,60,137,0.027418248175182482,"movie, time, man, mcu, marvel, loki, movies, doom"
-31,55,111,0.13735495495495495,"infinity, vision, imax, scene, scenes, saw, tva, screen"
-32,51,82,0.08807317073170733,"movie, time, man, mcu, marvel, loki, movies, doom"
-54,49,97,0.0337639175257732,"movie, time, man, mcu, marvel, loki, movies, doom"
-59,42,66,0.06407727272727272,"movie, time, man, mcu, marvel, loki, movies, doom"
-80,5,17,0.3443470588235294,"like, just, people, don, know, think, lol, did"
-67,5,5,0.1666,"infinity, vision, imax, scene, scenes, saw, tva, screen"
-90,5,12,0.4932083333333333,"movie, time, man, mcu, marvel, loki, movies, doom"
-62,5,5,0.16282,"infinity, vision, imax, scene, scenes, saw, tva, screen"
-22,4,4,0.18177500000000002,"like, just, people, don, know, think, lol, did"
-84,3,3,0.3466,"movie, time, man, mcu, marvel, loki, movies, doom"
-39,3,6,-0.02003333333333333,"movie, time, man, mcu, marvel, loki, movies, doom"
-14,3,4,-0.044399999999999995,"like, just, people, don, know, think, lol, did"
-115,3,3,0.5477,"like, just, people, don, know, think, lol, did"
-77,3,12,-0.131275,"like, just, people, don, know, think, lol, did"
-7,3,3,0.15293333333333334,"gif, giphy, love, guy, number, op, biggest, bring"
-70,3,4,-0.003924999999999998,"infinity, vision, imax, scene, scenes, saw, tva, screen"
-93,2,2,0.8624499999999999,"like, just, people, don, know, think, lol, did"
-98,2,14,-0.13592142857142858,"movie, time, man, mcu, marvel, loki, movies, doom"
-97,2,2,0.027500000000000024,"like, just, people, don, know, think, lol, did"
-95,2,2,0.4215,"like, just, people, don, know, think, lol, did"
-94,2,2,0.0,"like, just, people, don, know, think, lol, did"
-91,2,2,0.40865,"movie, time, man, mcu, marvel, loki, movies, doom"
-92,2,2,-0.4577,"movie, time, man, mcu, marvel, loki, movies, doom"
-100,2,2,-0.2995,"like, just, people, don, know, think, lol, did"
-4,2,2,0.20995,"gif, giphy, love, guy, number, op, biggest, bring"
-89,2,6,0.16895000000000002,"movie, time, man, mcu, marvel, loki, movies, doom"
-5,2,4,0.40675,"movie, time, man, mcu, marvel, loki, movies, doom"
-87,2,3,0.3905,"movie, time, man, mcu, marvel, loki, movies, doom"
-86,2,3,0.29473333333333335,"gif, giphy, love, guy, number, op, biggest, bring"
-99,2,3,-0.28463333333333335,"movie, time, man, mcu, marvel, loki, movies, doom"
-42,2,2,0.15170000000000003,"like, just, people, don, know, think, lol, did"
-101,2,2,0.030949999999999978,"infinity, vision, imax, scene, scenes, saw, tva, screen"
-102,2,2,0.0,"movie, time, man, mcu, marvel, loki, movies, doom"
-122,2,2,0.31245,"movie, time, man, mcu, marvel, loki, movies, doom"
-119,2,2,-0.20425,"like, just, people, don, know, think, lol, did"
-118,2,5,-0.271,"movie, time, man, mcu, marvel, loki, movies, doom"
-117,2,2,0.52495,"movie, time, man, mcu, marvel, loki, movies, doom"
-114,2,5,0.36324,"movie, time, man, mcu, marvel, loki, movies, doom"
-113,2,2,-0.10115,"movie, time, man, mcu, marvel, loki, movies, doom"
-112,2,2,-0.2934,"movie, time, man, mcu, marvel, loki, movies, doom"
-111,2,2,0.03605,"infinity, vision, imax, scene, scenes, saw, tva, screen"
-110,2,2,0.24240000000000003,"like, just, people, don, know, think, lol, did"
-109,2,4,0.019525000000000015,"infinity, vision, imax, scene, scenes, saw, tva, screen"
-108,2,3,-0.7781666666666668,"infinity, vision, imax, scene, scenes, saw, tva, screen"
-107,2,2,0.59275,"infinity, vision, imax, scene, scenes, saw, tva, screen"
-106,2,2,-0.148,"infinity, vision, imax, scene, scenes, saw, tva, screen"
-104,2,3,0.2937666666666667,"infinity, vision, imax, scene, scenes, saw, tva, screen"
-103,2,2,0.03149999999999997,"like, just, people, don, know, think, lol, did"
-85,2,2,0.9136500000000001,"like, just, people, don, know, think, lol, did"
-83,2,2,-0.040700000000000014,"infinity, vision, imax, scene, scenes, saw, tva, screen"
-123,2,2,-0.011600000000000055,"movie, time, man, mcu, marvel, loki, movies, doom"
-69,2,2,0.0,"like, just, people, don, know, think, lol, did"
-57,2,4,0.11237499999999999,"like, just, people, don, know, think, lol, did"
-25,2,5,-0.03963999999999999,"movie, time, man, mcu, marvel, loki, movies, doom"
-82,2,3,0.8650666666666668,"movie, time, man, mcu, marvel, loki, movies, doom"
-52,2,2,0.0,"gif, giphy, love, guy, number, op, biggest, bring"
-35,2,4,0.159225,"movie, time, man, mcu, marvel, loki, movies, doom"
-17,2,2,-0.39225,"infinity, vision, imax, scene, scenes, saw, tva, screen"
-49,2,2,-0.42669999999999997,"infinity, vision, imax, scene, scenes, saw, tva, screen"
-66,2,2,0.8799,"movie, time, man, mcu, marvel, loki, movies, doom"
-15,2,2,0.05664999999999998,"infinity, vision, imax, scene, scenes, saw, tva, screen"
-56,2,7,0.0040142857142857,"movie, time, man, mcu, marvel, loki, movies, doom"
-48,2,2,-0.39185,"movie, time, man, mcu, marvel, loki, movies, doom"
-9,2,2,0.0,"movie, time, man, mcu, marvel, loki, movies, doom"
-73,2,2,-0.1366,"like, just, people, don, know, think, lol, did"
-46,2,4,0.047599999999999996,"like, just, people, don, know, think, lol, did"
-41,2,2,0.45795,"movie, time, man, mcu, marvel, loki, movies, doom"
-78,2,5,-0.1092,"like, just, people, don, know, think, lol, did"
-44,2,7,0.11244285714285714,"movie, time, man, mcu, marvel, loki, movies, doom"
-30,1,1,-0.25,"infinity, vision, imax, scene, scenes, saw, tva, screen"
-34,1,1,-0.7738,"movie, time, man, mcu, marvel, loki, movies, doom"
-120,1,1,0.9607,"infinity, vision, imax, scene, scenes, saw, tva, screen"
-53,1,1,0.0,"infinity, vision, imax, scene, scenes, saw, tva, screen"
-121,1,2,-0.2339,"infinity, vision, imax, scene, scenes, saw, tva, screen"
-116,1,1,-0.8002,"like, just, people, don, know, think, lol, did"
-43,1,1,0.7506,"movie, time, man, mcu, marvel, loki, movies, doom"
-55,1,1,-0.296,"gif, giphy, love, guy, number, op, biggest, bring"
-105,1,1,-0.4019,"movie, time, man, mcu, marvel, loki, movies, doom"
-60,1,1,0.2023,"infinity, vision, imax, scene, scenes, saw, tva, screen"
-23,1,1,0.4939,"movie, time, man, mcu, marvel, loki, movies, doom"
-63,1,1,-0.5267,"like, just, people, don, know, think, lol, did"
-65,1,1,0.8356,"like, just, people, don, know, think, lol, did"
-96,1,1,0.7039,"infinity, vision, imax, scene, scenes, saw, tva, screen"
-71,1,1,0.9219,"movie, time, man, mcu, marvel, loki, movies, doom"
-8,1,1,0.0,"movie, time, man, mcu, marvel, loki, movies, doom"
-75,1,1,0.0,"gif, giphy, love, guy, number, op, biggest, bring"
-79,1,1,-0.4545,"infinity, vision, imax, scene, scenes, saw, tva, screen"
-6,1,1,0.3626,"movie, time, man, mcu, marvel, loki, movies, doom"
-81,1,1,-0.4767,"infinity, vision, imax, scene, scenes, saw, tva, screen"
-24,1,1,0.4404,"movie, time, man, mcu, marvel, loki, movies, doom"
+community_id,num_users,num_comments,mean_sentiment,share_negative,share_rival_talk,modal_topic,modal_topic_share,distinctive_topic,distinctive_topic_lift
+3,209,460,0.10753,0.2826086956521739,0.006521739130434782,"avengers, endgame, thanos, hulk, new, right, war, infinity",0.4919614147909968,"man, spider, spider man, iron, iron man, ant, ant man, peter",1.723533480802414
+40,172,296,0.01361182432432432,0.3141891891891892,0.0,"avengers, endgame, thanos, hulk, new, right, war, infinity",0.5911949685534591,"secret, wars, secret wars, doomsday, secret invasion, invasion, doomsday secret, avengers",1.334749108334014
+10,154,208,0.014807692307692312,0.34134615384615385,0.019230769230769232,"avengers, endgame, thanos, hulk, new, right, war, infinity",0.3728813559322034,"doom, tony, stark, variant, rdj, mask, tony stark, doom doom",5.211834031954316
+27,150,269,0.05854052044609666,0.31226765799256506,0.0,"avengers, endgame, thanos, hulk, new, right, war, infinity",0.5459459459459459,"secret, wars, secret wars, doomsday, secret invasion, invasion, doomsday secret, avengers",1.4339534339534339
+4,144,205,0.15009073170731707,0.2682926829268293,0.0,"avengers, endgame, thanos, hulk, new, right, war, infinity",0.5887096774193549,"secret, wars, secret wars, doomsday, secret invasion, invasion, doomsday secret, avengers",2.139366010333752
+7,140,312,0.09869038461538461,0.25961538461538464,0.01282051282051282,"avengers, endgame, thanos, hulk, new, right, war, infinity",0.5132275132275133,"mcu, comics, characters, character, best, love, definitely, favorite",2.2399502883095286
+57,130,214,0.07088084112149533,0.2850467289719626,0.009345794392523364,"avengers, endgame, thanos, hulk, new, right, war, infinity",0.5845070422535211,"doom, tony, stark, variant, rdj, mask, tony stark, doom doom",1.5467716694431826
+48,130,158,0.08507405063291139,0.2911392405063291,0.006329113924050633,"avengers, endgame, thanos, hulk, new, right, war, infinity",0.5510204081632653,"thor, loki, love, thunder, love thunder, ragnarok, gorr, god",2.0705500743343697
+63,127,197,0.09298426395939087,0.28426395939086296,0.015228426395939087,"avengers, endgame, thanos, hulk, new, right, war, infinity",0.5952380952380952,"man, spider, spider man, iron, iron man, ant, ant man, peter",1.4946902322788846
+8,126,235,0.042826382978723404,0.3021276595744681,0.00851063829787234,"avengers, endgame, thanos, hulk, new, right, war, infinity",0.55,"man, spider, spider man, iron, iron man, ant, ant man, peter",1.5392434988179668
+37,126,215,0.10323534883720929,0.26046511627906976,0.009302325581395349,"avengers, endgame, thanos, hulk, new, right, war, infinity",0.6642335766423357,"man, spider, spider man, iron, iron man, ant, ant man, peter",1.3746786077893391
+142,118,210,0.06701285714285715,0.2857142857142857,0.01904761904761905,"avengers, endgame, thanos, hulk, new, right, war, infinity",0.43661971830985913,"secret, wars, secret wars, doomsday, secret invasion, invasion, doomsday secret, avengers",2.054996646545942
+23,117,246,0.030969512195121954,0.35365853658536583,0.008130081300813009,"avengers, endgame, thanos, hulk, new, right, war, infinity",0.48214285714285715,"mcu, comics, characters, character, best, love, definitely, favorite",1.7009622501850483
+2,115,307,0.0353657980456026,0.3257328990228013,0.0,"avengers, endgame, thanos, hulk, new, right, war, infinity",0.4869109947643979,"thor, loki, love, thunder, love thunder, ragnarok, gorr, god",2.6913537440911663
+33,109,165,0.1562569696969697,0.26666666666666666,0.01818181818181818,"avengers, endgame, thanos, hulk, new, right, war, infinity",0.5233644859813084,"thor, loki, love, thunder, love thunder, ragnarok, gorr, god",2.4020960986981903
+80,105,175,0.038543999999999995,0.3314285714285714,0.0,"avengers, endgame, thanos, hulk, new, right, war, infinity",0.4957983193277311,"doom, tony, stark, variant, rdj, mask, tony stark, doom doom",2.030300292159875
+15,103,153,0.03334771241830065,0.35294117647058826,0.0,"avengers, endgame, thanos, hulk, new, right, war, infinity",0.5135135135135135,"did, power, did watch, literally, watch, job, dad, knew",2.0115986431775905
+87,102,186,0.030236021505376343,0.34408602150537637,0.0,"avengers, endgame, thanos, hulk, new, right, war, infinity",0.6771653543307087,"doom, tony, stark, variant, rdj, mask, tony stark, doom doom",1.2106228656901759
+46,90,136,0.07083823529411765,0.25,0.0,"avengers, endgame, thanos, hulk, new, right, war, infinity",0.5555555555555556,"doom, tony, stark, variant, rdj, mask, tony stark, doom doom",1.6269746448957918
+51,90,112,-0.03873035714285714,0.32142857142857145,0.0,"avengers, endgame, thanos, hulk, new, right, war, infinity",0.42424242424242425,"did, power, did watch, literally, watch, job, dad, knew",2.631333578702
+53,90,158,0.11830063291139241,0.2974683544303797,0.0,"avengers, endgame, thanos, hulk, new, right, war, infinity",0.5700934579439252,"thor, loki, love, thunder, love thunder, ragnarok, gorr, god",1.8963916568669925
+41,90,150,0.05549466666666667,0.2733333333333333,0.006666666666666667,"avengers, endgame, thanos, hulk, new, right, war, infinity",0.58,"marvel, captain, captain marvel, america, captain america, disney, best, watch",2.1361220043572984
+78,85,137,-0.007304379562043793,0.3722627737226277,0.0,"avengers, endgame, thanos, hulk, new, right, war, infinity",0.5252525252525253,"man, spider, spider man, iron, iron man, ant, ant man, peter",1.755999713446522
+81,85,171,-0.019448538011695906,0.38596491228070173,0.0,"avengers, endgame, thanos, hulk, new, right, war, infinity",0.5166666666666667,"doom, tony, stark, variant, rdj, mask, tony stark, doom doom",1.8303464755077659
+39,85,150,0.020712666666666664,0.36,0.0,"avengers, endgame, thanos, hulk, new, right, war, infinity",0.5596330275229358,"marvel, captain, captain marvel, america, captain america, disney, best, watch",1.4698087185944715
+62,84,149,0.05762885906040269,0.31543624161073824,0.0,"avengers, endgame, thanos, hulk, new, right, war, infinity",0.6938775510204082,"avengers, endgame, thanos, hulk, new, right, war, infinity",1.2299917942299858
+91,83,145,0.0034220689655172433,0.35172413793103446,0.006896551724137931,"avengers, endgame, thanos, hulk, new, right, war, infinity",0.7070707070707071,"avengers, endgame, thanos, hulk, new, right, war, infinity",1.253378447477377
+9,79,138,0.049517391304347826,0.3333333333333333,0.021739130434782608,"avengers, endgame, thanos, hulk, new, right, war, infinity",0.5894736842105263,"did, power, did watch, literally, watch, job, dad, knew",1.828084380992968
+38,77,104,0.025893269230769234,0.3173076923076923,0.0,"avengers, endgame, thanos, hulk, new, right, war, infinity",0.47619047619047616,"doom, tony, stark, variant, rdj, mask, tony stark, doom doom",3.13773681515617
+21,75,143,0.022450349650349654,0.3776223776223776,0.0,"avengers, endgame, thanos, hulk, new, right, war, infinity",0.5957446808510638,"secret, wars, secret wars, doomsday, secret invasion, invasion, doomsday secret, avengers",1.4110711983052409
+140,74,129,0.08600077519379845,0.3333333333333333,0.015503875968992248,"avengers, endgame, thanos, hulk, new, right, war, infinity",0.6206896551724138,"doom, tony, stark, variant, rdj, mask, tony stark, doom doom",1.7672310798006015
+55,73,119,0.05497142857142857,0.2857142857142857,0.0,"avengers, endgame, thanos, hulk, new, right, war, infinity",0.7397260273972602,"man, spider, spider man, iron, iron man, ant, ant man, peter",1.786068201690469
+79,71,111,0.08545225225225225,0.26126126126126126,0.009009009009009009,"avengers, endgame, thanos, hulk, new, right, war, infinity",0.6290322580645161,"doom, tony, stark, variant, rdj, mask, tony stark, doom doom",1.771303040813967
+31,70,92,0.05185,0.31521739130434784,0.0,"avengers, endgame, thanos, hulk, new, right, war, infinity",0.42857142857142855,"doom, tony, stark, variant, rdj, mask, tony stark, doom doom",3.5299539170506917
+6,69,83,-0.07431927710843374,0.42168674698795183,0.0,"avengers, endgame, thanos, hulk, new, right, war, infinity",0.4222222222222222,"doom, tony, stark, variant, rdj, mask, tony stark, doom doom",5.369016328156113
+99,68,93,0.1250709677419355,0.24731182795698925,0.0,"avengers, endgame, thanos, hulk, new, right, war, infinity",0.5535714285714286,"did, power, did watch, literally, watch, job, dad, knew",2.2151532677848467
+11,66,122,0.0887139344262295,0.3114754098360656,0.0,"avengers, endgame, thanos, hulk, new, right, war, infinity",0.6129032258064516,"did, power, did watch, literally, watch, job, dad, knew",1.3338557311392625
+116,66,122,0.026049180327868855,0.3770491803278688,0.00819672131147541,"avengers, endgame, thanos, hulk, new, right, war, infinity",0.39080459770114945,"secret, wars, secret wars, doomsday, secret invasion, invasion, doomsday secret, avengers",3.049211325073394
+42,65,97,0.2140298969072165,0.23711340206185566,0.0,"avengers, endgame, thanos, hulk, new, right, war, infinity",0.65,"marvel, captain, captain marvel, america, captain america, disney, best, watch",1.55758896151053
+90,65,117,0.1462,0.26495726495726496,0.017094017094017096,"avengers, endgame, thanos, hulk, new, right, war, infinity",0.5647058823529412,"thor, loki, love, thunder, love thunder, ragnarok, gorr, god",2.228074276068043
+75,61,114,-0.022488596491228065,0.40350877192982454,0.0,"avengers, endgame, thanos, hulk, new, right, war, infinity",0.6301369863013698,"marvel, captain, captain marvel, america, captain america, disney, best, watch",1.6459844211657264
+5,58,99,0.07330404040404041,0.2828282828282828,0.010101010101010102,"avengers, endgame, thanos, hulk, new, right, war, infinity",0.6461538461538462,"marvel, captain, captain marvel, america, captain america, disney, best, watch",1.232378079436903
+56,57,105,0.14060095238095238,0.3047619047619048,0.0,"avengers, endgame, thanos, hulk, new, right, war, infinity",0.5901639344262295,"marvel, captain, captain marvel, america, captain america, disney, best, watch",1.9697846351655415
+281,56,76,0.14355394736842106,0.21052631578947367,0.0,"avengers, endgame, thanos, hulk, new, right, war, infinity",0.6571428571428571,"avengers, endgame, thanos, hulk, new, right, war, infinity",1.1648745815942807
+12,56,79,0.09525316455696203,0.189873417721519,0.0,"avengers, endgame, thanos, hulk, new, right, war, infinity",0.5625,"thor, loki, love, thunder, love thunder, ragnarok, gorr, god",2.1136865342163356
+13,53,100,0.22648800000000002,0.13,0.0,"avengers, endgame, thanos, hulk, new, right, war, infinity",0.52,"thor, loki, love, thunder, love thunder, ragnarok, gorr, god",1.8938631346578367
+138,52,115,0.06900782608695652,0.3652173913043478,0.0,"avengers, endgame, thanos, hulk, new, right, war, infinity",0.6463414634146342,"doom, tony, stark, variant, rdj, mask, tony stark, doom doom",1.6071334906897456
+192,52,76,-0.06711447368421053,0.47368421052631576,0.013157894736842105,"avengers, endgame, thanos, hulk, new, right, war, infinity",0.56,"thor, loki, love, thunder, love thunder, ragnarok, gorr, god",3.7877262693156735
+36,49,90,0.10699333333333334,0.3111111111111111,0.0,"avengers, endgame, thanos, hulk, new, right, war, infinity",0.5,"secret, wars, secret wars, doomsday, secret invasion, invasion, doomsday secret, avengers",2.7442901925660546
+54,48,83,0.12234939759036144,0.2891566265060241,0.0,"avengers, endgame, thanos, hulk, new, right, war, infinity",0.6440677966101694,"secret, wars, secret wars, doomsday, secret invasion, invasion, doomsday secret, avengers",2.2481473328930957
+130,47,74,0.0927635135135135,0.3108108108108108,0.0,"avengers, endgame, thanos, hulk, new, right, war, infinity",0.631578947368421,"mcu, comics, characters, character, best, love, definitely, favorite",1.6711208071993455
+1,44,54,0.006514814814814817,0.3148148148148148,0.0,"avengers, endgame, thanos, hulk, new, right, war, infinity",0.4666666666666667,"avengers, endgame, thanos, hulk, new, right, war, infinity",0.8272297753350689
+44,34,52,0.11026730769230769,0.21153846153846154,0.0,"avengers, endgame, thanos, hulk, new, right, war, infinity",0.75,"avengers, endgame, thanos, hulk, new, right, war, infinity",1.3294764246456465
+76,7,16,0.12341875,0.1875,0.0,"avengers, endgame, thanos, hulk, new, right, war, infinity",0.8333333333333334,"avengers, endgame, thanos, hulk, new, right, war, infinity",1.4771960273840516
