@@ -66,6 +66,9 @@ def collect_subreddit_posts(subreddit, writer):
         # Page backward in time: next request asks for posts older than the
         # oldest one we just saw (minus 1 second to avoid re-fetching the boundary row).
         current_before = oldest_ts_this_page - 1
+        if current_before <= config.AFTER_TS:
+            logger.info(f"r/{subreddit}: reached the start of the window.")
+            break
 
         if len(posts) < config.PAGE_LIMIT:
             # Fewer results than requested = we've reached the edge of available data
@@ -73,10 +76,9 @@ def collect_subreddit_posts(subreddit, writer):
             logger.info(f"r/{subreddit}: reached end of available data in window (got {len(posts)} < limit).")
             break
 
-    if collected < config.TARGET_POSTS_PER_SUB:
-        logger.warning(f"r/{subreddit}: only collected {collected} posts (target was {config.TARGET_POSTS_PER_SUB}). "
-                          f"This can happen if the subreddit has less activity than expected in this window, "
-                          f"or if MAX_PAGES_SAFETY was hit. Consider widening WINDOW_DAYS in config.py.")
+    if page_count >= config.MAX_PAGES_SAFETY:
+        logger.warning(f"r/{subreddit}: MAX_PAGES_SAFETY ({config.MAX_PAGES_SAFETY}) reached after {collected} posts; "
+                          f"the window may not be fully covered. Raise MAX_PAGES_SAFETY in config.py.")
 
     logger.info(f"r/{subreddit}: FINISHED with {collected} posts collected.")
 

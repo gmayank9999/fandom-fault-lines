@@ -72,3 +72,26 @@ def safe_get(d, key, default=None):
         return default
     value = d.get(key, default)
     return value if value is not None else default
+
+
+def compile_alias_regex(aliases):
+    """One case-insensitive regex that matches any alias as a WHOLE word/phrase,
+    so 'dc' does not fire inside other words. Returns None for an empty list."""
+    import re
+    parts = [r"(?<![A-Za-z0-9])" + re.escape(a.lower()) + r"(?![A-Za-z0-9])" for a in aliases if a]
+    return re.compile("|".join(parts), re.IGNORECASE) if parts else None
+
+
+def mentions_any(text, regex):
+    return bool(regex is not None and regex.search(str(text)))
+
+
+def get_stopwords():
+    """Full English stopword list plus conversational filler that dominates Reddit text.
+    Shared by EDA (keyword lists) and topic modeling so both ignore the same words."""
+    from sklearn.feature_extraction.text import ENGLISH_STOP_WORDS
+    filler = set("like just don didn doesn isn wasn aren wouldn couldn shouldn really got get gets "
+                 "think know lol yeah yes thing things going gonna want make way good bad people "
+                 "movie movies film films one also even still much many ve ll re let say said "
+                 "actually pretty look looks see time gif giphy".split())
+    return set(ENGLISH_STOP_WORDS) | filler

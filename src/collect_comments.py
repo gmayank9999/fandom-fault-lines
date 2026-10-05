@@ -26,20 +26,28 @@ def fetch_comments_page(subreddit, before_ts, after_ts, limit):
     return data.get("data", [])
 
 
-def collect_subreddit_comments(subreddit, writer):
+def make_slots():
+    """Cut the frozen window into equal time slots (SLOTS_PER_DAY per day).
+    Returns a list of (after_ts, before_ts) pairs, oldest first."""
+    slot_seconds = 24 * 60 * 60 // config.SLOTS_PER_DAY
+    slots = []
+    t = config.AFTER_TS
+    while t < config.BEFORE_TS:
+        slots.append((t, min(t + slot_seconds, config.BEFORE_TS)))
+        t += slot_seconds
+    return slots
+
+
+def collect_slot(subreddit, after_ts, before_ts, writer):
+    """Take up to COMMENTS_PER_SLOT comments (newest-first) from one time slot."""
     collected = 0
-    current_before = config.BEFORE_TS
-    page_count = 0
-
-    while collected < config.TARGET_COMMENTS_PER_SUB and page_count < config.MAX_PAGES_SAFETY:
-        page_count += 1
-        comments = fetch_comments_page(subreddit, current_before, config.AFTER_TS, config.PAGE_LIMIT)
-
+    current_before = before_ts
+    while collected < config.COMMENTS_PER_SLOT:
+        limit = min(config.PAGE_LIMIT, config.COMMENTS_PER_SLOT - collected)
+        comments = fetch_comments_page(subreddit, current_before, after_ts, limit)
         if not comments:
-            logger.info(f"r/{subreddit}: no more comments found before ts={current_before}. Stopping pagination.")
             break
-
-        oldest_ts_this_page = None
+        oldest_ts = None
         for c in comments:
             created_utc = safe_get(c, "created_utc")
             writer.writerow({
@@ -53,25 +61,32 @@ def collect_subreddit_comments(subreddit, writer):
                 "created_utc": created_utc if created_utc is not None else 0,
             })
             collected += 1
-            if created_utc is not None:
-                if oldest_ts_this_page is None or created_utc < oldest_ts_this_page:
-                    oldest_ts_this_page = created_utc
-
-        logger.info(f"r/{subreddit}: page {page_count}, +{len(comments)} comments, total so far = {collected}")
-
-        if oldest_ts_this_page is None:
+            if created_utc is not None and (oldest_ts is None or created_utc < oldest_ts):
+                oldest_ts = created_utc
+        if oldest_ts is None or len(comments) < limit:
             break
-        current_before = oldest_ts_this_page - 1
+        current_before = oldest_ts - 1
+    return collected
 
-        if len(comments) < config.PAGE_LIMIT:
-            logger.info(f"r/{subreddit}: reached end of available comment data in window.")
-            break
 
-    if collected < config.TARGET_COMMENTS_PER_SUB:
-        logger.warning(f"r/{subreddit}: only collected {collected} comments (target was {config.TARGET_COMMENTS_PER_SUB}). "
-                          f"Consider widening WINDOW_DAYS in config.py if this is far below target.")
+def collect_subreddit_comments(subreddit, writer):
+    slots = make_slots()
+    collected = 0
+    empty_slots = 0
+    for i, (after_ts, before_ts) in enumerate(slots, 1):
+        n = collect_slot(subreddit, after_ts, before_ts, writer)
+        collected += n
+        if n == 0:
+            empty_slots += 1
+        if i % 14 == 0 or i == len(slots):
+            logger.info(f"r/{subreddit}: slot {i}/{len(slots)}, total so far = {collected}")
 
-    logger.info(f"r/{subreddit}: FINISHED with {collected} comments collected.")
+    logger.info(f"r/{subreddit}: {empty_slots}/{len(slots)} slots returned no comments.")
+    if collected < 0.8 * config.TARGET_COMMENTS_PER_SUB:
+        logger.warning(f"r/{subreddit}: collected {collected} comments, well below the "
+                       f"{config.TARGET_COMMENTS_PER_SUB} upper bound (quiet slots or API gaps).")
+    logger.info(f"r/{subreddit}: FINISHED with {collected} comments collected "
+                f"(stratified over {len(slots)} time slots).")
 
 
 def main():
