@@ -70,7 +70,7 @@ are needed.
 
 ## Gephi Visualization (Manual, optional)
 
-`src/visualize.py` already renders static network pictures. For an interactive version:
+`src/visualize.py` already renders static network pictures. For an interactive version, run `python src/gephi_export.py` and open `outputs/networks/network_<subreddit>_core_for_gephi.gexf` (dense core, already laid out, coloured by community and sized by betweenness). To build the picture by hand from the full network instead:
 
 1. Open `outputs/networks/network_<subreddit>_with_communities.gexf` in [Gephi](https://gephi.org/).
 2. Appearance → node Color → Partition → `community` attribute.
