@@ -9,3 +9,9 @@ python-louvain==0.16
 scikit-learn==1.5.0
 scipy==1.13.0
 pytest==8.2.0
+
+# Transformer sentiment (CPU build of PyTorch; install with:
+#   pip install -r requirements.txt --extra-index-url https://download.pytorch.org/whl/cpu)
+torch==2.15.0
+transformers==4.46.3
+huggingface_hub<1

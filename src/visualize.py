@@ -50,6 +50,12 @@ def legend(ax):
 
 def sentiment_by_target_chart():
     df = pd.read_csv(config.SENTIMENT_BY_TARGET_PATH)
+    tag = config.PRIMARY_SCORER.replace("sentiment_", "")
+    if f"mean_{tag}" in df:           # the primary scorer's columns; plain VADER columns are the fallback
+        df = df.assign(mean=df[f"mean_{tag}"], std=df[f"std_{tag}"], count=df[f"count_{tag}"])
+        scorer_name = {"transformer": "RoBERTa", "adapted": "adapted VADER"}.get(tag, tag)
+    else:
+        scorer_name = "VADER"
     fig, ax = new_fig(9, 5)
     width = 0.38
     x = np.arange(len(TARGET_ORDER))
@@ -67,7 +73,7 @@ def sentiment_by_target_chart():
     ax.set_xticklabels([f"{nm}\nn = " + " / ".join(str(int(counts[s].iloc[i])) for s in config.SUBREDDITS)
                         for i, nm in enumerate(names)], fontsize=9)
     ax.grid(axis="x", visible=False)
-    ax.set_ylabel("mean VADER sentiment (95% CI)")
+    ax.set_ylabel(f"mean {scorer_name} sentiment, P(pos) - P(neg) (95% CI)" if scorer_name == "RoBERTa" else f"mean {scorer_name} sentiment (95% CI)")
     style(ax, "Sentiment by what the comment is about")
     legend(ax)
     fig.tight_layout()
@@ -120,6 +126,41 @@ def overlap_chart():
     plt.close(fig)
 
 
+def overlap_baseline_chart():
+    """Is the Marvel-DC overlap high or low? Compare it with non-rival pairs (same window, same method)."""
+    if not os.path.exists(config.OVERLAP_BASELINE_PATH):
+        return
+    df = pd.read_csv(config.OVERLAP_BASELINE_PATH)
+    levels = [1, 2, 5]
+    fig, axes = plt.subplots(1, 2, figsize=(13, 5), facecolor=SURFACE)
+    for ax, (col, title, fmt) in zip(axes, [("pct_of_smaller", "Share of the smaller community also in the other (%)", "{:.1f}"),
+                                           ("lift", "Lift over independence (1 = no more overlap than chance)", "{:.1f}")]):
+        pairs = list(df[df["min_comments"] == 1].sort_values(col, ascending=False)["pair"])
+        x = np.arange(len(pairs))
+        width = 0.26
+        shades = {1: 1.0, 2: 0.65, 5: 0.35}
+        for j, k in enumerate(levels):
+            d = df[df["min_comments"] == k].set_index("pair").reindex(pairs)
+            for xi, (pair, row) in zip(x, d.iterrows()):
+                color = "#eb6834" if row["is_rival_pair"] else "#2a78d6"
+                ax.bar(xi + (j - 1) * width, row[col], width, color=color, alpha=shades[k],
+                       label=None)
+                if k == 1:
+                    ax.text(xi + (j - 1) * width, row[col], fmt.format(row[col]), ha="center", va="bottom", fontsize=8, color=INK)
+        ax.set_xticks(x)
+        ax.set_xticklabels([p.replace(" + ", "\n+ ") for p in pairs], fontsize=8)
+        style(ax, title)
+    axes[1].axhline(1, color=INK_2, linewidth=0.8, linestyle="--")
+    from matplotlib.patches import Patch
+    axes[0].legend(handles=[Patch(color="#eb6834", label="rival pair"), Patch(color="#2a78d6", label="non-rival pairs"),
+                            Patch(color=INK_2, alpha=1.0, label="users with >= 1 comment"),
+                            Patch(color=INK_2, alpha=0.65, label=">= 2 comments"),
+                            Patch(color=INK_2, alpha=0.35, label=">= 5 comments")], frameon=False, fontsize=8)
+    fig.tight_layout()
+    fig.savefig(f"{config.CHARTS_DIR}/chart_overlap_baseline.png", dpi=150, facecolor=SURFACE)
+    plt.close(fig)
+
+
 def network_picture(sub):
     """Static picture of the reply network for the report. Gephi remains the tool for an
     interactive version. For legibility only the 2-core of the largest component is drawn
@@ -162,6 +203,7 @@ def main():
     sentiment_by_target_chart()
     topic_prevalence_chart()
     overlap_chart()
+    overlap_baseline_chart()
     for sub in config.SUBREDDITS:
         network_picture(sub)
     logger.info("Figures saved to outputs/charts/")

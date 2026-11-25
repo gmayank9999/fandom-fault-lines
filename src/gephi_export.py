@@ -27,9 +27,15 @@ def export_core(subreddit):
     This is a visual filter only: all metrics in the CSVs use the full network."""
     src = f"{config.NETWORKS_DIR}/network_{subreddit}_with_communities.gexf"
     G = nx.read_gexf(src)
+    if not len(G):
+        logger.warning(f"r/{subreddit}: empty graph; no core to export")
+        return
     lcc = max(nx.weakly_connected_components(G), key=len)
     core = nx.k_core(nx.Graph(G.subgraph(lcc).to_undirected()), 2)
     H = G.subgraph(core.nodes()).copy()
+    if not len(H):
+        logger.warning(f"r/{subreddit}: no 2-core; use the full graph")
+        return
 
     community = nx.get_node_attributes(H, "community")
     top = list(pd.Series(community).value_counts().head(len(PALETTE)).index)

@@ -24,6 +24,38 @@ def overlap_row(label, users_a, users_b, sub_a, sub_b):
     }
 
 
+MIN_COMMENT_LEVELS = (1, 2, 5)
+
+
+def baseline_overlap_table(user_counts, rival_pair):
+    """Overlap for EVERY pair of subreddits, so the rival pair can be compared with non-rival pairs.
+    user_counts: {subreddit: Series(user -> number of comments)}.
+    For each pair and activity level (users with >= k comments in BOTH communities' own count):
+      pct_of_smaller  share of the smaller community that also appears in the other
+      jaccard_pct     overlap / union
+      lift            observed overlap / overlap expected if users picked communities independently
+                      (|A|*|B| / N, N = all distinct users across all subreddits). Lift removes the
+                      effect of subreddit size, which raw percentages do not."""
+    import itertools
+    subs = list(user_counts)
+    rows = []
+    for k in MIN_COMMENT_LEVELS:
+        sets = {s: set(c[c >= k].index) for s, c in user_counts.items()}
+        population = set().union(*sets.values())
+        for a, b in itertools.combinations(subs, 2):
+            both = sets[a] & sets[b]
+            union = sets[a] | sets[b]
+            expected = len(sets[a]) * len(sets[b]) / max(len(population), 1)
+            rows.append({
+                "pair": f"{a} + {b}", "is_rival_pair": {a, b} == set(rival_pair), "min_comments": k,
+                f"users_a": len(sets[a]), "users_b": len(sets[b]), "users_in_both": len(both),
+                "pct_of_smaller": round(100 * len(both) / max(min(len(sets[a]), len(sets[b])), 1), 2),
+                "jaccard_pct": round(100 * len(both) / max(len(union), 1), 2),
+                "lift": round(len(both) / expected, 2) if expected else None,
+            })
+    return pd.DataFrame(rows)
+
+
 def main():
     if len(config.SUBREDDITS) != 2:
         logger.error(f"Expected exactly 2 subreddits, found {len(config.SUBREDDITS)}. Aborting overlap analysis.")
@@ -55,8 +87,20 @@ def main():
     ])
     summary.to_csv(config.OVERLAP_SUMMARY_PATH, index=False)
     logger.info(f"Overlap summary (same 28-day window for both subreddits):\n{summary.to_string(index=False)}")
-    logger.info("Note: each subreddit is a per-time-slot SAMPLE of its comments, so these overlaps are "
-                "lower bounds on true cross-participation.")
+    logger.info("Note: counts cover every comment in the window; cross-participation outside the "
+                "window is not observed.")
+
+    # ---- Baseline: is the Marvel-DC overlap high or low compared with NON-rival pairs? ----
+    if os.path.exists(config.CLEAN_BASELINE_PATH):
+        base = pd.read_csv(config.CLEAN_BASELINE_PATH)
+        user_counts = {sub_a: ca["author"].value_counts(), sub_b: cb["author"].value_counts()}
+        for sub, g in base.groupby("subreddit"):
+            user_counts[sub] = g["author"].value_counts()
+        table = baseline_overlap_table(user_counts, (sub_a, sub_b))
+        table.to_csv(config.OVERLAP_BASELINE_PATH, index=False)
+        logger.info("Overlap baseline (same window, all comments, all pairs):\n" + table.to_string(index=False))
+    else:
+        logger.warning("No baseline authors found (data/processed/baseline_authors.csv); skipping baseline.")
 
     # ---- Who are the shared users? ----
     shared = commenters_a & commenters_b

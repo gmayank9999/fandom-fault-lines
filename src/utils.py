@@ -54,16 +54,59 @@ def request_with_retry(url, params, logger):
     return None
 
 
+_SALT = None
+
+
+def _get_salt():
+    """Secret salt for all hashing. Kept in data/raw/.salt (git-ignored) so that nobody holding only the
+    published tables can recompute a hash from a guessed username or a Reddit comment/post id.
+    Created on first use. Override with the FFL_SALT environment variable."""
+    global _SALT
+    if _SALT is None:
+        _SALT = os.environ.get("FFL_SALT")
+        if not _SALT:
+            path = os.path.join("data", "raw", ".salt")
+            if os.path.exists(path):
+                _SALT = open(path, encoding="utf-8").read().strip()
+            else:
+                import secrets
+                os.makedirs(os.path.dirname(path), exist_ok=True)
+                _SALT = secrets.token_hex(16)
+                with open(path, "w", encoding="utf-8") as f:
+                    f.write(_SALT)
+    return _SALT
+
+
+def _digest(kind, value):
+    return hashlib.sha256((_get_salt() + "|" + kind + "|" + str(value)).encode()).hexdigest()[:10]
+
+
 def anonymize(username):
     """
-    Deterministic, one-way anonymization: the same real username always maps
-    to the same fake ID across every run of this project, but the mapping
-    cannot be reversed (SHA-256 is a one-way hash). No lookup table mapping
-    back to real usernames is ever stored anywhere.
+    Salted, one-way pseudonymization: the same username always maps to the same id on a given
+    machine (so networks and overlap work), but without the secret salt the mapping cannot be
+    recomputed from a guessed username. No lookup table back to real usernames is ever stored.
     """
-    if username in (None, "[deleted]", ""):
+    if not isinstance(username, str) or username.strip().lower() in ("[deleted]", "[removed]", "", "nan"):
         return "[deleted]"
-    return "user_" + hashlib.sha256(str(username).encode()).hexdigest()[:10]
+    return "user_" + _digest("user", username.strip())
+
+
+def anonymize_id(raw_id, kind="id"):
+    """Salted hash for Reddit post/comment ids. Raw ids are dangerous to publish: reddit.com/comments/<id>
+    resolves to the real author. The same id always hashes to the same value, so joins still work."""
+    if raw_id in (None, ""):
+        return ""
+    return "h" + _digest(kind, raw_id)
+
+
+def anonymize_fullname(fullname):
+    """'t1_abc' / 't3_abc' -> 't1_<hash>' / 't3_<hash>' (prefix kept so the network code can still tell
+    comment parents from post parents). Anything else becomes ''."""
+    fullname = str(fullname)
+    if fullname[:3] in ("t1_", "t3_"):
+        return fullname[:3] + anonymize_id(fullname[3:], fullname[:2])
+    return ""
 
 
 def safe_get(d, key, default=None):

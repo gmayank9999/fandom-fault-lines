@@ -23,7 +23,7 @@ def fetch_posts_page(subreddit, before_ts, after_ts, limit):
     }
     data = request_with_retry(url, params, logger)
     if data is None:
-        return []
+        raise RuntimeError("Post request failed; refusing to interpret failure as end of archive")
     return data.get("data", [])
 
 
@@ -31,6 +31,7 @@ def collect_subreddit_posts(subreddit, writer):
     collected = 0
     current_before = config.BEFORE_TS
     page_count = 0
+    seen = set()
 
     while collected < config.TARGET_POSTS_PER_SUB and page_count < config.MAX_PAGES_SAFETY:
         page_count += 1
@@ -41,8 +42,16 @@ def collect_subreddit_posts(subreddit, writer):
             break
 
         oldest_ts_this_page = None
+        new = 0
         for p in posts:
             created_utc = safe_get(p, "created_utc")
+            if created_utc is not None:
+                oldest_ts_this_page = min(oldest_ts_this_page or created_utc, created_utc)
+            pid = safe_get(p, "id", "")
+            if pid in seen or created_utc is None or not config.AFTER_TS <= created_utc < config.BEFORE_TS:
+                continue
+            seen.add(pid)
+            new += 1
             writer.writerow({
                 "id": safe_get(p, "id", ""),
                 "subreddit": subreddit,
@@ -65,7 +74,9 @@ def collect_subreddit_posts(subreddit, writer):
             break
         # Page backward in time: next request asks for posts older than the
         # oldest one we just saw (minus 1 second to avoid re-fetching the boundary row).
-        current_before = oldest_ts_this_page - 1
+        if not new and len(posts) >= config.PAGE_LIMIT and all(p["created_utc"] == oldest_ts_this_page for p in posts):
+            raise RuntimeError("Timestamp-saturated post page; cannot guarantee completeness")
+        current_before = oldest_ts_this_page + 1 if new else oldest_ts_this_page
         if current_before <= config.AFTER_TS:
             logger.info(f"r/{subreddit}: reached the start of the window.")
             break
@@ -77,20 +88,21 @@ def collect_subreddit_posts(subreddit, writer):
             break
 
     if page_count >= config.MAX_PAGES_SAFETY:
-        logger.warning(f"r/{subreddit}: MAX_PAGES_SAFETY ({config.MAX_PAGES_SAFETY}) reached after {collected} posts; "
-                          f"the window may not be fully covered. Raise MAX_PAGES_SAFETY in config.py.")
+        raise RuntimeError(f"r/{subreddit}: post safety cap reached; incomplete output not installed")
 
     logger.info(f"r/{subreddit}: FINISHED with {collected} posts collected.")
 
 
 def main():
     os.makedirs("data/raw", exist_ok=True)
-    with open(config.RAW_POSTS_PATH, "w", newline="", encoding="utf-8") as f:
+    temp = config.RAW_POSTS_PATH + ".tmp"
+    with open(temp, "w", newline="", encoding="utf-8") as f:
         writer = csv.DictWriter(f, fieldnames=POST_FIELDS)
         writer.writeheader()
         for sub in config.SUBREDDITS:
             logger.info(f"Starting collection for r/{sub}...")
             collect_subreddit_posts(sub, writer)
+    os.replace(temp, config.RAW_POSTS_PATH)
 
 
 if __name__ == "__main__":

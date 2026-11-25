@@ -26,11 +26,16 @@ def build_reply_graph(comments, posts, subreddit_name, extra_authors=None):
     post_author_lookup.update(zip("t3_" + sub_posts["id"].astype(str), sub_posts["author"]))
 
     G = nx.DiGraph()
+    # Retain observed commenters even when all their parents are unresolved.
+    valid_authors = set(sub_comments["author"].dropna()) - {"[deleted]", "[removed]", ""}
+    G.add_nodes_from(sorted(valid_authors))
     dropped_self_loops = 0
     missing = {"t1": 0, "t3": 0, "other": 0}
     total = {"t1": 0, "t3": 0, "other": 0}
 
     for commenter, parent_id in zip(sub_comments["author"], sub_comments["parent_id"].astype(str)):
+        if commenter not in valid_authors:
+            continue
         if parent_id.startswith("t1_"):
             kind, parent_author = "t1", comment_author_lookup.get(parent_id)
         elif parent_id.startswith("t3_"):
@@ -39,7 +44,7 @@ def build_reply_graph(comments, posts, subreddit_name, extra_authors=None):
             kind, parent_author = "other", None
         total[kind] += 1
 
-        if parent_author is None:
+        if not isinstance(parent_author, str) or parent_author in {"[deleted]", "[removed]", ""}:
             missing[kind] += 1
             continue
         if parent_author == commenter:

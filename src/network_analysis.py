@@ -14,6 +14,20 @@ NETWORK_SUMMARY_PATH = "data/processed/network_summary.csv"
 NO_TOPIC = -1
 
 
+def undirected_sum(graph):
+    """Sum reciprocal reply counts; DiGraph.to_undirected selects one arbitrarily."""
+    result = nx.Graph()
+    result.add_nodes_from(graph.nodes(data=True))
+    for a, b, attrs in graph.edges(data=True):
+        if a != b:
+            weight = float(attrs.get("weight", 1))
+            if result.has_edge(a, b):
+                result[a][b]["weight"] += weight
+            else:
+                result.add_edge(a, b, weight=weight)
+    return result
+
+
 def profile_communities(subreddit_name, community_df):
     """Join community assignments back onto sentiment/topic data. Only communities with at least
     MIN_COMMUNITY_SIZE users are profiled; smaller ones are fragments (mostly tiny disconnected
@@ -82,6 +96,31 @@ def profile_communities(subreddit_name, community_df):
                 f"{profile.to_string(index=False)}")
 
 
+def null_modularity(G_undirected, n_rewires=5, seed=42):
+    """Louvain modularity of degree-preserving random rewirings of the graph (same degree for every user,
+    random partners). A reply network built from threads is sparse and tree-like, so even a RANDOM graph
+    with this degree sequence gets a high modularity; only the excess over this null says anything about
+    real community structure. Returns (mean, sd) of the null modularities."""
+    import numpy as np
+    n_edges = G_undirected.number_of_edges()
+    values = []
+    for i in range(n_rewires):
+        # Degree-preserving swaps preserve topology, not edge strength. Remove
+        # ALL weights in both the observed and randomized topology comparison.
+        H = nx.Graph()
+        H.add_nodes_from(G_undirected)
+        H.add_edges_from(G_undirected.edges())
+        if n_edges < 2 or len(H) < 4:
+            return float("nan"), float("nan")
+        try:
+            nx.double_edge_swap(H, nswap=3 * n_edges, max_tries=30 * n_edges, seed=seed + i)
+        except (nx.NetworkXAlgorithmError, nx.NetworkXError):
+            continue
+        part = community_louvain.best_partition(H, random_state=seed + i)
+        values.append(community_louvain.modularity(part, H))
+    return (float(np.mean(values)), float(np.std(values))) if values else (float("nan"), float("nan"))
+
+
 def analyze_network(subreddit_name):
     path = f"{config.NETWORKS_DIR}/network_{subreddit_name}.gexf"
     G = nx.read_gexf(path)
@@ -116,9 +155,18 @@ def analyze_network(subreddit_name):
     logger.info(f"r/{subreddit_name}: {len(components)} weakly connected components; "
                 f"largest has {len(lcc)} users ({100 * len(lcc) / n:.1f}% of the network).")
 
-    G_undirected = G.to_undirected()
+    G_undirected = undirected_sum(G)
     partition = community_louvain.best_partition(G_undirected, weight="weight", random_state=42)
     modularity = community_louvain.modularity(partition, G_undirected, weight="weight")
+
+    null_mean, null_sd = null_modularity(G_undirected)
+    topology = nx.Graph()
+    topology.add_nodes_from(G_undirected)
+    topology.add_edges_from(G_undirected.edges())
+    topology_partition = community_louvain.best_partition(topology, random_state=42)
+    topology_q = community_louvain.modularity(topology_partition, topology)
+    logger.info(f"r/{subreddit_name}: modularity {modularity:.3f} vs degree-preserving random rewiring "
+                f"{null_mean:.3f} +/- {null_sd:.3f} (excess {modularity - null_mean:+.3f}).")
 
     community_df = pd.DataFrame({"user": list(partition.keys()), "community_id": list(partition.values())})
     community_df["in_largest_component"] = community_df["user"].isin(lcc)
@@ -142,7 +190,10 @@ def analyze_network(subreddit_name):
         "weakly_connected_components": len(components),
         "largest_component_users": len(lcc), "largest_component_pct": round(100 * len(lcc) / n, 2),
         "communities_total": len(sizes), "communities_min_size": big,
-        "modularity": round(modularity, 4), "betweenness_method": method,
+        "modularity": round(modularity, 4), "modularity_null_mean": round(null_mean, 4),
+        "modularity_unweighted": round(topology_q, 4),
+        "modularity_null_sd": round(null_sd, 4), "modularity_excess": round(topology_q - null_mean, 4),
+        "betweenness_method": method,
     }
 
 

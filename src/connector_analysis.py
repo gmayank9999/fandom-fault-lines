@@ -39,6 +39,9 @@ def profile_connectors(subreddit_name, comments, posts, shared_users):
 
     posts_by_user = sub_posts["author"].value_counts()
     comments_by_user = sub_comments["author"].value_counts()
+    # Breadth: in how many different threads did this user comment? Betweenness on a star-shaped reply
+    # graph mostly measures "was replied to a lot"; thread breadth separates users who span many threads.
+    threads_by_user = sub_comments.groupby("author")["link_id"].nunique()
     sentiment_by_user = sub_comments.groupby("author")["sentiment_compound"].mean()
     comm_size = comm["community_id"].map(comm["community_id"].value_counts())
     comm = comm.assign(community_size=comm_size).set_index("user")
@@ -60,6 +63,7 @@ def profile_connectors(subreddit_name, comments, posts, shared_users):
                 "degree_centrality": r["degree_centrality"],
                 "replies_received": int(in_w.get(u, 0)), "replies_written": int(out_w.get(u, 0)),
                 "posts_authored": posts_n, "comments_authored": int(comments_by_user.get(u, 0)),
+                "threads_participated": int(threads_by_user.get(u, 0)),
                 "role": classify_role(posts_n, in_w.get(u, 0), out_w.get(u, 0)),
                 "mean_sentiment": sentiment_by_user.get(u),
                 "main_topic": modal_topic(u),

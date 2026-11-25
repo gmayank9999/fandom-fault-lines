@@ -1,0 +1,24 @@
+{
+  "title": "Fandom Fault Lines: comparative longitudinal study",
+  "seed": 42,
+  "windows": [
+    {"id": "sep", "start": "2026-09-03", "end": "2026-10-01", "legacy_cache": "data/raw/full"},
+    {"id": "oct", "start": "2026-10-01", "end": "2026-10-29", "legacy_cache": "data/raw/full_2026-10-29"}
+  ],
+  "pairs": [
+    {"id": "superheroes", "label": "Marvel / DC", "communities": ["marvelstudios", "DC_Cinematic"], "rationale": "Competing superhero franchises; original case study."},
+    {"id": "consoles", "label": "PlayStation / Xbox", "communities": ["PS5", "xbox"], "rationale": "Competing console brands; cross-domain replication. Membership does not establish personal brand allegiance."}
+  ],
+  "baselines": ["StarWars", "lotr"],
+  "aliases": {
+    "marvelstudios": ["marvel", "mcu", "avengers", "kevin feige", "iron man", "captain america", "thor", "hulk", "loki", "thanos", "x-men", "fantastic four", "doctor strange", "black panther"],
+    "DC_Cinematic": ["dc", "dceu", "dcu", "batman", "superman", "supergirl", "james gunn", "wonder woman", "green lantern", "justice league", "joker", "aquaman", "peacemaker", "lex luthor", "snyder"],
+    "PS5": ["playstation", "ps5", "ps4", "sony", "ps plus", "psn", "dualshock", "dualsense"],
+    "xbox": ["xbox", "microsoft", "game pass", "gamepass", "series x", "series s", "phil spencer"]
+  },
+  "network": {"betweenness_sources": 128, "null_replicates": 10, "layout_node_limit": 1200},
+  "bootstrap_replicates": 1000,
+  "topic_candidates": [6, 8, 10, 12],
+  "topic_training_limit": 20000,
+  "output_dir": "outputs/study"
+}

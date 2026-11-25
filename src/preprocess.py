@@ -5,7 +5,7 @@ import pandas as pd
 
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 import config
-from src.utils import setup_logger, anonymize
+from src.utils import setup_logger, anonymize, anonymize_id, anonymize_fullname
 
 logger = setup_logger("preprocess")
 
@@ -18,6 +18,31 @@ def clean_text(text):
     text = re.sub(r"&amp;#x200B;|&amp;|&gt;|&lt;", " ", text)
     text = re.sub(r"\s+", " ", text).strip()
     return text
+
+
+def basic_clean(comments):
+    """Bot/deleted removal, empty-body removal, de-duplication, text cleaning, length and letter filters.
+    One function so that the main window and any replication window are cleaned identically."""
+    comments = comments[comments["author"].notna() &
+                        ~comments["author"].astype(str).str.lower().isin({s.lower() for s in config.BOT_ACCOUNTS} | {"[removed]", ""})]
+    comments = comments[comments["body"].notna()]
+    comments = comments[~comments["body"].astype(str).isin(["[removed]", "[deleted]", ""])]
+    comments = comments.drop_duplicates(subset="id").copy()
+    comments["body_clean"] = comments["body"].apply(clean_text)
+    comments = comments[comments["body_clean"].str.len() >= config.MIN_COMMENT_LENGTH]
+    return comments[comments["body_clean"].str.contains(r"[A-Za-z]", regex=True)]   # drop emoji/symbol-only
+
+
+def preprocess_baseline():
+    """Non-rival subreddits (authors only) used as the overlap baseline: drop bots, anonymize."""
+    if not os.path.exists(config.RAW_BASELINE_PATH):
+        return
+    b = pd.read_csv(config.RAW_BASELINE_PATH)
+    b = b[~b["author"].isin(config.BOT_ACCOUNTS) & b["author"].notna()].drop_duplicates(subset=["subreddit", "id"])
+    b["author"] = b["author"].apply(anonymize)
+    b = b[b["author"] != "[deleted]"]
+    b[["subreddit", "author", "created_utc"]].to_csv(config.CLEAN_BASELINE_PATH, index=False)
+    logger.info(f"Baseline authors: {len(b)} comments in {b['subreddit'].nunique()} subreddits")
 
 
 def main():
@@ -39,31 +64,31 @@ def main():
         posts[["id", "author"]].assign(kind="t3"),
         parents[["id", "author", "kind"]],
     ]).drop_duplicates(subset=["kind", "id"])
-    lookup = lookup[~lookup["author"].isin(config.BOT_ACCOUNTS)].copy()
+    lookup = lookup[lookup["author"].notna() & ~lookup["author"].astype(str).str.lower().isin({s.lower() for s in config.BOT_ACCOUNTS})].copy()
     lookup["author"] = lookup["author"].apply(anonymize)
+    lookup["id"] = [anonymize_id(i, k) for i, k in zip(lookup["id"], lookup["kind"])]
     lookup[["kind", "id", "author"]].to_csv(config.CLEAN_PARENTS_PATH, index=False)
     logger.info(f"Author lookup for network: {len(lookup)} ids ({len(parents)} fetched parents)")
 
-    # ---- 1. Drop bot/deleted authors ----
-    posts = posts[~posts["author"].isin(config.BOT_ACCOUNTS)]
-    comments = comments[~comments["author"].isin(config.BOT_ACCOUNTS)]
-
-    # ---- 2. Drop empty/placeholder comment bodies ----
-    comments = comments[comments["body"].notna()]
-    comments = comments[~comments["body"].astype(str).isin(["[removed]", "[deleted]", ""])]
-
-    # ---- 3. Drop exact duplicates (can happen at pagination page boundaries) ----
-    posts = posts.drop_duplicates(subset="id")
-    comments = comments.drop_duplicates(subset="id")
-
-    # ---- 4. Clean comment text ----
-    comments["body_clean"] = comments["body"].apply(clean_text)
-    comments = comments[comments["body_clean"].str.len() >= config.MIN_COMMENT_LENGTH]
-    comments = comments[comments["body_clean"].str.contains(r"[A-Za-z]", regex=True)]   # drop emoji/symbol-only
+    # ---- 1-4. Drop bots, empty/placeholder bodies and duplicates; clean text; length/letter filters ----
+    posts = posts[posts["author"].notna() & ~posts["author"].astype(str).str.lower().isin({s.lower() for s in config.BOT_ACCOUNTS})].drop_duplicates(subset="id").copy()
+    comments = basic_clean(comments)
 
     # ---- 5. Anonymize usernames (deterministic, one-way) ----
     posts["author"] = posts["author"].apply(anonymize)
     comments["author"] = comments["author"].apply(anonymize)
+
+    # ---- 6. Hash ids and drop permalinks ----
+    # A raw Reddit id or permalink resolves to the real author (reddit.com/comments/<id>), so the
+    # pseudonymized usernames would be pointless if the ids were published as they are.
+    posts["id"] = [anonymize_id(i, "t3") for i in posts["id"]]
+    comments["id"] = [anonymize_id(i, "t1") for i in comments["id"]]
+    comments["parent_id"] = comments["parent_id"].map(anonymize_fullname)
+    comments["link_id"] = comments["link_id"].map(anonymize_fullname)
+    posts = posts.drop(columns=[c for c in ("url",) if c in posts.columns])
+    comments = comments.drop(columns=["body"])       # body_clean is what every stage uses
+
+    preprocess_baseline()
 
     posts.to_csv(config.CLEAN_POSTS_PATH, index=False)
     comments.to_csv(config.CLEAN_COMMENTS_PATH, index=False)

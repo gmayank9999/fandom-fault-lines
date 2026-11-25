@@ -1,118 +1,97 @@
 # Fandom Fault Lines
 
-Mapping discourse, sentiment, and community structure in rival fan communities on Reddit.
+A comparative, longitudinal Computational Social Media Analysis project studying
+discussion, reply networks and audience overlap across rival entertainment brands.
 
-An end-to-end pipeline that collects, cleans, analyzes, and visualizes discussion
-data from two rival subreddits to study whether these communities form separate,
-distinct groups or overlapping ones — looking at content (topics/sentiment),
-internal structure (key connector users), and cross-group boundaries.
+**Design:** Marvel/DC (`marvelstudios`, `DC_Cinematic`) and PlayStation/Xbox (`PS5`,
+`xbox`), with `StarWars` and `lotr` as comparison audiences. Two adjacent 28-day
+periods span **3 September–29 October 2026** (UTC; end exclusive).
+Dates, pairs, dictionaries and analysis settings live in [study.json](study.json).
 
-**Case study:** r/marvelstudios vs r/DC_Cinematic (configurable).
+The original ~19,000-comment pilot was sampling-sensitive. Its 5% overlap headline
+is superseded. **Consult the inventory for actual completion; planned coverage is
+not a claim that every dataset has finished downloading.**
 
-## Setup
+## Start here
 
-1. Create and activate a virtual environment:
-   ```bash
-   python -m venv venv
-   source venv/bin/activate       # Mac/Linux
-   venv\Scripts\Activate.ps1      # Windows PowerShell
-   ```
-2. Install dependencies:
-   ```bash
-   pip install -r requirements.txt
-   ```
-3. Adjust subreddits, franchise aliases, or the date window in `config.py` if needed
-   (defaults work out of the box, no API keys or credentials required).
+- [Research report](REPORT.md), generated from aggregate results.
+- [Audit and remaining work](PROJECT_STATUS.md).
+- [Plain-language explanation](EXPLANATION.md).
+- [Gephi workflow](GEPHI_GUIDE.md).
+- [Independent annotation protocol](ANNOTATION_GUIDE.md).
+- [Collection inventory](outputs/study/collection_inventory.csv).
 
-## Run
+## Setup and run
 
-```bash
-python run_pipeline.py                          # runs every stage in order (re-downloads data)
-python run_pipeline.py --stage all --skip-collection   # re-run analysis on the existing raw CSVs
-python run_pipeline.py --stage sentiment        # run a single stage
+Python 3.11 is the tested environment. The comparative pipeline needs core
+dependencies only; the inherited transformer experiment is optional.
+
+```powershell
+python -m venv venv
+.\venv\Scripts\python.exe -m pip install -r requirements-core.txt
+.\venv\Scripts\python.exe run_study.py --stage inventory
+.\venv\Scripts\python.exe run_study.py --stage all
 ```
 
-Stage names: `collect_posts`, `collect_comments`, `preprocess`, `eda`,
-`topic_modeling`, `sentiment`, `statistical_tests`, `network_build`,
-`network_analysis`, `overlap_analysis`, `connector_analysis`, `visualize`.
+Collection can take hours. Completed daily files are reused. Default concurrency
+is two; `--workers 1` is available for a busy archive and four is the maximum.
+Do not run multiple collectors against the same cache simultaneously.
 
-## Data Source and Sampling
+```powershell
+.\venv\Scripts\python.exe run_study.py --stage collect
+.\venv\Scripts\python.exe run_study.py --stage analyze
+.\venv\Scripts\python.exe run_study.py --stage report
+.\venv\Scripts\python.exe -m pytest tests -q
+```
 
-Data comes from [Arctic Shift](https://arctic-shift.photon-reddit.com), a free, public,
-no-authentication archive of Reddit's historical public data. No Reddit API credentials
-are needed.
+`--subreddit PS5` limits collection to one community. Analysis processes complete
+pairs while other communities are still collecting. The default tests are offline;
+set `$env:FFL_MODEL_TEST = '1'` to enable the real-model integration test.
 
-- **Frozen window.** The 28-day window is fixed in `config.py` (`WINDOW_END_DATE`), so
-  re-running never silently changes the dataset. It ends a few days before collection so
-  comment scores have had time to accumulate.
-- **Posts:** every post in the window.
-- **Comments:** stratified sample. The window is cut into 6-hour slots and up to 90 comments
-  are taken from each slot, so the sample covers the whole window evenly (not just its most
-  recent hours) and both subreddits span the same dates.
+## Methods
 
-## Pipeline Stages
+- Exact expected day files, UTC bounds, duplicate IDs, schema checks and new-download
+  checksums. Request failures, ambiguous pagination and safety caps fail explicitly.
+- Participation includes identifiable non-bot commenters regardless of usable text;
+  NLP uses cleaned content. Neither implies fandom membership.
+- Pair-specific mention dictionaries, original/adapted VADER sensitivity, balanced
+  pooled NMF topics across both periods, weekly trends. Sentiment is not stance.
+- Effect sizes, user and thread cluster bootstraps, Holm correction across scorers
+  and mention definitions. These are exploratory comparisons, not preregistered tests.
+- Directed reply-count networks, preserved isolates, summed reciprocal weights,
+  weighted Louvain/PageRank, unweighted directed betweenness, k-core, degree/strength
+  and participation coefficients. Comment-only graphs test thread-starter effects.
+- Equivalent unweighted observed/randomized network comparison. Small null ensembles
+  are descriptive; no precise null-model p-values are claimed.
+- Both directional overlap percentages and Jaccard; thresholds of 1/2/5 comments;
+  all audience pairs; duration and random-subsampling sensitivity.
+- Inherited sentiment annotations are AI-generated development labels. Independent
+  human validation remains necessary; the pipeline never invents human annotations.
 
-| Stage | Script | Output |
+## Outputs and privacy
+
+| Location | Contents | Git |
 |---|---|---|
-| 1. Post collection | `src/collect_posts.py` | `data/raw/raw_posts.csv` |
-| 2. Comment collection | `src/collect_comments.py` | `data/raw/raw_comments.csv` |
-| 3. Preprocessing | `src/preprocess.py` | `data/processed/clean_posts.csv`, `clean_comments.csv` |
-| 4. Exploratory analysis | `src/eda.py` | `outputs/charts/chart_activity_over_time.png`, `chart_score_distribution.png`, `data/processed/peak_days.csv` |
-| 4b. Topic modeling | `src/topic_modeling.py` | `data/processed/topics_<subreddit>.csv`, `topic_summary_<subreddit>.csv` |
-| 5. Sentiment analysis | `src/sentiment.py` | `data/processed/comments_with_sentiment.csv`, `sentiment_by_target.csv` |
-| 5b. Statistical testing | `src/statistical_tests.py` | `data/processed/statistical_tests.csv` (p-values, Holm-corrected p, effect sizes) |
-| 6. Network construction | `src/network_build.py` | `outputs/networks/network_<subreddit>.gexf`, `data/processed/network_coverage.csv` |
-| 7. Network analysis | `src/network_analysis.py` | `centrality_`, `communities_`, `community_profile_<subreddit>.csv`, `network_summary.csv` |
-| 7b. Connector profiling | `src/connector_analysis.py` | `data/processed/connector_profile_<subreddit>.csv` |
-| 8. Gephi visualization | manual, see below | exported network images |
-| 9. Overlap analysis | `src/overlap_analysis.py` | `data/processed/overlap_users.csv`, `overlap_summary.csv` |
-| 10. Figures | `src/visualize.py` | `outputs/charts/chart_sentiment_by_target.png`, `chart_topic_prevalence.png`, `chart_overlap.png`, `network_<subreddit>.png` |
+| `outputs/study/collection_inventory.csv` | Expected/valid days, counts, provenance | Published |
+| `outputs/study/tables/` | Aggregate results and sensitivity analyses | Published |
+| `outputs/study/figures/` | Report figures | Published |
+| `outputs/study/networks/` | Full/focus GEXF, node/edge CSVs, Gephi sessions | Local |
+| `outputs/study/private/` | Text caches, pseudonymous connectors, run markers | Local |
+| `data/raw/`, `data/gold/` | Original data, salt, annotation texts/labels | Local |
 
-## Gephi Visualization (Manual, optional)
+Pseudonymization is not anonymity. Searchable text and raw IDs are not published.
+Old commits included searchable comment text: removing files in new commits does
+**not** erase that history. No history rewrite or force push is performed.
 
-`src/visualize.py` already renders static network pictures. For an interactive version, run `python src/gephi_export.py` and open `outputs/networks/network_<subreddit>_core_for_gephi.gexf` (dense core, already laid out, coloured by community and sized by betweenness). To build the picture by hand from the full network instead:
+## Original pipeline
 
-1. Open `outputs/networks/network_<subreddit>_with_communities.gexf` in [Gephi](https://gephi.org/).
-2. Appearance → node Color → Partition → `community` attribute.
-3. Appearance → node Size → Ranking → `betweenness_centrality`.
-4. Layout → ForceAtlas2 → Run for 10-30s → Stop.
-5. Preview tab → Export → SVG/PNG.
-6. Repeat for the second subreddit.
+`run_pipeline.py` remains available for the original single-window experiment,
+including optional RoBERTa scoring. Install `requirements.txt` for that experiment
+(CPU wheels: `https://download.pytorch.org/whl/cpu`). On PowerShell,
+`$env:FFL_TRANSFORMER = '0'` skips inference. Its outputs under `data/processed/`,
+`outputs/charts/` and `outputs/networks/` are local legacy artifacts, not current
+study results. Historical reports in `docs/archive/` are superseded.
 
-## Testing
-
-```bash
-pytest tests/ -v
-```
-
-## Outputs
-
-- `data/processed/` — cleaned, anonymized CSVs (safe to commit; evidence trail for all reported numbers)
-- `outputs/charts/` — EDA and result figures
-- `outputs/networks/` — Gephi-ready `.gexf` network files
-- `logs/pipeline.log` — full run log
-
-## Method notes
-
-- **Target tagging:** each comment is tagged `self_talk` / `rival_talk` / `both` / `general` by
-  whole-word matching against `FRANCHISE_ALIASES` in `config.py` (so "dc" never matches inside
-  another word).
-- **Topics:** TF-IDF + NMF per subreddit. Comments with too few informative words get
-  `topic_id = -1` instead of being forced into a topic.
-- **Statistics:** Mann-Whitney U tests, reported with the rank-biserial effect size and
-  Holm-corrected p-values, plus a robustness run that excludes comments with a VADER score of
-  exactly 0 (no sentiment words found).
-- **Networks:** nodes are users, edges are replies (weight = number of replies). Users at the
-  top of the betweenness ranking are *structurally central in the observed reply network*;
-  `connector_profile_*.csv` separates thread starters from pure reply bridges.
-
-## Ethics and Data Handling
-
-- Only public subreddit data is collected, via a free public archive — no private
-  or authentication-gated content.
-- Usernames are pseudonymized via one-way SHA-256 hashing before any analysis or
-  committed storage; no reverse mapping is ever stored.
-- `data/raw/` (pre-anonymization) is excluded from version control via
-  `.gitignore`; only `data/processed/` (post-anonymization) is committed.
-- Findings describe a specific 28-day collection window and Reddit's userbase
-  specifically — not a permanent or general characterization of either fandom.
+Public archive: [Arctic Shift](https://github.com/ArthurHeitmann/arctic_shift).
+Archive completeness is not Reddit completeness. Low overlap, negative sentiment
+and structural centrality cannot alone prove echo chambers, hostility or influence.

@@ -1,12 +1,13 @@
 import argparse
 
-from src import (collect_posts, collect_comments, collect_parents, preprocess, eda, topic_modeling,
+from src import (collect_posts, collect_comments, collect_full, collect_parents, preprocess, eda, topic_modeling,
                  sentiment, statistical_tests, network_build, network_analysis,
-                 overlap_analysis, connector_analysis, visualize)
+                 overlap_analysis, connector_analysis, visualize, gold_set, replication, gephi_export)
 
 STAGES = {
     "collect_posts": collect_posts.main,
-    "collect_comments": collect_comments.main,
+    "collect_comments": collect_comments.main,       # legacy: time-slot SAMPLE, kept for reference
+    "collect_full": lambda: collect_full.main([]),    # don't reparse the runner's arguments
     "collect_parents": collect_parents.main,
     "preprocess": preprocess.main,
     "eda": eda.main,
@@ -18,11 +19,14 @@ STAGES = {
     "overlap_analysis": overlap_analysis.main,
     "connector_analysis": connector_analysis.main,
     "visualize": visualize.main,
+    "gold_eval": gold_set.main,                        # scorer validation against the hand-labelled set
+    "replication": replication.main,                   # second-window check (needs data/raw/full_<date>/)
+    "gephi_export": gephi_export.main,
 }
 
-ORDER = ["collect_posts", "collect_comments", "collect_parents", "preprocess", "eda", "topic_modeling",
-         "sentiment", "statistical_tests", "network_build", "network_analysis",
-         "overlap_analysis", "connector_analysis", "visualize"]
+ORDER = ["collect_posts", "collect_full", "collect_parents", "preprocess", "eda", "topic_modeling",
+         "sentiment", "gold_eval", "statistical_tests", "network_build", "network_analysis",
+         "overlap_analysis", "connector_analysis", "visualize", "gephi_export", "replication"]
 
 
 def main():

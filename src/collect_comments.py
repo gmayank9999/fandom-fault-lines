@@ -91,7 +91,8 @@ def collect_subreddit_comments(subreddit, writer):
 
 def main():
     os.makedirs("data/raw", exist_ok=True)
-    with open(config.RAW_COMMENTS_PATH, "w", newline="", encoding="utf-8") as f:
+    # A reference sample must never replace the full-window analysis input.
+    with open("data/raw/legacy_sample_comments.csv", "w", newline="", encoding="utf-8") as f:
         writer = csv.DictWriter(f, fieldnames=COMMENT_FIELDS)
         writer.writeheader()
         for sub in config.SUBREDDITS:
