@@ -243,7 +243,9 @@ def analyze_pair(design, pair):
         tables["overlap"].append({"window": "pooled_56d", **overlap_counts(pooled_counts, *pair["communities"], level)})
     for name, rows in tables.items():
         pd.DataFrame(rows).assign(pair=pair["id"]).to_csv(table_dir / f"{pair['id']}_{name}.csv", index=False)
-    product_paths = list(table_dir.glob(f"{pair['id']}_*.csv")) + list((out / "networks").glob(f"{pair['id']}_*"))
+    product_paths = list(table_dir.glob(f"{pair['id']}_*.csv")) + [
+        p for p in (out / "networks").glob(f"{pair['id']}_*")
+        if "_native" not in p.name and p.suffix in (".gexf", ".csv")]
     products = {str(p.relative_to(out)): hashlib.sha256(p.read_bytes()).hexdigest() for p in product_paths}
     marker.write_text(json.dumps({"fingerprint": digest, "design": design, "products": products}, indent=2), encoding="utf-8")
     print(f"COMPLETE {pair['id']}", flush=True)

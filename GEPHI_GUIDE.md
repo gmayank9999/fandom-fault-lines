@@ -31,6 +31,12 @@ The `*_gephi.csv` aggregate tables document display filters.
 
 ## Import and verify
 
+The native project's display workspace further restricts the focus graph to edges
+with at least two replies and removes resulting isolates. It is a repeated-reply
+backbone for readability, not an unbiased sample. Its counts and filter are in
+`gephi_validation.csv`. The FULL workspace is unchanged. ForceAtlas2 coordinates
+are uniformly rescaled after layout for export; topology is unaffected.
+
 1. File → Open `*_all_replies_full.gexf` in Gephi. Import as **Directed**; preserve weight.
 2. Compare node/edge counts with the matching `*_networks.csv` row.
 3. In Data Laboratory inspect `observed_commenter`, `shared_in_pair`, `window`,

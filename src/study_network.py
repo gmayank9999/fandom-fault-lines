@@ -69,7 +69,7 @@ def metrics(graph, settings, seed=42, expensive=True):
         top1 = set(sorted(bc, key=bc.get, reverse=True)[:20])
         top2 = set(sorted(bc2, key=bc2.get, reverse=True)[:20])
         result["top20_betweenness_seed_overlap"] = len(top1 & top2) / len(top1 | top2)
-    pagerank = nx.pagerank(graph, weight="weight")
+    pagerank = nx.pagerank(graph, weight="weight", tol=1e-10, max_iter=500)
     core = nx.core_number(undirected)
     strength_in, strength_out = dict(graph.in_degree(weight="weight")), dict(graph.out_degree(weight="weight"))
     rows = []

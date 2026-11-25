@@ -111,7 +111,7 @@ def test_console_mentions_are_pair_specific():
 
 
 def test_comparative_pipeline_end_to_end(tmp_path, monkeypatch):
-    from src.study_analysis import analyze_pair
+    from src.study_analysis import analyze_pair, analyze_baselines
     from src.study_report import report
     from src.collect_full import FULL_FIELDS
     import src.utils as utils
@@ -148,8 +148,33 @@ def test_comparative_pipeline_end_to_end(tmp_path, monkeypatch):
     first_mtime = marker.stat().st_mtime_ns
     analyze_pair(design, pair)
     assert marker.stat().st_mtime_ns == first_mtime  # cache validates actual output hashes
+    analyze_baselines(design)
     report(design)
     assert "AI assistant" in Path("REPORT.md").read_text(encoding="utf-8")
     assert Path("outputs/study/figures/overlap.png").is_file()
+    audience = nx.read_gexf("outputs/study/aggregate_networks/audience_overlap_sep.gexf")
+    assert set(audience) == {"A", "B"}
+    assert audience["A"]["B"]["weight"] == 100
     for path in Path("outputs/study/tables").glob("*.csv"):
         assert "shared_" not in path.read_text(encoding="utf-8").replace("shared_users_comment_share_pct", "")
+
+
+def test_annotation_sheets_are_blind_and_never_overwrite(tmp_path, monkeypatch):
+    from tools.prepare_annotation import make_sheets
+    monkeypatch.chdir(tmp_path)
+    private = Path("outputs/study/private")
+    private.mkdir(parents=True)
+    design = {"output_dir": "outputs/study", "seed": 42, "pairs": [{"id": "p", "communities": ["A", "B"]}]}
+    rows = pd.DataFrame([{"id": f"hashed{i}", "subreddit": "A" if i < 8 else "B", "window": "sep",
+                         "target": "rival_talk", "body_clean": f"Synthetic example {i}", "vader": .9} for i in range(16)])
+    rows.to_csv(private / "p_content.csv.gz", index=False)
+    (private / "p_complete.json").write_text(json.dumps({"fingerprint": "synthetic"}))
+    make_sheets(design, 4)
+    a = pd.read_csv("data/gold/study/annotator_a.csv")
+    b = pd.read_csv("data/gold/study/annotator_b.csv")
+    assert len(a) == 8 and a["sentiment"].isna().all() and a["stance_rival"].isna().all()
+    assert "vader" not in a and "target" not in a and "comment_id" not in a
+    assert set(a.annotation_id) == set(b.annotation_id)
+    assert a.annotation_id.tolist() != b.annotation_id.tolist()
+    with pytest.raises(FileExistsError, match="overwrite"):
+        make_sheets(design, 4)

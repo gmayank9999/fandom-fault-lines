@@ -89,6 +89,11 @@ public class GephiStudy {
         imports.process(focusInput, new DefaultProcessor(), focus);
         projects.renameWorkspace(focus, "FOCUS — display only, ForceAtlas2");
         GraphModel focusModel = graphs.getGraphModel(focus);
+        DirectedGraph display = focusModel.getDirectedGraph();
+        // Display-only repeated-reply backbone. The full workspace is untouched.
+        for (Edge edge : display.getEdges().toArray()) if (edge.getWeight() < 2) display.removeEdge(edge);
+        for (Node node : display.getNodes().toArray()) if (display.getDegree(node) == 0) display.removeNode(node);
+        if (display.getNodeCount() == 0) throw new IllegalStateException("No repeated-reply display backbone");
         ForceAtlas2 layout = new ForceAtlas2(null);
         layout.setGraphModel(focusModel);
         layout.resetPropertiesValues();
@@ -103,17 +108,33 @@ public class GephiStudy {
         layout.initAlgo();
         for (int step = 0; step < 400 && layout.canAlgo(); step++) layout.goAlgo();
         layout.endAlgo();
+        float xmin = Float.POSITIVE_INFINITY, xmax = Float.NEGATIVE_INFINITY;
+        float ymin = Float.POSITIVE_INFINITY, ymax = Float.NEGATIVE_INFINITY;
+        for (Node node : display.getNodes()) {
+            xmin = Math.min(xmin, node.x()); xmax = Math.max(xmax, node.x());
+            ymin = Math.min(ymin, node.y()); ymax = Math.max(ymax, node.y());
+        }
+        float scale = 1800f / Math.max(xmax - xmin, ymax - ymin);
+        Column incomingStrength = column(focusModel.getNodeTable(), "in_strength");
+        for (Node node : display.getNodes()) {
+            node.setX((node.x() - (xmin + xmax) / 2f) * scale);
+            node.setY((node.y() - (ymin + ymax) / 2f) * scale);
+            // Explicit sizes avoid GEXF import-time visualization scaling.
+            double incoming = ((Number)node.getAttribute(incomingStrength)).doubleValue();
+            node.setSize((float)(2 + 0.7 * Math.log1p(incoming)));
+        }
         PreviewController preview = Lookup.getDefault().lookup(PreviewController.class);
         PreviewProperties props = preview.getModel(focus).getProperties();
         props.putValue(PreviewProperty.SHOW_NODE_LABELS, false);
         props.putValue(PreviewProperty.BACKGROUND_COLOR, new Color(252, 252, 251));
         props.putValue(PreviewProperty.EDGE_COLOR, new EdgeColor(new Color(110, 115, 125)));
-        props.putValue(PreviewProperty.EDGE_OPACITY, 12);
-        props.putValue(PreviewProperty.EDGE_THICKNESS, 0.12f);
+        props.putValue(PreviewProperty.EDGE_OPACITY, 18);
+        props.putValue(PreviewProperty.EDGE_THICKNESS, 0.5f);
         props.putValue(PreviewProperty.EDGE_USE_WEIGHT, false);
         props.putValue(PreviewProperty.EDGE_CURVED, false);
         props.putValue(PreviewProperty.ARROW_SIZE, 1f);
         props.putValue(PreviewProperty.NODE_BORDER_WIDTH, 0.1f);
+        props.putValue(PreviewProperty.NODE_SCALE_FACTOR, 1f);
         preview.refreshPreview(focus);
         // Gephi's G2D PNG path needs a screen device. SVG + Batik rasterization
         // remains headless and also provides a publication-quality vector file.
@@ -131,6 +152,7 @@ public class GephiStudy {
         };
         raster.addTranscodingHint(PNGTranscoder.KEY_WIDTH, 1800f);
         raster.addTranscodingHint(PNGTranscoder.KEY_HEIGHT, 1800f);
+        raster.addTranscodingHint(PNGTranscoder.KEY_BACKGROUND_COLOR, new Color(252, 252, 251));
         try (java.io.OutputStream stream = Files.newOutputStream(Path.of(args[2] + ".png"))) {
             raster.transcode(new TranscoderInput(svgFile.toURI().toString()), new TranscoderOutput(stream));
         }
@@ -146,6 +168,7 @@ public class GephiStudy {
         }
         if (!foundFull) throw new IllegalStateException("Full network absent after .gephi reload");
         String json = String.format("{\"toolkit\":\"0.11.3\",\"nodes\":%d,\"edges\":%d,\"reply_weight\":%.0f,\"degree_mismatches\":%d,\"pagerank_sum\":%.10f,\"pagerank_l1_difference_python\":%.10f,\"project_reopened\":true,\"workspaces\":2,\"layout\":\"ForceAtlas2\",\"iterations\":400,\"seed\":42,\"threads\":1,\"scaling\":8,\"gravity\":1,\"edge_weight_influence\":0.5,\"linlog\":true}", n, m, weight, degreeMismatches, prSum, prDifference);
+        json = json.substring(0, json.length() - 1) + String.format(",\"display_nodes\":%d,\"display_edges\":%d,\"display_filter\":\"focus graph; directed weight >= 2; isolates removed\"}", display.getNodeCount(), display.getEdgeCount());
         Files.writeString(Path.of(args[2] + "_validation.json"), json);
         System.out.println(json);
         projects.closeCurrentProject();

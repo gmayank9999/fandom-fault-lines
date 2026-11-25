@@ -1,11 +1,16 @@
 """Generate the study write-up and figures directly from checked aggregate tables."""
 from pathlib import Path
+import importlib.metadata
+import json
+import subprocess
+from datetime import datetime, timezone
 
 import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
+import networkx as nx
 
 from src.study_data import inventory
 
@@ -129,12 +134,62 @@ def plots(out):
                 fig.tight_layout()
                 fig.savefig(folder / f"topics_{pair}_{sub}.png", dpi=180)
                 plt.close(fig)
+    baseline = out / "tables" / "all_pair_overlap.csv"
+    if baseline.exists():
+        data = pd.read_csv(baseline)
+        data = data[data["min_comments"] == 1]
+        windows = sorted(data["window"].unique(), key=lambda w: {"sep": 0, "oct": 1}.get(w, 2))
+        fig, axes = plt.subplots(1, len(windows), figsize=(6.5 * len(windows), 6), squeeze=False)
+        aggregate_dir = out / "aggregate_networks"
+        aggregate_dir.mkdir(exist_ok=True)
+        maximum = data["jaccard_pct"].max()
+        for ax, window in zip(axes[0], windows):
+            rows = data[data["window"] == window]
+            names = list(dict.fromkeys(rows["community_a"].tolist() + rows["community_b"].tolist()))
+            matrix = pd.DataFrame(np.nan, index=names, columns=names)
+            graph = nx.Graph(period=window, meaning="audience co-participation similarity, not reply edges or hostility")
+            for r in rows.itertuples():
+                matrix.loc[r.community_a, r.community_b] = matrix.loc[r.community_b, r.community_a] = r.jaccard_pct
+                graph.add_node(r.community_a, label=r.community_a, observed_commenters=int(r.users_a))
+                graph.add_node(r.community_b, label=r.community_b, observed_commenters=int(r.users_b))
+                graph.add_edge(r.community_a, r.community_b, weight=float(r.jaccard_pct), shared_commenters=int(r.shared))
+            nx.write_gexf(graph, aggregate_dir / f"audience_overlap_{window}.gexf")
+            heat = ax.imshow(matrix, cmap="Blues", vmin=0, vmax=maximum)
+            ax.set_xticks(range(len(names)), names, rotation=45, ha="right", fontsize=9)
+            ax.set_yticks(range(len(names)), names, fontsize=9)
+            for i in range(len(names)):
+                for j in range(len(names)):
+                    if i != j:
+                        value = matrix.iloc[i, j]
+                        ax.text(j, i, f"{value:.1f}", ha="center", va="center", color="white" if value > .55 * maximum else "#18212b", fontsize=9)
+            ax.set_title(f"{window}: pairwise Jaccard overlap (%)", loc="left")
+        fig.colorbar(heat, ax=axes.ravel().tolist(), shrink=.65, label="Shared commenters / union (%)", pad=.02)
+        fig.subplots_adjust(bottom=.25, left=.12, right=.86, wspace=.55)
+        fig.savefig(folder / "audience_overlap_matrix.png", dpi=180)
+        plt.close(fig)
 
 
 def report(design):
     out = Path(design["output_dir"])
     status = inventory(design)
     status.to_csv(out / "collection_inventory.csv", index=False)
+    try:
+        revision = subprocess.check_output(["git", "rev-parse", "HEAD"], text=True).strip()
+    except (subprocess.CalledProcessError, FileNotFoundError):
+        revision = "unavailable"
+    runs = {}
+    for pair in design["pairs"]:
+        marker = out / "private" / f"{pair['id']}_complete.json"
+        if marker.exists():
+            data = json.loads(marker.read_text())
+            runs[pair["id"]] = {"input_and_code_fingerprint": data["fingerprint"],
+                                "aggregate_sha256": {k: v for k, v in data.get("products", {}).items() if k.startswith("tables")}}
+    (out / "run_manifest.json").write_text(json.dumps({
+        "report_generated_utc": datetime.now(timezone.utc).isoformat(), "git_revision_at_report": revision,
+        "design": design, "completed_analysis_runs": runs,
+        "packages": {p: importlib.metadata.version(p) for p in ("pandas", "numpy", "networkx", "scipy", "scikit-learn", "vaderSentiment")},
+        "note": "Legacy caches lack retrieval manifests. Run fingerprints include data, methods and pseudonymization identity."
+    }, indent=2), encoding="utf-8")
     plots(out)
     corpus, overlap, network = (load(out, n) for n in ("corpus", "overlap", "networks"))
     sections = ["# Fandom Fault Lines", "## Comparative longitudinal study",
@@ -186,12 +241,30 @@ def report(design):
                     f"representing {r['pct_a']:.1f}% of {r['community_a']} commenters and {r['pct_b']:.1f}% of "
                     f"{r['community_b']} commenters (Jaccard {r['jaccard_pct']:.2f}%). "
                     "This is a directional, period-specific participation result, not a binary verdict about whether the fandoms are closed."]
+            monthly = rows[rows["window"].isin([w["id"] for w in design["windows"]])]
+            monthly = monthly.set_index("window").reindex([w["id"] for w in design["windows"]]).dropna(subset=["jaccard_pct"])
+            if len(monthly) >= 2:
+                first, last = monthly.iloc[0], monthly.iloc[-1]
+                change = last["jaccard_pct"] - first["jaccard_pct"]
+                sections += [f"For {pair}, monthly Jaccard changes from {first['jaccard_pct']:.2f}% to "
+                    f"{last['jaccard_pct']:.2f}% ({change:+.2f} percentage points). "
+                    "This is a descriptive period comparison; the same people can appear in both windows."]
     baseline = out / "tables" / "all_pair_overlap.csv"
     if baseline.exists():
         b = pd.read_csv(baseline)
         sections += ["### Comparison audiences", markdown_table(b[b["min_comments"] == 1][["window", "community_a", "community_b", "shared", "pct_smaller", "jaccard_pct"]]),
             "All pairs use the same participation filtering. We omit the old 'lift' interpretation: choosing the union "
             "of a few selected subreddits as the population does not supply a neutral model of all Reddit participation."]
+        sections += ["![Audience comparison matrix](outputs/study/figures/audience_overlap_matrix.png)",
+            "The six-node Gephi files in `outputs/study/aggregate_networks/` represent subreddits, "
+            "with edge weight equal to Jaccard overlap. They contain only aggregates and are public. "
+            "These audience-similarity graphs are distinct from user reply networks and do not measure hostility."]
+        for window, rows in b[b["min_comments"] == 1].groupby("window"):
+            ranked = rows.sort_values("jaccard_pct", ascending=False)
+            leader = ranked.iloc[0]
+            sections += [f"In {window}, the highest observed Jaccard among the {len(rows)} selected audience pairs is "
+                f"{leader['community_a']}/{leader['community_b']} ({leader['jaccard_pct']:.2f}%). "
+                "This ranking is conditional on the chosen six communities; it is not a Reddit-wide benchmark."]
     else:
         sections += ["### Comparison audiences", "The full comparison-audience table is pending collection of all designated communities in both windows."]
     if not network.empty:
@@ -227,9 +300,10 @@ def report(design):
             for r in checked.itertuples():
                 path = f"outputs/study/figures/gephi_{r.pair}_{r.window}_{r.subreddit}_all_replies.png"
                 sections += [f"![Gephi display: {r.subreddit}, {r.window}]({path})",
-                    f"*r/{r.subreddit}, {r.window}: display-filtered focus, ForceAtlas2 (400 iterations, seed 42); "
+                    f"*r/{r.subreddit}, {r.window}: focus with directed weights ≥2 and resulting isolates removed; ForceAtlas2 (400 iterations, seed 42); "
                     "size reflects incoming reply strength; colors follow the imported Louvain communities with an eight-color repeating palette. "
-                    "Full-network metrics and exact display counts are in the aggregate tables. No user labels are displayed.*"]
+                    f"Shown: {int(r.display_nodes):,} nodes and {int(r.display_edges):,} edges; "
+                    f"full graph: {int(r.nodes):,} nodes and {int(r.edges):,} edges. No user labels are displayed.*"]
     tests = load(out, "tests")
     if not tests.empty:
         primary = tests[(tests["scorer"] == "vader_adapted") & (tests["contrast"] == "any_rival_mention")]
@@ -246,6 +320,22 @@ def report(design):
             "Topics use a shared TF-IDF/NMF model for each pair across both periods, with balanced training allocation "
             "by community-period. Candidate K values are compared by in-sample NPMI coherence; this is an exploratory "
             "heuristic, not held-out validation. Per-period topic proportions and weekly mention/sentiment trends are in the tables."]
+        supported = primary[primary["supported_both_clusterings"] == True]
+        negative = int((supported["author_diff"] < 0).sum())
+        positive = int((supported["author_diff"] > 0).sum())
+        sections += [f"Across the {len(primary)} displayed community-period comparisons, {len(supported)} meet the "
+            f"Holm-adjusted threshold in both clustering sensitivities: {negative} have a negative own-minus-rival "
+            f"difference and {positive} a positive difference. A negative difference means rival-mentioning comments "
+            "score more positively on average, which does not support interpreting mentions as automatically hostile. "
+            "Statistical separation does not establish a practically large effect or a valid stance measurement."]
+        topic_rows = load(out, "topics")
+        if not topic_rows.empty:
+            unassigned = topic_rows[topic_rows["topic"] == -1]
+            if not unassigned.empty:
+                sections += [f"Between {unassigned['share_pct'].min():.1f}% and {unassigned['share_pct'].max():.1f}% "
+                    "of content comments across the reported community-periods have insufficient topical vocabulary "
+                    "and remain unassigned (topic -1). Topic proportions retain those comments in their denominators; "
+                    "topic keywords are model summaries requiring interpretation, not validated human categories."]
         sections += ["![Weekly content](outputs/study/figures/weekly_content.png)"]
         for pair in design["pairs"]:
             for sub in pair["communities"]:
