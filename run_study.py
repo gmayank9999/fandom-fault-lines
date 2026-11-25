@@ -23,6 +23,8 @@ def main():
     if args.stage in ("analyze", "all"):
         from src.study_analysis import analyze
         analyze(design)
+        from src.study_connectors import summarize
+        summarize(design)
     if args.stage in ("report", "all"):
         from src.study_report import report
         report(design)

@@ -9,8 +9,9 @@ periods span **3 September–29 October 2026** (UTC; end exclusive).
 Dates, pairs, dictionaries and analysis settings live in [study.json](study.json).
 
 The original ~19,000-comment pilot was sampling-sensitive. Its 5% overlap headline
-is superseded. **Consult the inventory for actual completion; planned coverage is
-not a claim that every dataset has finished downloading.**
+is superseded. The expanded archive contains **1,168,638 comment records across
+all 336 expected community-day files**. See the inventory for per-period coverage
+and provenance; complete archive files do not guarantee complete Reddit coverage.
 
 ## Start here
 
@@ -75,6 +76,9 @@ set `$env:FFL_MODEL_TEST = '1'` to enable the real-model integration test.
 | `outputs/study/collection_inventory.csv` | Expected/valid days, counts, provenance | Published |
 | `outputs/study/tables/` | Aggregate results and sensitivity analyses | Published |
 | `outputs/study/figures/` | Report figures | Published |
+| `outputs/study/aggregate_networks/` | Six-community audience-overlap GEXF graphs | Published |
+| `outputs/study/gephi_validation.csv` | Native Gephi import and project-reopen checks | Published |
+| `outputs/study/*_connector_roles.csv` | Aggregate connector roles and cross-participation | Published |
 | `outputs/study/networks/` | Full/focus GEXF, node/edge CSVs, Gephi sessions | Local |
 | `outputs/study/private/` | Text caches, pseudonymous connectors, run markers | Local |
 | `data/raw/`, `data/gold/` | Original data, salt, annotation texts/labels | Local |

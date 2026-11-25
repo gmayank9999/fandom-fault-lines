@@ -96,6 +96,15 @@ component share, reciprocity, modularity and connector ranks. A disappearing hub
 may reflect thread-starting mechanics. Local `*_connectors.csv` tables contain
 pseudonymous rankings; inspect thread breadth and compare the two graph definitions.
 
+`outputs/study/*_connector_roles.csv` summarizes cross-participation among the
+top positive betweenness, PageRank and incoming-strength scores. All ties at the
+20th-score cutoff are retained, so a selected set can exceed 20. Parent-only
+accounts are counted separately; shared-user percentages compare observed
+commenters with observed commenters. These are descriptive selections, not a
+test that cross-participants cause information flow. The main runner generates
+them after analysis; `python -m src.study_connectors` rebuilds them from local
+centrality files without recomputing networks.
+
 ## Export and document
 
 In Preview use thin translucent edges, small arrows and no bulk labels. Refresh,

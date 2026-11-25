@@ -178,3 +178,17 @@ def test_annotation_sheets_are_blind_and_never_overwrite(tmp_path, monkeypatch):
     assert a.annotation_id.tolist() != b.annotation_id.tolist()
     with pytest.raises(FileExistsError, match="overwrite"):
         make_sheets(design, 4)
+
+
+def test_connector_summary_includes_ties_and_separates_parent_only_nodes():
+    from src.study_connectors import summarize_nodes
+    nodes = pd.DataFrame({"observed_commenter": [True, True, False, True],
+        "shared_in_pair": [True, False, False, False], "betweenness": [3, 2, 2, 0],
+        "pagerank": [.4, .3, .2, .1], "in_strength": [6, 3, 3, 0],
+        "threads_participated": [5, 2, 0, 1], "participation_coefficient": [.5, .2, .1, 0]})
+    row = summarize_nodes(nodes, top_k=2)[0]
+    assert row["selected_nodes"] == 3 and row["selected_parent_only_nodes"] == 1
+    assert row["selected_shared_pct_of_observed"] == 50
+    assert row["observed_shared_pct"] == pytest.approx(100 / 3)
+    nodes["betweenness"] = 0
+    assert summarize_nodes(nodes)[0]["selected_nodes"] == 0

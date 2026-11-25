@@ -128,7 +128,7 @@ public class GephiStudy {
         props.putValue(PreviewProperty.SHOW_NODE_LABELS, false);
         props.putValue(PreviewProperty.BACKGROUND_COLOR, new Color(252, 252, 251));
         props.putValue(PreviewProperty.EDGE_COLOR, new EdgeColor(new Color(110, 115, 125)));
-        props.putValue(PreviewProperty.EDGE_OPACITY, 18);
+        props.putValue(PreviewProperty.EDGE_OPACITY, 28);
         props.putValue(PreviewProperty.EDGE_THICKNESS, 0.5f);
         props.putValue(PreviewProperty.EDGE_USE_WEIGHT, false);
         props.putValue(PreviewProperty.EDGE_CURVED, false);
@@ -143,6 +143,17 @@ public class GephiStudy {
         svg.setMargin(40f);
         File svgFile = new File(args[2] + ".svg");
         exports.exportFile(svgFile, svg);
+        // The exporter fits its viewBox tightly even when a margin is requested.
+        // Pad the viewBox so peripheral nodes are not flush with the image edge.
+        String svgText = Files.readString(svgFile.toPath());
+        java.util.regex.Matcher bounds = java.util.regex.Pattern.compile("viewBox=\"([^\"]+)\"").matcher(svgText);
+        if (!bounds.find()) throw new IllegalStateException("SVG export has no viewBox");
+        String[] box = bounds.group(1).trim().split("\\s+");
+        double pad = 60;
+        String padded = String.format(java.util.Locale.ROOT, "viewBox=\"%f %f %f %f\"",
+            Double.parseDouble(box[0]) - pad, Double.parseDouble(box[1]) - pad,
+            Double.parseDouble(box[2]) + 2 * pad, Double.parseDouble(box[3]) + 2 * pad);
+        Files.writeString(svgFile.toPath(), bounds.replaceFirst(padded));
         PNGTranscoder raster = new PNGTranscoder() {
             @Override public void writeImage(java.awt.image.BufferedImage image, TranscoderOutput output)
                     throws org.apache.batik.transcoder.TranscoderException {

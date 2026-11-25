@@ -163,8 +163,9 @@ def plots(out):
                         value = matrix.iloc[i, j]
                         ax.text(j, i, f"{value:.1f}", ha="center", va="center", color="white" if value > .55 * maximum else "#18212b", fontsize=9)
             ax.set_title(f"{window}: pairwise Jaccard overlap (%)", loc="left")
-        fig.colorbar(heat, ax=axes.ravel().tolist(), shrink=.65, label="Shared commenters / union (%)", pad=.02)
         fig.subplots_adjust(bottom=.25, left=.12, right=.86, wspace=.55)
+        color_axis = fig.add_axes([.90, .30, .012, .46])
+        fig.colorbar(heat, cax=color_axis, label="Shared commenters / union (%)")
         fig.savefig(folder / "audience_overlap_matrix.png", dpi=180)
         plt.close(fig)
 
@@ -290,6 +291,18 @@ def report(design):
         sections += ["### Removing replies to posts", markdown_table(sensitivity),
             "Differences in largest-component coverage quantify how much connectivity depends on replies to thread starters. "
             "Both graph variants retain observed commenters, so an isolated user is included in the denominator."]
+        role_files = sorted(out.glob("*_connector_roles.csv"))
+        roles = pd.concat([pd.read_csv(p) for p in role_files], ignore_index=True) if role_files else pd.DataFrame()
+        if not roles.empty:
+            selected = roles[(roles["variant"] == "all_replies") & (roles["ranking"] == "betweenness")]
+            sections += ["### Cross-participants among structural connectors",
+                markdown_table(selected[["window", "subreddit", "observed_shared_pct", "selected_nodes",
+                    "selected_parent_only_nodes", "selected_shared_pct_of_observed", "selected_observed_median_threads"]]),
+                "The selection contains the top 20 positive betweenness scores, including every tie at the cutoff. "
+                "Shared-participant percentages use observed commenters as their denominator; parent-only nodes are shown separately. "
+                "The baseline is all observed commenters in that community-period. PageRank, incoming-strength and comment-only "
+                "variants are in the connector-role tables. These are descriptive role comparisons, not a significance test "
+                "or proof that an account transmits ideas between subreddits. Approximate betweenness rankings can change with the sampling seed."]
         validation = out / "gephi_validation.csv"
         if validation.exists():
             checked = pd.read_csv(validation)
@@ -335,7 +348,8 @@ def report(design):
                 sections += [f"Between {unassigned['share_pct'].min():.1f}% and {unassigned['share_pct'].max():.1f}% "
                     "of content comments across the reported community-periods have insufficient topical vocabulary "
                     "and remain unassigned (topic -1). Topic proportions retain those comments in their denominators; "
-                    "topic keywords are model summaries requiring interpretation, not validated human categories."]
+                    "topic keywords are model summaries requiring interpretation, not validated human categories. "
+                    "Some factors capture generic conversation or moderation boilerplate; they must not be relabelled as rivalry themes without text review."]
         sections += ["![Weekly content](outputs/study/figures/weekly_content.png)"]
         for pair in design["pairs"]:
             for sub in pair["communities"]:
