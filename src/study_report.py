@@ -303,6 +303,9 @@ def report(design):
                 "The baseline is all observed commenters in that community-period. PageRank, incoming-strength and comment-only "
                 "variants are in the connector-role tables. These are descriptive role comparisons, not a significance test "
                 "or proof that an account transmits ideas between subreddits. Approximate betweenness rankings can change with the sampling seed."]
+            if (out / 'advanced' / 'manifest.json').exists():
+                sections += ["These unadjusted connector percentages must be read with the activity- and degree-matched "
+                    "comparison in the extended analysis below; prolific activity can explain apparent overrepresentation."]
         validation = out / "gephi_validation.csv"
         if validation.exists():
             checked = pd.read_csv(validation)
@@ -356,6 +359,8 @@ def report(design):
                 chart = out / "figures" / f"topics_{pair['id']}_{sub}.png"
                 if chart.exists():
                     sections += [f"![Topics in {sub}]({chart.as_posix()})"]
+    from src.study_advanced_report import section as advanced_section
+    sections += advanced_section(out, markdown_table)
     sections += ["## Validation still needed before submission",
         "The inherited 300-example sentiment development set was labelled by an AI assistant. It is **not a human gold standard**, "
         "and selecting a model on that same set does not establish held-out accuracy. It was also length-restricted and "

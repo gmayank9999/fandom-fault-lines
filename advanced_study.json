@@ -1,0 +1,18 @@
+{
+  "version": 1,
+  "status": "Exploratory extension specified after the original study, before inspecting extension outcomes; not preregistered",
+  "seed": 20261126,
+  "replicates": 5000,
+  "activity_thresholds": [1, 2, 5],
+  "activity_bin_lower_bounds": [1, 2, 5, 10, 20, 50, 100],
+  "degree_bin_lower_bounds": [0, 2, 5, 10, 20, 50, 100, 200],
+  "paired_minimum_comments_per_category": [1, 3],
+  "paired_minimum_authors_for_interval": 20,
+  "connector_top_k": 20,
+  "connector_matching": ["activity", "activity_and_degree"],
+  "connector_variants": ["all_replies", "comment_replies"],
+  "connector_test": "one-sided enrichment; conditional hypergeometric resampling within fixed bins; Holm across all pair/window/community/variant/matching tests",
+  "retention": "first-window both versus each exclusive group; outcomes observed anywhere in the pair or in both during second window; standardize first-window total comment activity on common support",
+  "paired_sentiment": "equal-author mean of own-only minus rival-category mean scores; percentile bootstrap over paired authors; unadjusted descriptive 95% intervals, no significance labels",
+  "limits": "Observed participation is not allegiance; absence is only absence from the observed pair; all adjusted comparisons are observational and noncausal"
+}

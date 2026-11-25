@@ -174,6 +174,8 @@ Differences in largest-component coverage quantify how much connectivity depends
 
 The selection contains the top 20 positive betweenness scores, including every tie at the cutoff. Shared-participant percentages use observed commenters as their denominator; parent-only nodes are shown separately. The baseline is all observed commenters in that community-period. PageRank, incoming-strength and comment-only variants are in the connector-role tables. These are descriptive role comparisons, not a significance test or proof that an account transmits ideas between subreddits. Approximate betweenness rankings can change with the sampling seed.
 
+These unadjusted connector percentages must be read with the activity- and degree-matched comparison in the extended analysis below; prolific activity can explain apparent overrepresentation.
+
 ### Native Gephi verification
 
 | window | subreddit | nodes | edges | degree_mismatches | project_reopened |
@@ -253,6 +255,93 @@ Between 31.7% and 37.4% of content comments across the reported community-period
 ![Topics in PS5](outputs/study/figures/topics_consoles_PS5.png)
 
 ![Topics in xbox](outputs/study/figures/topics_consoles_xbox.png)
+
+## Extended analysis: persistence, composition and connector roles
+
+These analyses were specified in `advanced_study.json` after inspecting the original results and before running this extension. They are exploratory, not preregistered. All use the existing two observation windows; they do not add new communities or establish a causal effect of rivalry.
+
+### Are shared audiences persistent?
+
+A/B follow `study.json`: Marvel/DC and PS5/xbox. Each person in the union of the two windows is classified by their observed activity in each period. The neither-to-neither cell is a structural zero at the one-comment threshold because this is an observed union cohort. The first-window neither row describes later arrivals; it is not a return rate for all Reddit users. At stricter thresholds, neither means below threshold in both communities.
+
+![Participation transitions](outputs/study/figures/participation_transitions.png)
+
+| pair | pattern | users | pct_pooled_shared |
+| --- | --- | --- | --- |
+| superheroes | both_in_each_window | 1577 | 17.91 |
+| superheroes | both_first_window_only | 2801 | 31.80 |
+| superheroes | both_second_window_only | 2971 | 33.73 |
+| superheroes | pooled_only_no_window_both | 1458 | 16.56 |
+| consoles | both_in_each_window | 945 | 18.98 |
+| consoles | both_first_window_only | 1713 | 34.41 |
+| consoles | both_second_window_only | 1515 | 30.43 |
+| consoles | pooled_only_no_window_both | 805 | 16.17 |
+
+Pooled overlap is decomposed into users active in both communities in each window, in just one window, or only across the combined period. At threshold one, the last category represents sequential participation with no within-window overlap; at higher thresholds it can also reflect activity accumulating across periods. Results at two and five comments per community are retained in the extension tables. Absence means no observed activity in this pair during that window, not leaving Reddit or changing allegiance.
+
+The persistent percentage above uses all pooled shared users as its denominator. A different question is what fraction of first-window shared users are shared again: read the both-to-both cell of the transition matrix for that conditional percentage. These denominators must not be interchanged.
+
+### Does the return-rate difference survive activity adjustment?
+
+| pair | reference | raw_both_pct | raw_exclusive_pct | adjusted_both_pct | adjusted_exclusive_pct | adjusted_difference_pp | ci_low_pp | ci_high_pp |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| superheroes | a_only | 75.29 | 34.12 | 68.97 | 55.88 | 13.08 | 11.39 | 14.74 |
+| superheroes | b_only | 75.29 | 42.89 | 70.71 | 63.49 | 7.23 | 5.50 | 8.92 |
+| consoles | a_only | 77.13 | 32.93 | 68.79 | 53.50 | 15.28 | 13.02 | 17.49 |
+| consoles | b_only | 77.13 | 35.91 | 68.99 | 58.04 | 10.95 | 8.84 | 13.17 |
+
+![Adjusted retention](outputs/study/figures/activity_adjusted_retention.png)
+
+Both versus A-only and both versus B-only are separate first-window cohort comparisons. Return means at least one observed comment anywhere in the pair during the second window. Adjustment uses fixed bins of total first-window comments: 1, 2–4, 5–9, 10–19, 20–49, 50–99, and 100+. Each comparison uses the pooled activity distribution of groups within common-support bins as its target. The groups differ in their raw activity composition; users outside common support do not contribute to adjusted rates. Counts and exclusions are in retention.csv and retention_strata.csv. Intervals resample binary outcomes within fixed group/bin sample sizes, with weights held fixed (5,000 draws). These are unadjusted descriptive 95% intervals. Coarse bins leave residual confounding; this association does not show that cross-participation causes retention.
+
+| pair | reference | both_users | exclusive_users | common_both_users | common_exclusive_users |
+| --- | --- | --- | --- | --- | --- |
+| superheroes | a_only | 4378 | 42920 | 4378 | 17764 |
+| superheroes | b_only | 4378 | 17253 | 4378 | 7496 |
+| consoles | a_only | 2658 | 28559 | 2658 | 11976 |
+| consoles | b_only | 2658 | 24729 | 2658 | 10279 |
+
+In particular, an initially shared user must have at least two comments. One-comment exclusive users have no shared-user counterpart and are excluded from the standardized target. Thus raw-versus-adjusted differences reflect both activity standardization and a restriction to common support.
+
+### Does the sentiment difference persist within the same authors?
+
+| window | subreddit | paired_authors | author_equal_weight_difference | ci_low | ci_high |
+| --- | --- | --- | --- | --- | --- |
+| oct | DC_Cinematic | 1719 | -0.051 | -0.079 | -0.022 |
+| oct | marvelstudios | 517 | -0.030 | -0.077 | 0.020 |
+| sep | DC_Cinematic | 878 | -0.076 | -0.114 | -0.037 |
+| sep | marvelstudios | 706 | -0.027 | -0.069 | 0.014 |
+| oct | PS5 | 365 | -0.018 | -0.077 | 0.040 |
+| oct | xbox | 1548 | -0.022 | -0.049 | 0.007 |
+| sep | PS5 | 832 | -0.055 | -0.095 | -0.015 |
+| sep | xbox | 1539 | -0.022 | -0.049 | 0.006 |
+
+![Within-author sentiment](outputs/study/figures/within_author_sentiment.png)
+
+Only authors with both own-only and rival-mentioning comments in the same community-period enter this comparison. Each author contributes one difference between their category mean scores, and authors receive equal weight. This addresses stable differences between authors and prolific-user weighting, while changing the population to authors who wrote both kinds of comment. It does not control topic, thread, timing, sarcasm or target stance. The 95% percentile intervals resample paired authors 5,000 times; they are not adjusted for multiple comparisons and are not labelled significant. Original/adapted VADER, rival-only/any-rival definitions, and minimum one/three comments in each category are all retained. Fewer than 20 eligible authors yields no interval.
+
+### Are cross-participants unusually common among connectors after matching?
+
+| window | subreddit | selected_users | observed_shared_pct | matched_expected_shared_pct | excess_pp | enrichment_p_holm |
+| --- | --- | --- | --- | --- | --- | --- |
+| sep | marvelstudios | 20 | 25.00 | 19.74 | 5.26 | 1.00 |
+| sep | DC_Cinematic | 20 | 30.00 | 26.79 | 3.21 | 1.00 |
+| oct | marvelstudios | 20 | 15.00 | 17.71 | -2.71 | 1.00 |
+| oct | DC_Cinematic | 20 | 15.00 | 28.93 | -13.93 | 1.00 |
+| sep | PS5 | 20 | 10.00 | 23.85 | -13.85 | 1.00 |
+| sep | xbox | 20 | 30.00 | 34.95 | -4.95 | 1.00 |
+| oct | PS5 | 20 | 30.00 | 34.35 | -4.35 | 1.00 |
+| oct | xbox | 20 | 35.00 | 28.88 | 6.12 | 1.00 |
+
+![Matched connector comparison](outputs/study/figures/matched_connectors.png)
+
+Selection uses the top 20 positive betweenness scores among observed commenters, retaining cutoff ties. Within fixed bins of comment count and total directed degree (in-degree plus out-degree), random selections preserve the number selected from every stratum. The sum of stratum-specific hypergeometric draws gives a conditional null for the number of shared participants. Degree bin lower bounds are 0, 2, 5, 10, 20, 50, 100 and 200. The one-sided enrichment probability uses a plus-one correction and 5,000 draws; Holm adjustment covers all 32 community-period/network-variant/matching comparisons. Activity-only matching and comment-only networks are retained as sensitivities. Exchangeability within coarse bins is an assumption, not random assignment. Matching cannot remove unmeasured differences, and approximate betweenness ranking uncertainty remains. The null ranges describe randomized selected counts, not confidence intervals for population effects. A top-20 selection has limited power; failure to detect enrichment does not establish equivalence or no role for shared users.
+
+**superheroes:** 1,577 of 8,807 pooled shared users appear in both communities in each window (17.9%). 16.6% have only sequential cross-window participation.
+
+**consoles:** 945 of 4,978 pooled shared users appear in both communities in each window (19.0%). 16.2% have only sequential cross-window participation.
+
+Across all 32 specified connector comparisons, 0 meet the Holm-adjusted .05 enrichment threshold. Read this together with the effect sizes and alternative matching definitions; an unadjusted top-20 percentage alone cannot establish unusual connector representation.
 
 ## Validation still needed before submission
 

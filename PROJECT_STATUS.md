@@ -68,6 +68,32 @@ The offline regression suite covers collectors, preprocessing, statistics, weigh
 graph conservation, Gephi round trips and pipeline integration. The pretrained-model
 integration test is separately opt-in; it passed in the initial inherited-suite run.
 
+## Second analytical review
+
+Added the exploratory extension specified in `advanced_study.json`, implemented
+in `src/study_advanced.py`, and explained in `ADVANCED_METHODS.md`:
+
+- Longitudinal participation transitions at one/two/five comments per community,
+  with pooled overlap decomposed into persistent, single-window and sequential patterns.
+- First-window cohort return rates standardized for activity on common support,
+  with explicit included/excluded counts and 5,000 resampling draws.
+- 64 paired-author sentiment comparisons, with equal author weighting and
+  minimum-category-count sensitivity. Intervals are descriptive, not significance labels.
+- 32 activity/degree-matched connector comparisons across both graph definitions,
+  with conditional hypergeometric null draws and one Holm family.
+- Four new figures, six aggregate tables, input/output fingerprints and report
+  checks that reject modified extension result files.
+
+Key findings: 17.9%/19.0% of pooled shared audiences are shared in both windows;
+adjusted return-rate differences are 7.2–15.3 percentage points on the specified
+common-support populations; none of the 32 connector enrichment tests passes Holm.
+This qualifies the earlier unadjusted connector interpretation. Within-author
+sentiment remains mixed and cannot measure rival-directed hostility without labels.
+
+The expanded suite contains 60 passing tests and one optional model test skipped.
+Synthetic checks cover cohort conservation, sequential overlap, activity confounding,
+paired weighting, no common support, matched nulls and corrupted-output detection.
+
 ## Remaining research limitations
 
 - Independent blinded human annotation is required before claiming validated

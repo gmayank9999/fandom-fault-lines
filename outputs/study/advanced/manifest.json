@@ -1,0 +1,96 @@
+{
+  "settings": {
+    "version": 1,
+    "status": "Exploratory extension specified after the original study, before inspecting extension outcomes; not preregistered",
+    "seed": 20261126,
+    "replicates": 5000,
+    "activity_thresholds": [
+      1,
+      2,
+      5
+    ],
+    "activity_bin_lower_bounds": [
+      1,
+      2,
+      5,
+      10,
+      20,
+      50,
+      100
+    ],
+    "degree_bin_lower_bounds": [
+      0,
+      2,
+      5,
+      10,
+      20,
+      50,
+      100,
+      200
+    ],
+    "paired_minimum_comments_per_category": [
+      1,
+      3
+    ],
+    "paired_minimum_authors_for_interval": 20,
+    "connector_top_k": 20,
+    "connector_matching": [
+      "activity",
+      "activity_and_degree"
+    ],
+    "connector_variants": [
+      "all_replies",
+      "comment_replies"
+    ],
+    "connector_test": "one-sided enrichment; conditional hypergeometric resampling within fixed bins; Holm across all pair/window/community/variant/matching tests",
+    "retention": "first-window both versus each exclusive group; outcomes observed anywhere in the pair or in both during second window; standardize first-window total comment activity on common support",
+    "paired_sentiment": "equal-author mean of own-only minus rival-category mean scores; percentile bootstrap over paired authors; unadjusted descriptive 95% intervals, no significance labels",
+    "limits": "Observed participation is not allegiance; absence is only absence from the observed pair; all adjusted comparisons are observational and noncausal"
+  },
+  "windows": [
+    {
+      "id": "sep",
+      "start": "2026-09-03",
+      "end": "2026-10-01",
+      "legacy_cache": "data/raw/full"
+    },
+    {
+      "id": "oct",
+      "start": "2026-10-01",
+      "end": "2026-10-29",
+      "legacy_cache": "data/raw/full_2026-10-29"
+    }
+  ],
+  "inputs_sha256": {
+    "superheroes_participation": "8889956edb96637f452f9a2084321d0497bfdf87019a025db959b0fe6ed4a164",
+    "superheroes_content.csv.gz": "994b3cbf03c011be9e7c24de6772ae9341be9ce575314a6f79e15fc9046dd556",
+    "superheroes_sep_marvelstudios_all_replies_centrality.csv": "fdc8846062b6416610d3d84433375d8abbeaf6addc03525e4c7e93cccbd6551f",
+    "superheroes_sep_marvelstudios_comment_replies_centrality.csv": "31e6e8721342cec89f5df59066795369223c6eabcca7e9f1534e517a63c11426",
+    "superheroes_sep_DC_Cinematic_all_replies_centrality.csv": "fb565c321469484ab7743e4bbe78bc7a4b21379c42bb9f55821235e18cb64c23",
+    "superheroes_sep_DC_Cinematic_comment_replies_centrality.csv": "8e45de00060511a516291d207e799b5f51c5190c2fd3790fd9af19a118a9ce9e",
+    "superheroes_oct_marvelstudios_all_replies_centrality.csv": "767cd665a34c869410dc6e9ab6244e871571060ece66716a252c4de2c67989a6",
+    "superheroes_oct_marvelstudios_comment_replies_centrality.csv": "fe3192644508932aa167948b7e5abfda30ec5b9465c8063970ca5a764a39acfa",
+    "superheroes_oct_DC_Cinematic_all_replies_centrality.csv": "a97526db87e9c7563129bf0f23689a77f908cdb1845e070c25c1c872eba15dd0",
+    "superheroes_oct_DC_Cinematic_comment_replies_centrality.csv": "e2da38435bdc967db3623fdc63aa7583519bcaaff44a745f018191667269ac25",
+    "consoles_participation": "d3d0d17daf8c48283055037e9900e9fc8ea3eb51378343e29554b5204bb626ec",
+    "consoles_content.csv.gz": "b0fc3d119e4d5800d7119440ccef39b6b2621087bac1ad5960741a43b80afb93",
+    "consoles_sep_PS5_all_replies_centrality.csv": "030e6ba4e58889d9b0edfd7af0d11aa6f7f26dd3eae4fb6f2e7bbfcca776aecb",
+    "consoles_sep_PS5_comment_replies_centrality.csv": "e7a42831025a3f61f10ad55b557044a92aa726333b178a919d33c7ee57f35bad",
+    "consoles_sep_xbox_all_replies_centrality.csv": "3827319782ce9cd24d98884f6c0a7ed51c72357d269eb16db8a1387b7181ff4d",
+    "consoles_sep_xbox_comment_replies_centrality.csv": "bcd1d5ed851deb942dac2ca4e0450b91ff4f8f57f595f26b3ec222a8a74dfe4a",
+    "consoles_oct_PS5_all_replies_centrality.csv": "02e6cd6681502eadad50f8c0c7367b38748f37b77439858f8f2456f1b3695914",
+    "consoles_oct_PS5_comment_replies_centrality.csv": "01e90ed0e9a623df86e79c35221deae6ec76e8a2686430c26189919c517cf574",
+    "consoles_oct_xbox_all_replies_centrality.csv": "ab311b8f5b76c452a747d9742dfdb79e366d13867cf7156ee0c55a4b3d514146",
+    "consoles_oct_xbox_comment_replies_centrality.csv": "507bd081b661048ef6d1bdaf281a8a5d92bce4e7227f05afa82e5ac1332e4600"
+  },
+  "checksum_encoding": "Source and public CSV: UTF-8 text with universal newlines; private file inputs: raw bytes",
+  "source_sha256": "302c8add9060be3f77e2a5b3cd20b8f7a7fb3055d9c4d3dc7797e8c2aff66f59",
+  "outputs_sha256": {
+    "matched_connectors.csv": "80b614b45c70053273cbda7558d4d0ac9e7887b54d3b5d97a329bd211f4eb6e8",
+    "paired_sentiment.csv": "53fbd87587d20f42fd442f2f5e8ccd5b18321c710abd283565606a55d40e6b5f",
+    "persistence.csv": "55fb786496b9336578250fd074bb3e8279721d49f2a4af2a6146a23829c48ebd",
+    "retention.csv": "0eb0e2b7abee323493dcb244777b8e08c726f5db848a62a943ddc1340245bc1d",
+    "retention_strata.csv": "df6f01c17b835c62b9cfdbe285890e97d70880cfe9062b4b8548f62f776cd51a",
+    "transitions.csv": "42e005bd9172d4e1af049f1b98a294576d526c70fea4ed519885877ca45e41e9"
+  }
+}

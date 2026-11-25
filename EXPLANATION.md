@@ -5,6 +5,26 @@ audiences, or something in between. Marvel/DC is compared with PlayStation/Xbox
 over two consecutive four-week periods, with Star Wars and LOTR as other audiences.
 Actual findings are in [REPORT.md](REPORT.md).
 
+The extension adds three checks: follow the same users across windows, compare
+sentiment within the same authors, and compare connectors against people with
+similar activity and degree. See [ADVANCED_METHODS.md](ADVANCED_METHODS.md).
+
+Only 17.9% of pooled Marvel/DC shared participants and 19.0% of pooled console
+shared participants appear in both communities in each window. This differs from
+the conditional return question: about 36% of first-window shared users are shared
+again in the second window. Pooled overlap is not persistent overlap.
+
+Initially shared users have higher next-window return rates. Standardizing posting
+activity within common-support bins leaves a 7.2–15.3 percentage-point association,
+depending on the exclusive comparison group. This does not establish causality;
+one-comment exclusive users are excluded because a shared user needs at least two
+comments, and broader interests or unmeasured activity may explain the difference.
+
+The matched connector analysis finds no Holm-adjusted enrichment across its 32
+specified comparisons. Earlier top-20 percentages were descriptive; matching
+shows why a larger percentage than the overall audience is not enough. The small
+selected sets and approximate ranks also limit power.
+
 ## Why the original result changed
 
 The pilot sampled the latest comments inside time slots. It missed most interactions.
