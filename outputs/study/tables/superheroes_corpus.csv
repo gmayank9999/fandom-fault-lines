@@ -1,0 +1,5 @@
+window,subreddit,raw_comments,participation_comments,content_comments,commenters,content_commenters,rival_mention_pct,shared_users_comment_share_pct,pair
+sep,marvelstudios,167661,164337,159073,47298,46101,0.9058734040346257,16.38340726677498,superheroes
+sep,DC_Cinematic,88049,83745,83217,21631,21543,2.628068784022495,29.279359961788764,superheroes
+oct,marvelstudios,138911,137215,133558,37315,36633,0.7659593584809596,19.344095033341834,superheroes
+oct,DC_Cinematic,140166,134952,134151,27725,27633,3.40884525646473,25.66023475013338,superheroes

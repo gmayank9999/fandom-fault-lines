@@ -1,0 +1,123 @@
+<?xml version='1.0' encoding='utf-8'?>
+<gexf xmlns="http://www.gexf.net/1.2draft" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.gexf.net/1.2draft http://www.gexf.net/1.2draft/gexf.xsd" version="1.2">
+  <meta lastmodifieddate="2026-11-26">
+    <creator>NetworkX 3.3</creator>
+  </meta>
+  <graph defaultedgetype="undirected" mode="static" name="">
+    <attributes mode="static" class="edge">
+      <attribute id="1" title="shared_commenters" type="long" />
+    </attributes>
+    <attributes mode="static" class="node">
+      <attribute id="0" title="observed_commenters" type="long" />
+    </attributes>
+    <nodes>
+      <node id="marvelstudios" label="marvelstudios">
+        <attvalues>
+          <attvalue for="0" value="37315" />
+        </attvalues>
+      </node>
+      <node id="DC_Cinematic" label="DC_Cinematic">
+        <attvalues>
+          <attvalue for="0" value="27725" />
+        </attvalues>
+      </node>
+      <node id="PS5" label="PS5">
+        <attvalues>
+          <attvalue for="0" value="25665" />
+        </attvalues>
+      </node>
+      <node id="xbox" label="xbox">
+        <attvalues>
+          <attvalue for="0" value="27055" />
+        </attvalues>
+      </node>
+      <node id="StarWars" label="StarWars">
+        <attvalues>
+          <attvalue for="0" value="33060" />
+        </attvalues>
+      </node>
+      <node id="lotr" label="lotr">
+        <attvalues>
+          <attvalue for="0" value="16164" />
+        </attvalues>
+      </node>
+    </nodes>
+    <edges>
+      <edge source="marvelstudios" target="DC_Cinematic" id="0" weight="7.518349533822654">
+        <attvalues>
+          <attvalue for="1" value="4548" />
+        </attvalues>
+      </edge>
+      <edge source="marvelstudios" target="PS5" id="1" weight="2.2153696340176907">
+        <attvalues>
+          <attvalue for="1" value="1365" />
+        </attvalues>
+      </edge>
+      <edge source="marvelstudios" target="xbox" id="2" weight="1.4291792067819045">
+        <attvalues>
+          <attvalue for="1" value="907" />
+        </attvalues>
+      </edge>
+      <edge source="marvelstudios" target="StarWars" id="3" weight="4.696658633104228">
+        <attvalues>
+          <attvalue for="1" value="3157" />
+        </attvalues>
+      </edge>
+      <edge source="marvelstudios" target="lotr" id="4" weight="1.5012906164591555">
+        <attvalues>
+          <attvalue for="1" value="791" />
+        </attvalues>
+      </edge>
+      <edge source="DC_Cinematic" target="PS5" id="5" weight="2.0958427353042413">
+        <attvalues>
+          <attvalue for="1" value="1096" />
+        </attvalues>
+      </edge>
+      <edge source="DC_Cinematic" target="xbox" id="6" weight="1.465113263812999">
+        <attvalues>
+          <attvalue for="1" value="791" />
+        </attvalues>
+      </edge>
+      <edge source="DC_Cinematic" target="StarWars" id="7" weight="3.3073301721647206">
+        <attvalues>
+          <attvalue for="1" value="1946" />
+        </attvalues>
+      </edge>
+      <edge source="DC_Cinematic" target="lotr" id="8" weight="1.0103567318757192">
+        <attvalues>
+          <attvalue for="1" value="439" />
+        </attvalues>
+      </edge>
+      <edge source="PS5" target="xbox" id="9" weight="4.894548348587346">
+        <attvalues>
+          <attvalue for="1" value="2460" />
+        </attvalues>
+      </edge>
+      <edge source="PS5" target="StarWars" id="10" weight="2.05234255526206">
+        <attvalues>
+          <attvalue for="1" value="1181" />
+        </attvalues>
+      </edge>
+      <edge source="PS5" target="lotr" id="11" weight="0.7587801705448765">
+        <attvalues>
+          <attvalue for="1" value="315" />
+        </attvalues>
+      </edge>
+      <edge source="xbox" target="StarWars" id="12" weight="1.791489577865452">
+        <attvalues>
+          <attvalue for="1" value="1058" />
+        </attvalues>
+      </edge>
+      <edge source="xbox" target="lotr" id="13" weight="0.5958615552917627">
+        <attvalues>
+          <attvalue for="1" value="256" />
+        </attvalues>
+      </edge>
+      <edge source="StarWars" target="lotr" id="14" weight="3.1841526045487893">
+        <attvalues>
+          <attvalue for="1" value="1519" />
+        </attvalues>
+      </edge>
+    </edges>
+  </graph>
+</gexf>

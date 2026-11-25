@@ -1,0 +1,25 @@
+pair,window,subreddit,variant,ranking,top_requested,cutoff_value,selection,observed_commenters,observed_shared_pct,selected_nodes,selected_observed_commenters,selected_parent_only_nodes,selected_shared_commenters,selected_shared_pct_of_observed,selected_observed_median_threads,selected_observed_median_participation_coefficient
+superheroes,sep,marvelstudios,all_replies,betweenness,20,0.0064729502972526,positive scores; include every tie at the cutoff,47298,9.25620533637786,20,20,0,5,25.0,70.5,0.8686343991840956
+superheroes,sep,marvelstudios,all_replies,pagerank,20,0.0029030817890955,positive scores; include every tie at the cutoff,47298,9.25620533637786,20,19,1,4,21.052631578947366,16.0,0.8684881057636746
+superheroes,sep,marvelstudios,all_replies,in_strength,20,684.0,positive scores; include every tie at the cutoff,47298,9.25620533637786,20,17,3,2,11.76470588235294,13.0,0.868443772498587
+superheroes,sep,marvelstudios,comment_replies,betweenness,20,0.0035819545355415,positive scores; include every tie at the cutoff,47298,9.25620533637786,20,20,0,3,15.0,83.5,0.8084799222844861
+superheroes,sep,marvelstudios,comment_replies,pagerank,20,0.0010090406072039,positive scores; include every tie at the cutoff,47298,9.25620533637786,20,20,0,3,15.0,83.5,0.7054354257362575
+superheroes,sep,marvelstudios,comment_replies,in_strength,20,146.0,positive scores; include every tie at the cutoff,47298,9.25620533637786,20,20,0,2,10.0,109.0,0.723411754396611
+superheroes,sep,DC_Cinematic,all_replies,betweenness,20,0.0075101362172224,positive scores; include every tie at the cutoff,21631,20.239471129397625,20,20,0,6,30.0,58.5,0.843764682955729
+superheroes,sep,DC_Cinematic,all_replies,pagerank,20,0.0037636902557203,positive scores; include every tie at the cutoff,21631,20.239471129397625,20,17,3,4,23.52941176470588,5.0,0.8501755829475368
+superheroes,sep,DC_Cinematic,all_replies,in_strength,20,329.0,positive scores; include every tie at the cutoff,21631,20.239471129397625,21,19,2,5,26.31578947368421,7.0,0.8345070422535211
+superheroes,sep,DC_Cinematic,comment_replies,betweenness,20,0.0055274465514476,positive scores; include every tie at the cutoff,21631,20.239471129397625,20,20,0,8,40.0,63.5,0.8150828670518853
+superheroes,sep,DC_Cinematic,comment_replies,pagerank,20,0.0014187848726202,positive scores; include every tie at the cutoff,21631,20.239471129397625,20,20,0,8,40.0,69.5,0.7721748677184233
+superheroes,sep,DC_Cinematic,comment_replies,in_strength,20,108.0,positive scores; include every tie at the cutoff,21631,20.239471129397625,20,20,0,9,45.0,69.5,0.7721748677184233
+superheroes,oct,marvelstudios,all_replies,betweenness,20,0.0058574586305158,positive scores; include every tie at the cutoff,37315,12.188128098619858,20,20,0,3,15.0,94.5,0.853013346619509
+superheroes,oct,marvelstudios,all_replies,pagerank,20,0.0025621672188747,positive scores; include every tie at the cutoff,37315,12.188128098619858,20,18,2,4,22.22222222222222,7.5,0.8577801047774072
+superheroes,oct,marvelstudios,all_replies,in_strength,20,470.0,positive scores; include every tie at the cutoff,37315,12.188128098619858,20,17,3,3,17.647058823529413,8.0,0.8704004317596313
+superheroes,oct,marvelstudios,comment_replies,betweenness,20,0.0039701708881223,positive scores; include every tie at the cutoff,37315,12.188128098619858,20,20,0,1,5.0,71.0,0.8331536985308723
+superheroes,oct,marvelstudios,comment_replies,pagerank,20,0.0009992467754753,positive scores; include every tie at the cutoff,37315,12.188128098619858,20,20,0,4,20.0,94.5,0.7937021942316098
+superheroes,oct,marvelstudios,comment_replies,in_strength,20,121.0,positive scores; include every tie at the cutoff,37315,12.188128098619858,20,20,0,5,25.0,86.0,0.774619211899021
+superheroes,oct,DC_Cinematic,all_replies,betweenness,20,0.0105117370259,positive scores; include every tie at the cutoff,27725,16.403967538322814,20,20,0,3,15.0,68.5,0.8913810928135716
+superheroes,oct,DC_Cinematic,all_replies,pagerank,20,0.0037042380369647,positive scores; include every tie at the cutoff,27725,16.403967538322814,20,19,1,1,5.263157894736842,14.0,0.8711439075070596
+superheroes,oct,DC_Cinematic,all_replies,in_strength,20,474.0,positive scores; include every tie at the cutoff,27725,16.403967538322814,20,20,0,1,5.0,17.5,0.8747177584586564
+superheroes,oct,DC_Cinematic,comment_replies,betweenness,20,0.0059891888343419,positive scores; include every tie at the cutoff,27725,16.403967538322814,20,20,0,5,25.0,100.5,0.8513215978721809
+superheroes,oct,DC_Cinematic,comment_replies,pagerank,20,0.0013151866679708,positive scores; include every tie at the cutoff,27725,16.403967538322814,20,20,0,7,35.0,95.5,0.8545280267014077
+superheroes,oct,DC_Cinematic,comment_replies,in_strength,20,164.0,positive scores; include every tie at the cutoff,27725,16.403967538322814,20,20,0,6,30.0,100.5,0.8439641422544858

@@ -1,0 +1,13 @@
+window,start_utc,end_utc_exclusive,subreddit,expected_days,valid_days,rows,manifest_days,complete_files,provenance,errors
+sep,2026-09-03,2026-10-01,marvelstudios,28,28,167661,0,True,includes legacy cache without request manifest,
+sep,2026-09-03,2026-10-01,DC_Cinematic,28,28,88049,0,True,includes legacy cache without request manifest,
+sep,2026-09-03,2026-10-01,PS5,28,28,99959,28,True,request manifest,
+sep,2026-09-03,2026-10-01,xbox,28,28,92898,28,True,request manifest,
+sep,2026-09-03,2026-10-01,StarWars,28,28,101882,0,True,includes legacy cache without request manifest,
+sep,2026-09-03,2026-10-01,lotr,28,28,41004,0,True,includes legacy cache without request manifest,
+oct,2026-10-01,2026-10-29,marvelstudios,28,28,138911,0,True,includes legacy cache without request manifest,
+oct,2026-10-01,2026-10-29,DC_Cinematic,28,28,140166,0,True,includes legacy cache without request manifest,
+oct,2026-10-01,2026-10-29,PS5,28,28,72109,28,True,request manifest,
+oct,2026-10-01,2026-10-29,xbox,28,28,88966,28,True,request manifest,
+oct,2026-10-01,2026-10-29,StarWars,28,28,99426,28,True,request manifest,
+oct,2026-10-01,2026-10-29,lotr,28,28,37607,28,True,request manifest,

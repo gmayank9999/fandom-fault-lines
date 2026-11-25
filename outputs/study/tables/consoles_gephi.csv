@@ -1,0 +1,5 @@
+window,subreddit,file,full_nodes,full_edges,focus_nodes,focus_edges,filter,layout,metrics_scope,pair
+sep,PS5,consoles_sep_PS5_all_replies,32104,86348,1200,9409,"largest weak component, 2-core; capped by PageRank for display only",NetworkX spring; seed=42,full graph,consoles
+sep,xbox,consoles_sep_xbox_all_replies,28390,80906,1200,10919,"largest weak component, 2-core; capped by PageRank for display only",NetworkX spring; seed=42,full graph,consoles
+oct,PS5,consoles_oct_PS5_all_replies,26332,62263,1200,6916,"largest weak component, 2-core; capped by PageRank for display only",NetworkX spring; seed=42,full graph,consoles
+oct,xbox,consoles_oct_xbox_all_replies,27960,77402,1200,10230,"largest weak component, 2-core; capped by PageRank for display only",NetworkX spring; seed=42,full graph,consoles

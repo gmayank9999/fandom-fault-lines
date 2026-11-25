@@ -1,0 +1,157 @@
+{
+  "report_generated_utc": "2026-11-25T19:00:51.448497+00:00",
+  "git_revision_at_report": "2d59dfc9714f19baed572008d0c5ae8c483bd417",
+  "design": {
+    "title": "Fandom Fault Lines: comparative longitudinal study",
+    "seed": 42,
+    "windows": [
+      {
+        "id": "sep",
+        "start": "2026-09-03",
+        "end": "2026-10-01",
+        "legacy_cache": "data/raw/full"
+      },
+      {
+        "id": "oct",
+        "start": "2026-10-01",
+        "end": "2026-10-29",
+        "legacy_cache": "data/raw/full_2026-10-29"
+      }
+    ],
+    "pairs": [
+      {
+        "id": "superheroes",
+        "label": "Marvel / DC",
+        "communities": [
+          "marvelstudios",
+          "DC_Cinematic"
+        ],
+        "rationale": "Competing superhero franchises; original case study."
+      },
+      {
+        "id": "consoles",
+        "label": "PlayStation / Xbox",
+        "communities": [
+          "PS5",
+          "xbox"
+        ],
+        "rationale": "Competing console brands; cross-domain replication. Membership does not establish personal brand allegiance."
+      }
+    ],
+    "baselines": [
+      "StarWars",
+      "lotr"
+    ],
+    "aliases": {
+      "marvelstudios": [
+        "marvel",
+        "mcu",
+        "avengers",
+        "kevin feige",
+        "iron man",
+        "captain america",
+        "thor",
+        "hulk",
+        "loki",
+        "thanos",
+        "x-men",
+        "fantastic four",
+        "doctor strange",
+        "black panther"
+      ],
+      "DC_Cinematic": [
+        "dc",
+        "dceu",
+        "dcu",
+        "batman",
+        "superman",
+        "supergirl",
+        "james gunn",
+        "wonder woman",
+        "green lantern",
+        "justice league",
+        "joker",
+        "aquaman",
+        "peacemaker",
+        "lex luthor",
+        "snyder"
+      ],
+      "PS5": [
+        "playstation",
+        "ps5",
+        "ps4",
+        "sony",
+        "ps plus",
+        "psn",
+        "dualshock",
+        "dualsense"
+      ],
+      "xbox": [
+        "xbox",
+        "microsoft",
+        "game pass",
+        "gamepass",
+        "series x",
+        "series s",
+        "phil spencer"
+      ]
+    },
+    "network": {
+      "betweenness_sources": 128,
+      "null_replicates": 10,
+      "layout_node_limit": 1200
+    },
+    "bootstrap_replicates": 1000,
+    "topic_candidates": [
+      6,
+      8,
+      10,
+      12
+    ],
+    "topic_training_limit": 20000,
+    "output_dir": "outputs/study"
+  },
+  "completed_analysis_runs": {
+    "superheroes": {
+      "input_and_code_fingerprint": "0dd039e094d9b8b235a2aee43cf5fca6c171f0d1835267193dcd76d313683f1b",
+      "aggregate_sha256": {
+        "tables\\superheroes_corpus.csv": "ba74a366ab47eb967533cd7240ead653df2f7ed91488b34f1eda2ca35b8cd5e7",
+        "tables\\superheroes_duration.csv": "c0040e8aab8649cb9b0d554a0b533f1f0e6b77048f86ef49e51ffc59101505fb",
+        "tables\\superheroes_gephi.csv": "e94fab1b6508db77ec80e82a25e11021a04163198d90f14dc1c7ce91a603e752",
+        "tables\\superheroes_networks.csv": "702451c0ae66b97534ea04b4fd1f185c475a09ad003e6324fb1042fbc4a97084",
+        "tables\\superheroes_overlap.csv": "92aa059975de3dc5b69f2f5757f0400204d4703323258f529e5d6f69002ddf0d",
+        "tables\\superheroes_sampling.csv": "03f4cce249401f1423e36269a47206f5b356df62bb20361b53febd601ace7d51",
+        "tables\\superheroes_sentiment.csv": "c47f09eaa608fbf88d69617a7bfad56b0ed600ccc39392ed4854577d1d76c53a",
+        "tables\\superheroes_tests.csv": "ae1ac8b09cf860a05745ea13d3468c4d9a08055013b9e1396374ce80096ee9b0",
+        "tables\\superheroes_topics.csv": "78ee458d2a50e316b6dddcfac15e23aa97717f6105277380b312d898a8865858",
+        "tables\\superheroes_topic_selection.csv": "1767c23edca3aecdace383ee1a3dae4c334a41212f9df92b405051a64da1e73a",
+        "tables\\superheroes_weekly.csv": "8347fc3821ebaabbc402fd3cb49bba5b001c1abf756a24000a4a21cb4ddf7bf5"
+      }
+    },
+    "consoles": {
+      "input_and_code_fingerprint": "4cca5ff3e322857a7e96605052c65533c0d4ed57b93e85fa60953945f26ef417",
+      "aggregate_sha256": {
+        "tables\\consoles_corpus.csv": "b94a3cfdcc91a09faa59e7107915ee35db8d56796c180b010ba19f3ef107c679",
+        "tables\\consoles_duration.csv": "64e12ffabd9d808ad2ddbe27a10de799ffbf75d36164a4e312f06f55551762d2",
+        "tables\\consoles_gephi.csv": "1e07f039e5a453ea0bd3efe944c8176b6e6bd6bc0e255d12d01d9c26f37ee004",
+        "tables\\consoles_networks.csv": "5be7b5758e9910ad812579ee49f1c9e05d3ab0f7432f6f36e83c55cc0324ca90",
+        "tables\\consoles_overlap.csv": "e819e9f10266f8f03e7a0816b7638623cfba6d2832491c91c26ae769b3a4bc61",
+        "tables\\consoles_sampling.csv": "c6557423ac8811f4e523f8f61e74f339d162498e8739dbcd0e9df784b99724bf",
+        "tables\\consoles_sentiment.csv": "f37d7807ebba8b9c01109f06344f7c4bd710454950b122fc201be04d221b4de2",
+        "tables\\consoles_tests.csv": "57fb71001f5f489e1089afcb1649977b451ea7d4bede44cd8bd83910c60d48e2",
+        "tables\\consoles_topics.csv": "aef508a8c4dd7bc32cbaafe54e6b669474842084b7985cc7292498d94a38f947",
+        "tables\\consoles_topic_selection.csv": "a551b59e0eaa5d5040941bd7a7396e4759a4afa1f959246ff5d809a6485f9ffd",
+        "tables\\consoles_weekly.csv": "471831455cde9086c47e62fa75f2f39785bd629b7748e1bc4f8d29d70ea92d13"
+      }
+    }
+  },
+  "packages": {
+    "pandas": "2.2.2",
+    "numpy": "1.26.4",
+    "networkx": "3.3",
+    "scipy": "1.13.0",
+    "scikit-learn": "1.5.0",
+    "vaderSentiment": "3.3.2"
+  },
+  "note": "Legacy caches lack retrieval manifests. Run fingerprints include data, methods and pseudonymization identity."
+}

@@ -40,6 +40,25 @@ Gephi networks and connector IDs remain local and reproducible.
 
 ## Execution evidence
 
+The completed extension contains **1,168,638 archive comment records** across all
+**336 expected daily files** (six communities, 56 days). The four target communities
+contribute 888,719 records, of which 852,512 pass the content filters. Both pairs
+have completed corpus, sentiment, pooled-topic, overlap and sensitivity analyses.
+All 15 community-pair overlaps are available in each 28-day period.
+
+There are **16 full network measurements** (eight community-periods, each with
+all replies and comment-only variants). The eight all-reply graphs resolve
+99.18–99.95% of eligible parents. The official Gephi Toolkit verified all eight
+native two-workspace projects: node/edge/weight totals, directed degrees, weighted
+PageRank agreement, and successful save/reopen. ForceAtlas2 figures were visually
+reviewed. Desktop GUI inspection was unavailable because automation failed to
+initialize; these are engine-verified projects.
+
+The final offline suite passed **55 tests**, with one optional pretrained-model
+integration test skipped. Two independently shuffled annotation sheets contain
+256 examples each, with all human labels left blank. All 36 superseded artifacts
+approved for untracking remain on disk; current user-level data are kept local.
+
 See `outputs/study/collection_inventory.csv` for collected versus expected days and
 provenance, and `REPORT.md` for available analysis. A configured dataset is never
 reported as a completed finding. Per-pair private markers fingerprint source/data

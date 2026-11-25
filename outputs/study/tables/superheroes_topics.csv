@@ -1,0 +1,29 @@
+window,subreddit,topic,comments,share_pct,words
+oct,DC_Cinematic,-1,44601,33.24686360891831,insufficient topical vocabulary
+oct,DC_Cinematic,0,46988,35.026201817355066,"mcu, character, marvel, right, great, watch, point, doom"
+oct,DC_Cinematic,1,3215,2.396553137881939,"man, spider, spider man, iron, iron man, ant man, ant, peter"
+oct,DC_Cinematic,2,4788,3.569112418096026,"did, watch, did watch, literally, work, tony, come, job"
+oct,DC_Cinematic,3,11816,8.807985031792533,"hal, john, ring, guy, sinestro, jordan, hal jordan, dead"
+oct,DC_Cinematic,4,9516,7.093499116667039,"green, lantern, green lantern, lanterns, green lanterns, ring, constructs, budget"
+oct,DC_Cinematic,5,13227,9.859784869289085,"batman, superman, dcu, gunn, better, reeves, supergirl, different"
+oct,marvelstudios,-1,48978,36.671708171730636,insufficient topical vocabulary
+oct,marvelstudios,0,71476,53.51682415130505,"mcu, character, marvel, right, great, watch, point, doom"
+oct,marvelstudios,1,6746,5.05098908339448,"man, spider, spider man, iron, iron man, ant man, ant, peter"
+oct,marvelstudios,2,4387,3.2847152547956693,"did, watch, did watch, literally, work, tony, come, job"
+oct,marvelstudios,3,999,0.7479896374608784,"hal, john, ring, guy, sinestro, jordan, hal jordan, dead"
+oct,marvelstudios,4,400,0.29949535033468605,"green, lantern, green lantern, lanterns, green lanterns, ring, constructs, budget"
+oct,marvelstudios,5,572,0.428278350978601,"batman, superman, dcu, gunn, better, reeves, supergirl, different"
+sep,DC_Cinematic,-1,28992,34.839035293269404,insufficient topical vocabulary
+sep,DC_Cinematic,0,27558,33.11582969825877,"mcu, character, marvel, right, great, watch, point, doom"
+sep,DC_Cinematic,1,2006,2.4105651489479314,"man, spider, spider man, iron, iron man, ant man, ant, peter"
+sep,DC_Cinematic,2,2578,3.0979247028852277,"did, watch, did watch, literally, work, tony, come, job"
+sep,DC_Cinematic,3,8806,10.581972433517189,"hal, john, ring, guy, sinestro, jordan, hal jordan, dead"
+sep,DC_Cinematic,4,3942,4.737012869966473,"green, lantern, green lantern, lanterns, green lanterns, ring, constructs, budget"
+sep,DC_Cinematic,5,9335,11.217659853155004,"batman, superman, dcu, gunn, better, reeves, supergirl, different"
+sep,marvelstudios,-1,59563,37.443815103757395,insufficient topical vocabulary
+sep,marvelstudios,0,83629,52.57271818599008,"mcu, character, marvel, right, great, watch, point, doom"
+sep,marvelstudios,1,8587,5.3981505346601875,"man, spider, spider man, iron, iron man, ant man, ant, peter"
+sep,marvelstudios,2,5260,3.306657949494886,"did, watch, did watch, literally, work, tony, come, job"
+sep,marvelstudios,3,1041,0.654416525746041,"hal, john, ring, guy, sinestro, jordan, hal jordan, dead"
+sep,marvelstudios,4,359,0.22568254826400455,"green, lantern, green lantern, lanterns, green lanterns, ring, constructs, budget"
+sep,marvelstudios,5,634,0.39855915208740644,"batman, superman, dcu, gunn, better, reeves, supergirl, different"

@@ -1,0 +1,5 @@
+window,subreddit,file,full_nodes,full_edges,focus_nodes,focus_edges,filter,layout,metrics_scope,pair
+sep,marvelstudios,superheroes_sep_marvelstudios_all_replies,49487,147982,1200,14999,"largest weak component, 2-core; capped by PageRank for display only",NetworkX spring; seed=42,full graph,superheroes
+sep,DC_Cinematic,superheroes_sep_DC_Cinematic_all_replies,22130,71108,1200,13962,"largest weak component, 2-core; capped by PageRank for display only",NetworkX spring; seed=42,full graph,superheroes
+oct,marvelstudios,superheroes_oct_marvelstudios_all_replies,39205,121963,1200,14066,"largest weak component, 2-core; capped by PageRank for display only",NetworkX spring; seed=42,full graph,superheroes
+oct,DC_Cinematic,superheroes_oct_DC_Cinematic_all_replies,28104,111636,1200,19564,"largest weak component, 2-core; capped by PageRank for display only",NetworkX spring; seed=42,full graph,superheroes
