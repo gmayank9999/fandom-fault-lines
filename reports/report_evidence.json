@@ -1,0 +1,584 @@
+{
+  "word_counts": {
+    "abstract": 96,
+    "introduction": 225,
+    "literature_a": 352,
+    "literature_b": 310,
+    "literature_total": 662
+  },
+  "recent_review_papers": 12,
+  "total_research_references": 14,
+  "archive_records": 1168638,
+  "daily_files": 336,
+  "network_variants": 16,
+  "figures": [
+    {
+      "path": "outputs\\study\\figures\\sensitivity.png",
+      "sha256": "98fa6d4e7ef9385364e27594cc506797786e545652aac82a0a85950a8e89225c"
+    },
+    {
+      "path": "outputs\\study\\figures\\participation_transitions.png",
+      "sha256": "d81e7b81520ff8a79c7e649095ed816b74debd74ee2b8b2ab2ad5a769b89ba66"
+    },
+    {
+      "path": "reports\\assets\\component_sensitivity.png",
+      "sha256": "d3a5ad96b3afd8338d8d779a783a321a5f0d5ac4343a60ea504a39e89720d868"
+    },
+    {
+      "path": "outputs\\study\\figures\\gephi_combined_superheroes_oct_comment_replies.png",
+      "sha256": "cc96238e17b9df849bb7bf444caf1093c8656b57b35858fb03ed72fc64f1ef87"
+    },
+    {
+      "path": "outputs\\study\\figures\\gephi_combined_consoles_oct_comment_replies.png",
+      "sha256": "937bad216856186808a4ce4ce4b9bc693d7c18767ef4d721365224e8828b0dd9"
+    },
+    {
+      "path": "outputs\\study\\figures\\matched_connectors.png",
+      "sha256": "a281eb4690466cd0fe29f2f1e8766da3194b0e2436390616c9e8f1eab7d6431f"
+    },
+    {
+      "path": "outputs\\study\\figures\\within_author_sentiment.png",
+      "sha256": "437584afa5576305858b13446e397e8d07ac910134b77d3eda7b8162d93ede7b"
+    },
+    {
+      "path": "outputs\\study\\figures\\activity_adjusted_retention.png",
+      "sha256": "a9c5783bb65c53333edb32b4e2d8b50cba395f3fa87ede0642a7aa66f26b0c76"
+    }
+  ],
+  "code_inventory": [
+    {
+      "path": "config.py",
+      "lines": 119,
+      "functions": [],
+      "sha256": "3fadf6ebe7971e8b17656b6460b85ec41eb96c6523e9afaf6f895064d9148e05"
+    },
+    {
+      "path": "run_pipeline.py",
+      "lines": 51,
+      "functions": [
+        "main"
+      ],
+      "sha256": "4172a64d5efe8177a3843bd7583e3aa913582abe8f8dbf1972020ef632ec3a40"
+    },
+    {
+      "path": "run_study.py",
+      "lines": 42,
+      "functions": [
+        "main"
+      ],
+      "sha256": "1d9e963d94c53583883adb7c12b72758b52a261aab4e1eaccd2a0509e9f03569"
+    },
+    {
+      "path": "src\\__init__.py",
+      "lines": 0,
+      "functions": [],
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "src\\collect_comments.py",
+      "lines": 104,
+      "functions": [
+        "fetch_comments_page",
+        "make_slots",
+        "collect_slot",
+        "collect_subreddit_comments",
+        "main"
+      ],
+      "sha256": "64c496d9e0e4a7f561d5494d1db748ed951cf43a9b08425c0ed731cea7c72876"
+    },
+    {
+      "path": "src\\collect_full.py",
+      "lines": 190,
+      "functions": [
+        "day_chunks",
+        "chunk_path",
+        "fetch_page",
+        "collect_day",
+        "collect_subreddit",
+        "expected_days",
+        "merge_raw",
+        "main"
+      ],
+      "sha256": "70553426cf1bac05b6a9517b6209f470fae28af15c84a4d535326af481ce3fa7"
+    },
+    {
+      "path": "src\\collect_parents.py",
+      "lines": 81,
+      "functions": [
+        "missing_parent_ids",
+        "fetch_by_ids",
+        "main"
+      ],
+      "sha256": "8d078bab34ab0e20e54a548b358dd2b8533dcb312634286bc88e3e1fcc44b921"
+    },
+    {
+      "path": "src\\collect_posts.py",
+      "lines": 109,
+      "functions": [
+        "fetch_posts_page",
+        "collect_subreddit_posts",
+        "main"
+      ],
+      "sha256": "1ce9256bb9e99b4e747867ce028dfde8a4654b1dcd899065bfcf26c1908ec8ff"
+    },
+    {
+      "path": "src\\connector_analysis.py",
+      "lines": 103,
+      "functions": [
+        "classify_role",
+        "profile_connectors",
+        "main"
+      ],
+      "sha256": "c0a2f5b0cecb3906adadff0e3eb77f20972720abce3e2d6f679007a20cc58407"
+    },
+    {
+      "path": "src\\eda.py",
+      "lines": 98,
+      "functions": [
+        "top_words",
+        "main"
+      ],
+      "sha256": "6ba506105c93f5dab9c0d121012df869e6c56850d7c572f7ad513357a8cd37a8"
+    },
+    {
+      "path": "src\\gephi_export.py",
+      "lines": 66,
+      "functions": [
+        "_rgb",
+        "export_core",
+        "main"
+      ],
+      "sha256": "431701db9708599986819afc6209a00343473053e15030e70780c361c744e74c"
+    },
+    {
+      "path": "src\\gold_set.py",
+      "lines": 185,
+      "functions": [
+        "_draw",
+        "make_sample",
+        "make_sample_from_days",
+        "human_agreement",
+        "wilson",
+        "stance_summary",
+        "evaluate",
+        "main"
+      ],
+      "sha256": "82a957e45e8828229a532c2e622ff0b8d5d104b8362bef05204e03be9d1eaccf"
+    },
+    {
+      "path": "src\\network_analysis.py",
+      "lines": 208,
+      "functions": [
+        "undirected_sum",
+        "profile_communities",
+        "null_modularity",
+        "analyze_network",
+        "main"
+      ],
+      "sha256": "9732da94c474b4748f83a4275cde9c4e2657504421946a987f605cf0525a53c6"
+    },
+    {
+      "path": "src\\network_build.py",
+      "lines": 106,
+      "functions": [
+        "build_reply_graph",
+        "main"
+      ],
+      "sha256": "86f4b57898b6a3f1bfa047b7011130aaba1a5053a712e89e7f5cbbd666bd99c9"
+    },
+    {
+      "path": "src\\overlap_analysis.py",
+      "lines": 134,
+      "functions": [
+        "overlap_row",
+        "baseline_overlap_table",
+        "main"
+      ],
+      "sha256": "5381c60fa94eab80c3ba96e1bb242598e17967478fe7b7df980eb849ba569aea"
+    },
+    {
+      "path": "src\\preprocess.py",
+      "lines": 104,
+      "functions": [
+        "clean_text",
+        "basic_clean",
+        "preprocess_baseline",
+        "main"
+      ],
+      "sha256": "80c01e37b1dfe25219475bee1fbfbe43c54b485cede1f34a299b5a24cd6d75a5"
+    },
+    {
+      "path": "src\\replication.py",
+      "lines": 122,
+      "functions": [
+        "load_window",
+        "prepare_rivals",
+        "headline_metrics",
+        "main"
+      ],
+      "sha256": "9408b3f7978a50b2e1541ceb1a4b40a91ab68aba4be3f452dd33fe0e2481d34b"
+    },
+    {
+      "path": "src\\sentiment.py",
+      "lines": 197,
+      "functions": [
+        "adapted_analyzer",
+        "transformer_scores",
+        "_append",
+        "_prob_frame",
+        "_argmax_label",
+        "categorize",
+        "_alias_regex",
+        "tag_target",
+        "transformer_mask",
+        "tag_all",
+        "build_transformer_cache",
+        "main"
+      ],
+      "sha256": "a115f2febfab4160fb052d053e7ee27a235e9ea7e08306c7ba040b767f69c41c"
+    },
+    {
+      "path": "src\\statistical_tests.py",
+      "lines": 155,
+      "functions": [
+        "run_mannwhitney",
+        "cluster_bootstrap_diff",
+        "holm_correct",
+        "_select",
+        "run_family",
+        "main"
+      ],
+      "sha256": "9aa68fec1a9aef7dafd7b982f054c113b90e12090a9ccf5adbab8d364d3ba74a"
+    },
+    {
+      "path": "src\\study_advanced.py",
+      "lines": 216,
+      "functions": [
+        "bins",
+        "participation_panel",
+        "state",
+        "transitions",
+        "persistence",
+        "standardized_retention",
+        "paired_sentiment",
+        "matched_connectors",
+        "run"
+      ],
+      "sha256": "302c8add9060be3f77e2a5b3cd20b8f7a7fb3055d9c4d3dc7797e8c2aff66f59"
+    },
+    {
+      "path": "src\\study_advanced_report.py",
+      "lines": 151,
+      "functions": [
+        "section"
+      ],
+      "sha256": "9a5674652baf885f62183ba4da7128a4ea605e9d8e400a83397309c29866cd56"
+    },
+    {
+      "path": "src\\study_analysis.py",
+      "lines": 280,
+      "functions": [
+        "valid_users",
+        "fingerprint",
+        "prepare",
+        "overlap_counts",
+        "compare_sentiment",
+        "topics",
+        "analyze_pair",
+        "analyze_baselines",
+        "analyze"
+      ],
+      "sha256": "2fcf224f78028f8524142faac61f5c3b1b5c73bf7b54aab0a61c716d6a76d0de"
+    },
+    {
+      "path": "src\\study_connectors.py",
+      "lines": 55,
+      "functions": [
+        "summarize_nodes",
+        "summarize"
+      ],
+      "sha256": "ae5821b5dc199d9f06bee28d2e3ed3a5d3a4dbefece5b94bfb9ea6e72212d06a"
+    },
+    {
+      "path": "src\\study_data.py",
+      "lines": 238,
+      "functions": [
+        "timestamp",
+        "read_design",
+        "communities",
+        "days",
+        "cache_path",
+        "validate_day",
+        "load_window",
+        "Archive",
+        "collect",
+        "raw_parent_lookup",
+        "collect_parent_authors",
+        "inventory"
+      ],
+      "sha256": "a6000bdcaec363efa5a01d597867feaa6d5f479af4a5036b5f7f711096a65204"
+    },
+    {
+      "path": "src\\study_network.py",
+      "lines": 126,
+      "functions": [
+        "graph_from_comments",
+        "metrics",
+        "export_gephi"
+      ],
+      "sha256": "14d2668072601809b332066dc59ba897f411412bbfe0b1bd6026bb636074caeb"
+    },
+    {
+      "path": "src\\study_network_review.py",
+      "lines": 195,
+      "functions": [
+        "independent_edges",
+        "audit_graph",
+        "prior_groups",
+        "combine_layers",
+        "mixing",
+        "export_combined",
+        "run"
+      ],
+      "sha256": "5f49488eb8ee79c3f6063af8b9da883b4a7894be81da3143f0c1a86d2fbdbe88"
+    },
+    {
+      "path": "src\\study_network_review_report.py",
+      "lines": 101,
+      "functions": [
+        "section"
+      ],
+      "sha256": "d2033316cce22aac27a8feac22a6be2eaa3d5943cf0c6bbd92795f16f772bcef"
+    },
+    {
+      "path": "src\\study_report.py",
+      "lines": 392,
+      "functions": [
+        "markdown_table",
+        "load",
+        "plots",
+        "report"
+      ],
+      "sha256": "4e5bd249749683b6dc62436756a657e7036b415961fa06c854b9b243f6fc39a6"
+    },
+    {
+      "path": "src\\topic_modeling.py",
+      "lines": 114,
+      "functions": [
+        "assign_topics",
+        "npmi_coherence",
+        "choose_n_topics",
+        "run_topic_model",
+        "main"
+      ],
+      "sha256": "f698c6a87a1bea6c23e52893652aa8607409b0d43961db2c4365d9161eb99f72"
+    },
+    {
+      "path": "src\\utils.py",
+      "lines": 140,
+      "functions": [
+        "setup_logger",
+        "request_with_retry",
+        "_get_salt",
+        "_digest",
+        "anonymize",
+        "anonymize_id",
+        "anonymize_fullname",
+        "safe_get",
+        "compile_alias_regex",
+        "mentions_any",
+        "get_stopwords"
+      ],
+      "sha256": "b99ab00d2f181b942e7e1c25cb5f2c99a08e7fa237175b8f70db020224fb45dc"
+    },
+    {
+      "path": "src\\visualize.py",
+      "lines": 213,
+      "functions": [
+        "style",
+        "new_fig",
+        "legend",
+        "sentiment_by_target_chart",
+        "topic_prevalence_chart",
+        "overlap_chart",
+        "overlap_baseline_chart",
+        "network_picture",
+        "main"
+      ],
+      "sha256": "cc5d4471f17dac186ef7c0fc99e8febcc80755ca0351aebb106994c9a0cb2a3a"
+    },
+    {
+      "path": "tests\\test_network_review.py",
+      "lines": 68,
+      "functions": [
+        "test_independent_edge_audit_detects_direction_and_weight_errors",
+        "test_layer_union_preserves_observed_edges_without_membership_edges",
+        "test_weighted_directed_mixing_retains_unknowns_and_uses_endpoint_marginals",
+        "test_prior_labels_use_only_supplied_period_and_export_roundtrips"
+      ],
+      "sha256": "918f22c890ad993b77c8621fcc7e893bb1de8cb7881c4ae33b1743a6d0bbadc5"
+    },
+    {
+      "path": "tests\\test_pipeline_e2e.py",
+      "lines": 165,
+      "functions": [
+        "_synthetic",
+        "workdir",
+        "test_pipeline_runs_end_to_end_and_protects_identities",
+        "test_pipeline_is_deterministic",
+        "test_transformer_stage_scores_a_capped_subset_and_caches"
+      ],
+      "sha256": "03feac8837ad5612629658ca94133b8b70dabb396b6e6ae5b4b6f2326f7cddb4"
+    },
+    {
+      "path": "tests\\test_sanity.py",
+      "lines": 373,
+      "functions": [
+        "test_anonymize_is_deterministic",
+        "test_anonymize_different_users_differ",
+        "test_anonymize_handles_deleted",
+        "test_anonymize_hides_real_name",
+        "test_clean_text_strips_urls",
+        "test_clean_text_collapses_whitespace",
+        "test_clean_text_removes_gif_embeds_and_keeps_link_text",
+        "test_stopwords_include_filler_and_standard_words",
+        "test_slots_cover_window_without_gaps_or_overlap",
+        "test_window_is_frozen_not_relative_to_now",
+        "test_alias_regex_matches_whole_words_only",
+        "test_sentiment_categorize_thresholds",
+        "_row",
+        "test_tag_target_classifies_four_ways",
+        "test_tag_target_ignores_substring_false_positives",
+        "test_tag_target_is_symmetric_for_the_other_subreddit",
+        "_fake_data",
+        "test_build_reply_graph_edges_weights_and_drops",
+        "test_build_reply_graph_counts_repeat_replies_as_weight",
+        "test_assign_topics_gives_uninformative_comments_no_topic",
+        "test_mannwhitney_effect_size_sign_and_range",
+        "test_mannwhitney_small_sample_returns_none",
+        "test_holm_correction_is_monotone_and_skips_none",
+        "test_overlap_row_reports_all_three_denominators",
+        "test_overlap_handles_empty_sets",
+        "test_classify_role",
+        "test_extra_authors_resolve_parents_outside_the_sample",
+        "test_missing_parent_ids_finds_only_out_of_sample_parents",
+        "test_anonymize_id_is_deterministic_and_hides_the_raw_id",
+        "test_anonymize_fullname_keeps_prefix_and_matches_the_id_hash",
+        "test_hash_depends_on_the_secret_salt",
+        "test_adapted_vader_neutralises_franchise_words",
+        "_clustered",
+        "test_cluster_bootstrap_detects_a_real_difference",
+        "test_cluster_bootstrap_does_not_find_a_difference_in_identical_groups",
+        "test_cluster_bootstrap_is_wider_when_comments_come_from_few_users",
+        "test_cluster_bootstrap_handles_empty_group",
+        "test_baseline_overlap_table_lift_and_rival_flag",
+        "test_baseline_overlap_min_comments_filters_light_users",
+        "test_null_modularity_returns_finite_numbers",
+        "test_collect_day_pages_without_loss_or_duplicates",
+        "test_day_chunks_tile_the_window",
+        "test_npmi_coherence_prefers_words_that_cooccur"
+      ],
+      "sha256": "e33082b4f2802b536f7c0ec952ba6d4748edc69b1c1e1276b99d096241ea9848"
+    },
+    {
+      "path": "tests\\test_study.py",
+      "lines": 194,
+      "functions": [
+        "test_sum_reciprocal_reply_weights",
+        "test_network_conserves_events_and_preserves_isolates",
+        "test_missing_users_are_not_one_synthetic_account",
+        "test_validation_rejects_boundary_leak_and_duplicate_ids",
+        "test_replication_requires_every_expected_day",
+        "test_pagination_safety_cap_cannot_be_a_complete_day",
+        "test_saturated_second_fails_loudly",
+        "test_gephi_round_trip_preserves_direction_weight_and_handles_empty",
+        "test_overlap_uses_explicit_denominators",
+        "test_console_mentions_are_pair_specific",
+        "test_comparative_pipeline_end_to_end",
+        "test_annotation_sheets_are_blind_and_never_overwrite",
+        "test_connector_summary_includes_ties_and_separates_parent_only_nodes"
+      ],
+      "sha256": "5f2a35ce76712462ce7430563a23123d7cd8e4a5cbe92ae6222396b794914339"
+    },
+    {
+      "path": "tests\\test_study_advanced.py",
+      "lines": 119,
+      "functions": [
+        "settings",
+        "test_transitions_conserve_cohort_and_distinguish_sequential_overlap",
+        "test_retention_adjustment_removes_activity_composition_difference",
+        "test_paired_sentiment_gives_authors_equal_weight_and_excludes_unpaired",
+        "test_connector_null_matches_strata_and_handles_deterministic_groups",
+        "test_advanced_pipeline_outputs_and_report_rejects_changed_results"
+      ],
+      "sha256": "aed61d28bc78f35df386bcc3d77cb7b356ebb4fdfb26ca66574a5b6d899041aa"
+    },
+    {
+      "path": "tools\\build_combined_gephi.py",
+      "lines": 41,
+      "functions": [
+        "main"
+      ],
+      "sha256": "727834b0acdd88f27e3602a9e5b57a2556897040314d42a7729aba950fdeb741"
+    },
+    {
+      "path": "tools\\build_gephi.py",
+      "lines": 53,
+      "functions": [
+        "main"
+      ],
+      "sha256": "dde7d53d9b2e4a4c9209e47dc5ff8a7f61afe7b6961aee7ae05860e2d6d46429"
+    },
+    {
+      "path": "tools\\check_publication.py",
+      "lines": 38,
+      "functions": [
+        "main"
+      ],
+      "sha256": "c3e9375cfe52b0a6e471417576b83eedb5896648ad88a0ebba68446d7142aea7"
+    },
+    {
+      "path": "tools\\prepare_annotation.py",
+      "lines": 59,
+      "functions": [
+        "make_sheets"
+      ],
+      "sha256": "d8d67d47746a58a07470edd466e90e553c57a4c1610e5b9ebf49767d65ac0357"
+    },
+    {
+      "path": "tools\\prepare_course_report.py",
+      "lines": 94,
+      "functions": [
+        "plain",
+        "main"
+      ],
+      "sha256": "9b6b95b948327582f1aa500392fcc3c6bd28061d35e418be91e51d8804d3a21b"
+    },
+    {
+      "path": "tools\\verify_advanced.py",
+      "lines": 55,
+      "functions": [
+        "main"
+      ],
+      "sha256": "d952ca0245e5442213570cc31e97fce4197b6a35b36f9825aa52e7e59410fbdd"
+    },
+    {
+      "path": "tools\\verify_course_report.py",
+      "lines": 53,
+      "functions": [
+        "main"
+      ],
+      "sha256": "b37c45f5cc63acac850a20d538b897beeded3123e7b94f7266c9725465760a68"
+    },
+    {
+      "path": "tools\\verify_network_review.py",
+      "lines": 53,
+      "functions": [
+        "main"
+      ],
+      "sha256": "83265959c58c983d5601cf55f12cf87231f2700093c6f8e104e375f9074afd45"
+    }
+  ],
+  "contribution_status": "Proposed equal allocation; requires confirmation against actual work",
+  "report_source_sha256": "565aed48876d11e5404bc7bf272e1dea1ceab9af287adad8f5f55b3c0113eebd"
+}

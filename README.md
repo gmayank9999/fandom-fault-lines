@@ -15,6 +15,7 @@ and provenance; complete archive files do not guarantee complete Reddit coverage
 
 ## Start here
 
+- **Group 6 course report:** [PDF](reports/Group6_FandomFaultLines_Report.pdf) and [editable Word document](reports/Group6_FandomFaultLines_Report.docx), with the research journey, recent literature, tables and Gephi figures. The proposed equal contribution allocation must be confirmed against actual work before submission.
 - [Research report](REPORT.md), generated from aggregate results.
 - [Audit and remaining work](PROJECT_STATUS.md).
 - [Plain-language explanation](EXPLANATION.md).
@@ -25,6 +26,14 @@ and provenance; complete archive files do not guarantee complete Reddit coverage
 - [Collection inventory](outputs/study/collection_inventory.csv).
 
 ## Setup and run
+
+The course report source is `reports/course_report.html`; `reports/report_evidence.json`
+records section word counts, figure hashes and a Python source inventory.
+`tools/prepare_course_report.py` checks its evidence and prepares the component figure.
+On Windows with Microsoft Word installed, `tools/build_course_report.ps1` creates
+the DOCX and PDF. `tools/verify_course_report.py` uses optional PyMuPDF to check the
+artifacts and render page images under `logs/course_report_qa/` for visual review.
+Report export dependencies are separate from the research pipeline.
 
 Python 3.11 is the tested environment. The comparative pipeline needs core
 dependencies only; the inherited transformer experiment is optional.

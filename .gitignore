@@ -30,3 +30,5 @@ outputs/charts/
 outputs/networks/
 .bin/
 *.class
+# Microsoft Word temporary lock files for report editing.
+~$*
