@@ -15,6 +15,7 @@ and provenance; complete archive files do not guarantee complete Reddit coverage
 
 ## Start here
 
+- [Complete beginner's project guide](explanation_final.md): a standalone explanation of the research journey, all methods and technical terms, findings, Gephi demonstration, code and CSV inventory, reproduction steps, and detailed numerical appendices.
 - [Group 6 presentation](reports/presentation/Group6_FandomFaultLines_Presentation.pptx): 27 main slides plus 8 backup slides, with speaker notes, Gephi demonstration guidance and source references. The CSV-derived sampling mean is **3.15%**; the earlier course report's **3.16%** is a rounding transcription error and does not change the finding.
 - **Group 6 course report:** [PDF](reports/Group6_FandomFaultLines_Report.pdf) and [editable Word document](reports/Group6_FandomFaultLines_Report.docx), with the research journey, recent literature, tables and Gephi figures. The proposed equal contribution allocation must be confirmed against actual work before submission.
 - [Research report](REPORT.md), generated from aggregate results.
