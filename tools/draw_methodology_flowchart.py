@@ -72,6 +72,8 @@ def main():
     for ext in ("png", "svg"):
         path = out / f"methodology_flowchart.{ext}"
         fig.savefig(path, dpi=240, facecolor="white")
+        if ext == "svg":
+            path.write_text("\n".join(line.rstrip() for line in path.read_text(encoding="utf-8").splitlines()) + "\n", encoding="utf-8")
         print(path)
     plt.close(fig)
 
