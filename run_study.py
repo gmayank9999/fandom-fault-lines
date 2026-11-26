@@ -7,7 +7,7 @@ from src.study_data import read_design, collect, inventory
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--design", default="study.json")
-    parser.add_argument("--stage", choices=["inventory", "collect", "analyze", "advanced", "report", "all"], default="inventory")
+    parser.add_argument("--stage", choices=["inventory", "collect", "analyze", "advanced", "network-review", "report", "all"], default="inventory")
     parser.add_argument("--subreddit", action="append")
     parser.add_argument("--workers", type=int, choices=[1, 2, 4], default=2,
                         help="Bounded archive download concurrency (default 2)")
@@ -29,6 +29,10 @@ def main():
         import json
         from src.study_advanced import run
         run(design, json.loads(Path("advanced_study.json").read_text()))
+    if args.stage in ("network-review", "all"):
+        import json
+        from src.study_network_review import run as review_networks
+        review_networks(design, json.loads(Path("network_review.json").read_text()))
     if args.stage in ("report", "all"):
         from src.study_report import report
         report(design)

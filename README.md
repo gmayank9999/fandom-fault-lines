@@ -21,6 +21,7 @@ and provenance; complete archive files do not guarantee complete Reddit coverage
 - [Gephi workflow](GEPHI_GUIDE.md).
 - [Independent annotation protocol](ANNOTATION_GUIDE.md).
 - [Extended analysis methods](ADVANCED_METHODS.md): persistence, adjusted return rates, paired authors and matched connectors.
+- [Mentor discussion narrative](MENTOR_STORY.md): the three original questions, evidence, interpretation and scope decisions.
 - [Collection inventory](outputs/study/collection_inventory.csv).
 
 ## Setup and run
@@ -43,6 +44,7 @@ Do not run multiple collectors against the same cache simultaneously.
 .\venv\Scripts\python.exe run_study.py --stage collect
 .\venv\Scripts\python.exe run_study.py --stage analyze
 .\venv\Scripts\python.exe run_study.py --stage advanced
+.\venv\Scripts\python.exe run_study.py --stage network-review
 .\venv\Scripts\python.exe run_study.py --stage report
 .\venv\Scripts\python.exe -m pytest tests -q
 ```
@@ -82,6 +84,7 @@ set `$env:FFL_MODEL_TEST = '1'` to enable the real-model integration test.
 | `outputs/study/gephi_validation.csv` | Native Gephi import and project-reopen checks | Published |
 | `outputs/study/*_connector_roles.csv` | Aggregate connector roles and cross-participation | Published |
 | `outputs/study/advanced/` | Longitudinal and adjusted comparisons, settings/input/output hashes | Published |
+| `outputs/study/network_review/` | Independent raw-edge audit, prior-participation mixing and combined graph verification | Published |
 | `outputs/study/networks/` | Full/focus GEXF, node/edge CSVs, Gephi sessions | Local |
 | `outputs/study/private/` | Text caches, pseudonymous connectors, run markers | Local |
 | `data/raw/`, `data/gold/` | Original data, salt, annotation texts/labels | Local |

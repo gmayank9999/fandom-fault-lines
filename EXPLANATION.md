@@ -5,6 +5,15 @@ audiences, or something in between. Marvel/DC is compared with PlayStation/Xbox
 over two consecutive four-week periods, with Star Wars and LOTR as other audiences.
 Actual findings are in [REPORT.md](REPORT.md).
 
+For an ordered mentor presentation, use [MENTOR_STORY.md](MENTOR_STORY.md).
+The latest network review independently reconstructs all original edges and adds
+second-window combined pair graphs colored by first-window participation. Their
+combined assortativity is about 0.35, while coefficients within individual
+subreddit layers are much smaller. This distinction matters: segregation between
+discussion spaces is not automatically selective avoidance inside a space.
+These are participation labels, not opinions; only approximately 46–48% of
+all-reply events have both endpoints observed in the first window.
+
 The extension adds three checks: follow the same users across windows, compare
 sentiment within the same authors, and compare connectors against people with
 similar activity and degree. See [ADVANCED_METHODS.md](ADVANCED_METHODS.md).

@@ -1,0 +1,13 @@
+{
+  "version": 1,
+  "status": "Exploratory network review specified before computing these results",
+  "audit": "Independently aggregate raw replier-parent-author records; compare every directed edge, integer weight, node and event category with all 16 saved full graphs",
+  "combined_graphs": "Second window only; union the pair's observed reply graphs; identical users merged; preserve reply weight separately by subreddit; create no membership edges",
+  "groups": "First-window observed participation: a_only, b_only, both, unobserved; threshold one comment; no fan/opinion labels",
+  "mixing": "Directed weighted reply-event matrices and unweighted ordered-dyad matrices, both per-layer and combined; retain unobserved endpoints explicitly",
+  "assortativity": "Descriptive categorical coefficient on known prior groups; normalize by endpoint marginals; no significance or causal claim",
+  "variants": ["all_replies", "comment_replies"],
+  "display_limit": 1000,
+  "seed": 42,
+  "limits": "Prior-period participation is not opinion or allegiance; replies occur within threads in each subreddit; combining layers does not demonstrate diffusion or off-platform contact"
+}

@@ -198,6 +198,10 @@ def report(design):
         "This report is generated from the aggregate tables in `outputs/study/tables/`. "
         "The original sampled pilot is superseded; its 5% overlap conclusion must not be reused.",
         "## Research design",
+        "**Main question:** To what extent do rival fan communities form separate versus overlapping audiences, "
+        "and how do their content, internal reply structure and cross-group participation boundaries differ? "
+        "RQ1–RQ3 retain the original content/structure/boundary objectives. RQ4 is an added robustness question; "
+        "the longitudinal and adjusted analyses strengthen the original three questions.",
         "We compare Marvel/DC and PlayStation/Xbox communities over two adjacent 28-day UTC windows: "
         "3 September–1 October and 1–29 October 2026 (ends exclusive), spanning 56 days. "
         "StarWars and lotr provide comparison audiences, not assumed hostile or rivalry-free controls. "
@@ -361,6 +365,8 @@ def report(design):
                     sections += [f"![Topics in {sub}]({chart.as_posix()})"]
     from src.study_advanced_report import section as advanced_section
     sections += advanced_section(out, markdown_table)
+    from src.study_network_review_report import section as network_review_section
+    sections += network_review_section(out, markdown_table)
     sections += ["## Validation still needed before submission",
         "The inherited 300-example sentiment development set was labelled by an AI assistant. It is **not a human gold standard**, "
         "and selecting a model on that same set does not establish held-out accuracy. It was also length-restricted and "

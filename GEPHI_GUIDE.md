@@ -31,6 +31,36 @@ The `*_gephi.csv` aggregate tables document display filters.
 
 ## Import and verify
 
+### Combined pair graphs with prior-period participation labels
+
+Run `python run_study.py --stage network-review`, then optionally
+`python tools/build_combined_gephi.py`. The second command uses the same pinned
+official toolkit as the original native-project builder. It produces four more
+native projects: each pair's second-window all-reply and comment-only unions.
+
+Open `outputs/study/networks/combined_*_full.gexf` or `*_native.gephi`.
+Every edge is an observed reply: no edge is created merely because a user appears
+in both communities. `weight_a` and `weight_b` preserve each subreddit layer's
+reply counts, and their sum is `weight`. Identical ordered dyads in both layers
+merge; individual accounts are represented once.
+
+Color meanings differ from the original Louvain panels: blue = prior A-only,
+orange = prior B-only, green = prior both, grey = prior unobserved. A/B follow
+`study.json`. `prior_group` uses the first window only; `current_group` describes
+observed commenting in the second. Neither attribute is a fan/opinion label.
+Parent-only nodes remain explicit. The native focus is capped by combined
+PageRank, restricted to its largest weak component, then to repeated replies;
+metrics and mixing tables use full graphs.
+
+Review combined and separate-layer mixing in `outputs/study/network_review/`.
+A large combined assortativity coefficient with small within-layer coefficients
+can reflect differences in which subreddit people use. It does not by itself
+show selective avoidance inside threads or an echo chamber. Unknown prior
+endpoints remain in mixing matrices and are excluded explicitly from the
+known-group assortativity denominator.
+
+### Original single-community graphs
+
 The native project's display workspace further restricts the focus graph to edges
 with at least two replies and removes resulting isolates. It is a repeated-reply
 backbone for readability, not an unbiased sample. Its counts and filter are in

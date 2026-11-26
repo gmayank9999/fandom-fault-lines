@@ -94,6 +94,34 @@ The expanded suite contains 60 passing tests and one optional model test skipped
 Synthetic checks cover cohort conservation, sequential overlap, activity confounding,
 paired weighting, no common support, matched nulls and corrupted-output detection.
 
+## Third review: construction validity and interaction across participation groups
+
+An independent DataFrame parent-author join and grouped-count reconstruction
+matched every edge, integer reply weight and node set in all 16 original networks.
+Observed parent/thread relationships also passed consistency checks. This audits
+fidelity to the local raw records; it does not certify archive completeness.
+
+Added four second-window combined pair graphs, retaining per-subreddit edge
+weights and prior-window participation labels. No shared-membership edges are
+invented. Weighted reply-event and unweighted dyad mixing are reported separately
+for each subreddit and their union. This distinguishes audience overlap from
+observed interactions among prior participation groups.
+
+The combined all-reply prior-participation assortativity is about 0.35 for both
+pairs, versus approximately 0.001–0.040 within the individual subreddit layers.
+Known-prior endpoints cover approximately 46–48% of all-reply events. The
+aggregation contrast is descriptive; it does not establish opinion homophily.
+
+`MENTOR_STORY.md` maps the original three questions to evidence and limits and
+explains why neither 100% certainty nor a guaranteed grade is justified. Human
+attitude validation and nonadjacent/event-aligned periods address different
+remaining gaps. No new duration or community coverage is claimed in this review.
+
+The current offline suite passes 64 tests, with the optional pretrained-model
+integration test skipped. New tests deliberately corrupt edge direction/weights,
+check isolates and missing parents, conserve per-layer reply weights, verify
+directed mixing against a hand-calculated example, and round-trip combined GEXFs.
+
 ## Remaining research limitations
 
 - Independent blinded human annotation is required before claiming validated

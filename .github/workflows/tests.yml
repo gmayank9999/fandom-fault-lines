@@ -16,3 +16,4 @@ jobs:
       - run: python -m pytest tests -q
       - run: python tools/check_publication.py --tracked
       - run: python tools/verify_advanced.py
+      - run: python tools/verify_network_review.py
