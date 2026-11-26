@@ -41,7 +41,7 @@ windows and 1,168,638 archive comments across six communities. NLP and detailed
 reply-network analysis focus on the four rivalry communities.”
 
 Show the sampling/duration figure. In September Marvel/DC, mean Jaccard overlap
-using a random 10% of comments is 3.16%, versus 6.78% for the full collected
+using a random 10% of comments is 3.15%, versus 6.78% for the full collected
 window. This demonstrates a sampling sensitivity, not an exact reconstruction
 of the original sampling scheme.
 

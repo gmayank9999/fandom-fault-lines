@@ -1,0 +1,4649 @@
+{
+  "title": "Fandom Fault Lines",
+  "authors": [
+    "Mayank Gupta",
+    "Anurag Kumar",
+    "Jhalak Kapila"
+  ],
+  "group": "Group 6",
+  "main_slides": 27,
+  "slide_count": 35,
+  "size": [
+    960,
+    540
+  ],
+  "font": "Calibri",
+  "slides": [
+    {
+      "title": "Fandom Fault Lines",
+      "notes": "Opening, about 40 seconds. We asked whether rival Reddit communities have separate audiences or overlapping ones. We studied content, reply networks and participation together. Our evidence shows measurable overlap, changing participation and network structure that depends on how replies are defined. We treat rivalry as a comparison setting rather than assuming hostility. Introduce Group 6 and all members. The main presentation ends at slide 27. Slides 28–35 support questions. Suggested main talk duration: 22–27 minutes.",
+      "source": "reports/course_report.html; MENTOR_STORY.md; research revision 61ae796",
+      "section": "main",
+      "elements": [
+        {
+          "type": "text",
+          "text": "Fandom\nFault Lines",
+          "x": 48,
+          "y": 72,
+          "w": 480,
+          "h": 145,
+          "size": 50,
+          "color": "173449",
+          "bold": true,
+          "align": "left"
+        },
+        {
+          "type": "text",
+          "text": "Rival Reddit communities,\nshared audiences and reply networks",
+          "x": 50,
+          "y": 235,
+          "w": 450,
+          "h": 85,
+          "size": 25,
+          "color": "173449",
+          "bold": false,
+          "align": "left"
+        },
+        {
+          "type": "text",
+          "text": "Computational Social Media Analysis\nGroup 6",
+          "x": 50,
+          "y": 341,
+          "w": 440,
+          "h": 60,
+          "size": 20,
+          "color": "586873",
+          "bold": false,
+          "align": "left"
+        },
+        {
+          "type": "text",
+          "text": "Mayank Gupta  230553\nAnurag Kumar  230616\nJhalak Kapila  230576",
+          "x": 50,
+          "y": 419,
+          "w": 430,
+          "h": 81,
+          "size": 17,
+          "color": "173449",
+          "bold": false,
+          "align": "left"
+        },
+        {
+          "type": "image",
+          "path": "outputs/study/figures/gephi_combined_superheroes_oct_all_replies.png",
+          "x": 515,
+          "y": 65,
+          "w": 410,
+          "h": 410
+        }
+      ],
+      "cover": true
+    },
+    {
+      "title": "The problem and our objective",
+      "notes": "Separate subreddit names can suggest separate social worlds, but one account may participate in both. Conversely, the same audience overlap percentage can hide very different patterns over time. We wanted to describe where boundaries appear, how people interact and what they discuss. Participation, interaction and attitudes are different measurements. A reply can express agreement, criticism or a practical question. This is why a network picture alone cannot establish hostility or an echo chamber.",
+      "source": "reports/course_report.html; MENTOR_STORY.md; research revision 61ae796",
+      "section": "main",
+      "elements": [
+        {
+          "type": "text",
+          "text": "Do rival communities form distinct audiences,\nor do people and conversations connect them?",
+          "x": 48,
+          "y": 142,
+          "w": 864,
+          "h": 105,
+          "size": 29,
+          "color": "173449",
+          "bold": true,
+          "align": "left"
+        },
+        {
+          "type": "text",
+          "text": "Separate community names do not establish separate audiences.",
+          "x": 48,
+          "y": 280,
+          "w": 850,
+          "h": 48,
+          "size": 21,
+          "color": "173449",
+          "bold": false,
+          "align": "left"
+        },
+        {
+          "type": "text",
+          "text": "Shared participants may be occasional visitors or persistent participants.",
+          "x": 48,
+          "y": 340,
+          "w": 850,
+          "h": 48,
+          "size": 21,
+          "color": "173449",
+          "bold": false,
+          "align": "left"
+        },
+        {
+          "type": "text",
+          "text": "Our objective is to examine content, interaction and audience boundaries together.",
+          "x": 48,
+          "y": 400,
+          "w": 850,
+          "h": 48,
+          "size": 21,
+          "color": "173449",
+          "bold": false,
+          "align": "left"
+        }
+      ]
+    },
+    {
+      "title": "Three research questions",
+      "notes": "These are the three original dimensions, preserved in the expanded study. RQ1 concerns topics and sentiment about own and rival franchises. RQ2 concerns internal network organization and structural connectors. RQ3 concerns audience overlap and boundaries. The additional temporal, sampling and adjusted analyses strengthen these questions. They do not replace them. The original attitude question remains only partially answered because independent target-specific human annotation is unfinished.",
+      "source": "MENTOR_STORY.md; study.json; reports/course_report.html",
+      "section": "main",
+      "elements": [
+        {
+          "type": "table",
+          "headers": [
+            "Question",
+            "What we examine",
+            "Evidence"
+          ],
+          "rows": [
+            [
+              "RQ1  Content",
+              "Topics and sentiment concerning own and rival franchises",
+              "Mentions, VADER, shared NMF topics"
+            ],
+            [
+              "RQ2  Structure",
+              "Internal organisation and connector accounts",
+              "Reply graphs, centralities, communities"
+            ],
+            [
+              "RQ3  Boundaries",
+              "Audience overlap and cross-participation",
+              "Overlap, persistence, prior-group mixing"
+            ]
+          ],
+          "widths": [
+            140,
+            360,
+            364
+          ],
+          "x": 48,
+          "y": 137,
+          "w": 864,
+          "h": 282,
+          "size": 19
+        },
+        {
+          "type": "text",
+          "text": "Observed commenting defines participation. It does not establish personal fan allegiance.",
+          "x": 48,
+          "y": 470,
+          "w": 864,
+          "h": 43,
+          "size": 17,
+          "color": "586873",
+          "bold": false,
+          "align": "left"
+        }
+      ]
+    },
+    {
+      "title": "The research journey",
+      "notes": "The project began with an approximately 19,000-comment Marvel/DC pilot. It established the workflow, but the collection scheme sampled the latest comments in slots and missed activity and reply relations. We audited the pipeline, found stale reporting and graph-construction issues, then expanded the observation design. We added a second rivalry and comparison audiences, tested sensitivity, and independently reconstructed the graphs. These extensions followed inspection of earlier findings, so the study is exploratory rather than preregistered.",
+      "source": "PROJECT_STATUS.md; MENTOR_STORY.md; reports/course_report.html",
+      "section": "main",
+      "elements": [
+        {
+          "type": "table",
+          "headers": [
+            "Stage",
+            "What we did",
+            "Why it mattered"
+          ],
+          "rows": [
+            [
+              "Pilot",
+              "Marvel/DC, approximately 19,000 comments",
+              "Established the initial workflow"
+            ],
+            [
+              "Audit",
+              "Checked collection, preprocessing and graph rules",
+              "Corrected measurement and reporting"
+            ],
+            [
+              "Expansion",
+              "Two rivalries, six audiences, 56 days",
+              "Broadened the comparison"
+            ],
+            [
+              "Sensitivity",
+              "Tested sampling, duration and activity",
+              "Qualified initial interpretations"
+            ],
+            [
+              "Verification",
+              "Rebuilt graphs and checked Gephi imports",
+              "Made results inspectable"
+            ]
+          ],
+          "widths": [
+            120,
+            420,
+            324
+          ],
+          "x": 48,
+          "y": 137,
+          "w": 864,
+          "h": 290,
+          "size": 18
+        },
+        {
+          "type": "text",
+          "text": "The journey improved the credibility of the conclusions, rather than targeting a larger effect.",
+          "x": 48,
+          "y": 470,
+          "w": 864,
+          "h": 43,
+          "size": 17,
+          "color": "586873",
+          "bold": false,
+          "align": "left"
+        }
+      ]
+    },
+    {
+      "title": "Methodology overview",
+      "notes": "Read the method left to right. We first retrieve and validate records, then clean and organize them. EDA establishes coverage and the activity observed. The same prepared data supports the three analysis tracks. We compare results across graph definitions, sampling levels and activity-adjusted groups, then interpret them jointly. The analysis is iterative: robustness checks can revise our interpretation. Every displayed result is traceable to an aggregate table or verified graph.",
+      "source": "tools/draw_methodology_flowchart.py; run_study.py; study.json",
+      "section": "main",
+      "elements": [
+        {
+          "type": "text",
+          "text": "01",
+          "x": 48,
+          "y": 140,
+          "w": 150,
+          "h": 45,
+          "size": 32,
+          "color": "2465A3",
+          "bold": true,
+          "align": "left"
+        },
+        {
+          "type": "text",
+          "text": "Collect",
+          "x": 48,
+          "y": 194,
+          "w": 155,
+          "h": 35,
+          "size": 24,
+          "color": "173449",
+          "bold": true,
+          "align": "left"
+        },
+        {
+          "type": "text",
+          "text": "Daily archive records",
+          "x": 48,
+          "y": 240,
+          "w": 150,
+          "h": 68,
+          "size": 19,
+          "color": "173449",
+          "bold": false,
+          "align": "left"
+        },
+        {
+          "type": "line",
+          "x": 184,
+          "y": 211,
+          "x2": 214,
+          "y2": 211,
+          "color": "2465A3",
+          "arrow": true,
+          "width": 1.6
+        },
+        {
+          "type": "text",
+          "text": "02",
+          "x": 224,
+          "y": 140,
+          "w": 150,
+          "h": 45,
+          "size": 32,
+          "color": "2465A3",
+          "bold": true,
+          "align": "left"
+        },
+        {
+          "type": "text",
+          "text": "Prepare",
+          "x": 224,
+          "y": 194,
+          "w": 155,
+          "h": 35,
+          "size": 24,
+          "color": "173449",
+          "bold": true,
+          "align": "left"
+        },
+        {
+          "type": "text",
+          "text": "Text and reply parents",
+          "x": 224,
+          "y": 240,
+          "w": 150,
+          "h": 68,
+          "size": 19,
+          "color": "173449",
+          "bold": false,
+          "align": "left"
+        },
+        {
+          "type": "line",
+          "x": 360,
+          "y": 211,
+          "x2": 390,
+          "y2": 211,
+          "color": "2465A3",
+          "arrow": true,
+          "width": 1.6
+        },
+        {
+          "type": "text",
+          "text": "03",
+          "x": 400,
+          "y": 140,
+          "w": 150,
+          "h": 45,
+          "size": 32,
+          "color": "2465A3",
+          "bold": true,
+          "align": "left"
+        },
+        {
+          "type": "text",
+          "text": "Explore",
+          "x": 400,
+          "y": 194,
+          "w": 155,
+          "h": 35,
+          "size": 24,
+          "color": "173449",
+          "bold": true,
+          "align": "left"
+        },
+        {
+          "type": "text",
+          "text": "Coverage and activity",
+          "x": 400,
+          "y": 240,
+          "w": 150,
+          "h": 68,
+          "size": 19,
+          "color": "173449",
+          "bold": false,
+          "align": "left"
+        },
+        {
+          "type": "line",
+          "x": 536,
+          "y": 211,
+          "x2": 566,
+          "y2": 211,
+          "color": "2465A3",
+          "arrow": true,
+          "width": 1.6
+        },
+        {
+          "type": "text",
+          "text": "04",
+          "x": 576,
+          "y": 140,
+          "w": 150,
+          "h": 45,
+          "size": 32,
+          "color": "2465A3",
+          "bold": true,
+          "align": "left"
+        },
+        {
+          "type": "text",
+          "text": "Analyse",
+          "x": 576,
+          "y": 194,
+          "w": 155,
+          "h": 35,
+          "size": 24,
+          "color": "173449",
+          "bold": true,
+          "align": "left"
+        },
+        {
+          "type": "text",
+          "text": "Three research questions",
+          "x": 576,
+          "y": 240,
+          "w": 150,
+          "h": 68,
+          "size": 19,
+          "color": "173449",
+          "bold": false,
+          "align": "left"
+        },
+        {
+          "type": "line",
+          "x": 712,
+          "y": 211,
+          "x2": 742,
+          "y2": 211,
+          "color": "2465A3",
+          "arrow": true,
+          "width": 1.6
+        },
+        {
+          "type": "text",
+          "text": "05",
+          "x": 752,
+          "y": 140,
+          "w": 150,
+          "h": 45,
+          "size": 32,
+          "color": "2465A3",
+          "bold": true,
+          "align": "left"
+        },
+        {
+          "type": "text",
+          "text": "Verify",
+          "x": 752,
+          "y": 194,
+          "w": 155,
+          "h": 35,
+          "size": 24,
+          "color": "173449",
+          "bold": true,
+          "align": "left"
+        },
+        {
+          "type": "text",
+          "text": "Sensitivity and audits",
+          "x": 752,
+          "y": 240,
+          "w": 150,
+          "h": 68,
+          "size": 19,
+          "color": "173449",
+          "bold": false,
+          "align": "left"
+        },
+        {
+          "type": "line",
+          "x": 48,
+          "y": 332,
+          "x2": 912,
+          "y2": 332,
+          "color": "CBD4DA",
+          "arrow": false,
+          "width": 1.3
+        },
+        {
+          "type": "text",
+          "text": "Content analysis",
+          "x": 48,
+          "y": 365,
+          "w": 275,
+          "h": 35,
+          "size": 23,
+          "color": "2465A3",
+          "bold": true,
+          "align": "left"
+        },
+        {
+          "type": "text",
+          "text": "Topics, mentions and sentiment",
+          "x": 48,
+          "y": 411,
+          "w": 275,
+          "h": 58,
+          "size": 20,
+          "color": "173449",
+          "bold": false,
+          "align": "left"
+        },
+        {
+          "type": "text",
+          "text": "Network analysis",
+          "x": 349,
+          "y": 365,
+          "w": 275,
+          "h": 35,
+          "size": 23,
+          "color": "2465A3",
+          "bold": true,
+          "align": "left"
+        },
+        {
+          "type": "text",
+          "text": "Directed replies, structure and Gephi",
+          "x": 349,
+          "y": 411,
+          "w": 275,
+          "h": 58,
+          "size": 20,
+          "color": "173449",
+          "bold": false,
+          "align": "left"
+        },
+        {
+          "type": "text",
+          "text": "Audience analysis",
+          "x": 650,
+          "y": 365,
+          "w": 262,
+          "h": 35,
+          "size": 23,
+          "color": "2465A3",
+          "bold": true,
+          "align": "left"
+        },
+        {
+          "type": "text",
+          "text": "Overlap, persistence and mixing",
+          "x": 650,
+          "y": 411,
+          "w": 262,
+          "h": 58,
+          "size": 20,
+          "color": "173449",
+          "bold": false,
+          "align": "left"
+        }
+      ]
+    },
+    {
+      "title": "Study design and observation windows",
+      "notes": "The first UTC window is 3 September to 1 October 2026, end exclusive. The second is 1 October to 29 October, end exclusive. Each lasts 28 days, making a pooled 56-day period. Four rivalry communities have detailed text and reply records. StarWars and lotr supply lighter author-time records for overlap comparisons. The design gives 6 times 56 equals 336 expected daily files. Adjacent windows are not independent replications because accounts can recur.",
+      "source": "study.json; outputs/study/collection_inventory.csv",
+      "section": "main",
+      "elements": [
+        {
+          "type": "table",
+          "headers": [
+            "Role",
+            "Communities",
+            "Analysis scope"
+          ],
+          "rows": [
+            [
+              "Superhero rivalry",
+              "r/marvelstudios, r/DC_Cinematic",
+              "Content, networks and participation"
+            ],
+            [
+              "Console rivalry",
+              "r/PS5, r/xbox",
+              "Content, networks and participation"
+            ],
+            [
+              "Comparison audiences",
+              "r/StarWars, r/lotr",
+              "Audience overlap"
+            ]
+          ],
+          "widths": [
+            190,
+            355,
+            319
+          ],
+          "x": 48,
+          "y": 137,
+          "w": 864,
+          "h": 215,
+          "size": 18
+        },
+        {
+          "type": "text",
+          "text": "First window\n3–30 September 2026",
+          "x": 48,
+          "y": 390,
+          "w": 400,
+          "h": 65,
+          "size": 23,
+          "color": "2465A3",
+          "bold": true,
+          "align": "left"
+        },
+        {
+          "type": "text",
+          "text": "Second window\n1–28 October 2026",
+          "x": 510,
+          "y": 390,
+          "w": 400,
+          "h": 65,
+          "size": 23,
+          "color": "C46129",
+          "bold": true,
+          "align": "left"
+        },
+        {
+          "type": "text",
+          "text": "All dates use UTC. Two equal 28-day windows provide 56 observed days.",
+          "x": 48,
+          "y": 470,
+          "w": 864,
+          "h": 43,
+          "size": 17,
+          "color": "586873",
+          "bold": false,
+          "align": "left"
+        }
+      ]
+    },
+    {
+      "title": "Data collection and provenance",
+      "notes": "The Arctic Shift archive API provides the comment records. Collection paginates backwards in batches of up to 100 and keeps records within each declared UTC day. We retry temporary failures with backoff. Timestamp ambiguities and safety-cap exhaustion fail explicitly. Files are installed only after ID, schema and time-range checks. New downloads record retrieval metadata and SHA-256 checksums. Some inherited caches do not have historical request manifests. Complete expected files do not prove complete coverage of all Reddit activity.",
+      "source": "src/study_data.py; outputs/study/collection_inventory.csv; https://github.com/ArthurHeitmann/arctic_shift/blob/master/api/README.md",
+      "section": "main",
+      "elements": [
+        {
+          "type": "text",
+          "text": "Arctic Shift archive API, collected in daily UTC batches",
+          "x": 48,
+          "y": 137,
+          "w": 850,
+          "h": 60,
+          "size": 23,
+          "color": "173449",
+          "bold": false,
+          "align": "left"
+        },
+        {
+          "type": "text",
+          "text": "Backward pagination, duplicate-ID checks and retry handling",
+          "x": 48,
+          "y": 209,
+          "w": 850,
+          "h": 60,
+          "size": 23,
+          "color": "173449",
+          "bold": false,
+          "align": "left"
+        },
+        {
+          "type": "text",
+          "text": "Validate timestamps and schema before accepting each daily file",
+          "x": 48,
+          "y": 281,
+          "w": 850,
+          "h": 60,
+          "size": 23,
+          "color": "173449",
+          "bold": false,
+          "align": "left"
+        },
+        {
+          "type": "text",
+          "text": "336 expected daily files pass coverage checks",
+          "x": 48,
+          "y": 353,
+          "w": 850,
+          "h": 60,
+          "size": 23,
+          "color": "173449",
+          "bold": false,
+          "align": "left"
+        },
+        {
+          "type": "text",
+          "text": "Coverage describes the retrieved archive. New-download checksums support provenance.",
+          "x": 48,
+          "y": 470,
+          "w": 864,
+          "h": 43,
+          "size": 17,
+          "color": "586873",
+          "bold": false,
+          "align": "left"
+        }
+      ]
+    },
+    {
+      "title": "Preprocessing preserves different denominators",
+      "notes": "Participation retains identifiable accounts after missing or deleted author and documented bot-list exclusions, even if their text is unusable. Content analysis additionally removes missing or removed bodies, duplicate IDs, URL clutter, very short text and text without Latin letters. This is not a comprehensive language classifier or bot detector. Parent authors are resolved from local comments and, when necessary, comment or submission ID lookups, including parents outside the study window. Pseudonyms remain consistent across communities. Raw text and account-level derivatives stay local.",
+      "source": "src/study_data.py; src/study_analysis.py; src/study_network.py; outputs/study/tables/*_corpus.csv",
+      "section": "main",
+      "elements": [
+        {
+          "type": "text",
+          "text": "Participation dataset",
+          "x": 48,
+          "y": 140,
+          "w": 405,
+          "h": 40,
+          "size": 25,
+          "color": "2465A3",
+          "bold": true,
+          "align": "left"
+        },
+        {
+          "type": "text",
+          "text": "Identifiable accounts after documented exclusions",
+          "x": 48,
+          "y": 205,
+          "w": 400,
+          "h": 58,
+          "size": 21,
+          "color": "173449",
+          "bold": false,
+          "align": "left"
+        },
+        {
+          "type": "text",
+          "text": "Includes comments with unusable text",
+          "x": 48,
+          "y": 275,
+          "w": 400,
+          "h": 58,
+          "size": 21,
+          "color": "173449",
+          "bold": false,
+          "align": "left"
+        },
+        {
+          "type": "text",
+          "text": "Supports overlap and activity comparisons",
+          "x": 48,
+          "y": 345,
+          "w": 400,
+          "h": 58,
+          "size": 21,
+          "color": "173449",
+          "bold": false,
+          "align": "left"
+        },
+        {
+          "type": "text",
+          "text": "Content dataset",
+          "x": 510,
+          "y": 140,
+          "w": 402,
+          "h": 40,
+          "size": 25,
+          "color": "C46129",
+          "bold": true,
+          "align": "left"
+        },
+        {
+          "type": "text",
+          "text": "Cleaned comment text",
+          "x": 510,
+          "y": 205,
+          "w": 400,
+          "h": 58,
+          "size": 21,
+          "color": "173449",
+          "bold": false,
+          "align": "left"
+        },
+        {
+          "type": "text",
+          "text": "852,512 usable comments from the four rivalry communities",
+          "x": 510,
+          "y": 275,
+          "w": 400,
+          "h": 58,
+          "size": 21,
+          "color": "173449",
+          "bold": false,
+          "align": "left"
+        },
+        {
+          "type": "text",
+          "text": "Supports mentions, sentiment and topics",
+          "x": 510,
+          "y": 345,
+          "w": 400,
+          "h": 58,
+          "size": 21,
+          "color": "173449",
+          "bold": false,
+          "align": "left"
+        },
+        {
+          "type": "text",
+          "text": "Reply-parent resolution is a separate relational step. Consistent pseudonyms support account matching.",
+          "x": 48,
+          "y": 470,
+          "w": 864,
+          "h": 43,
+          "size": 17,
+          "color": "586873",
+          "bold": false,
+          "align": "left"
+        }
+      ]
+    },
+    {
+      "title": "EDA establishes an uneven observed corpus",
+      "notes": "Across six audiences we observe 1,168,638 archive records. The four rivalry communities account for 888,719 raw records, and 852,512 pass content filters. The chart uses raw archive counts, which differ from participation or content counts. Marvel is the largest collected community and lotr the smallest. Unequal activity means we must compare rates and define denominators rather than interpret raw totals as attitudes or popularity. We also check active accounts, weekly activity and missing parents.",
+      "source": "outputs/study/collection_inventory.csv; outputs/study/tables/*_corpus.csv",
+      "section": "main",
+      "elements": [
+        {
+          "type": "line",
+          "x": 233.0,
+          "y": 145,
+          "x2": 233.0,
+          "y2": 428,
+          "color": "E3E8EB",
+          "arrow": false,
+          "width": 0.7
+        },
+        {
+          "type": "text",
+          "text": "0",
+          "x": 205.0,
+          "y": 435,
+          "w": 62,
+          "h": 23,
+          "size": 13,
+          "color": "586873",
+          "bold": false,
+          "align": "center"
+        },
+        {
+          "type": "line",
+          "x": 407.0,
+          "y": 145,
+          "x2": 407.0,
+          "y2": 428,
+          "color": "E3E8EB",
+          "arrow": false,
+          "width": 0.7
+        },
+        {
+          "type": "text",
+          "text": "100000",
+          "x": 379.0,
+          "y": 435,
+          "w": 62,
+          "h": 23,
+          "size": 13,
+          "color": "586873",
+          "bold": false,
+          "align": "center"
+        },
+        {
+          "type": "line",
+          "x": 581.0,
+          "y": 145,
+          "x2": 581.0,
+          "y2": 428,
+          "color": "E3E8EB",
+          "arrow": false,
+          "width": 0.7
+        },
+        {
+          "type": "text",
+          "text": "200000",
+          "x": 553.0,
+          "y": 435,
+          "w": 62,
+          "h": 23,
+          "size": 13,
+          "color": "586873",
+          "bold": false,
+          "align": "center"
+        },
+        {
+          "type": "line",
+          "x": 755.0,
+          "y": 145,
+          "x2": 755.0,
+          "y2": 428,
+          "color": "E3E8EB",
+          "arrow": false,
+          "width": 0.7
+        },
+        {
+          "type": "text",
+          "text": "300000",
+          "x": 727.0,
+          "y": 435,
+          "w": 62,
+          "h": 23,
+          "size": 13,
+          "color": "586873",
+          "bold": false,
+          "align": "center"
+        },
+        {
+          "type": "text",
+          "text": "Marvel",
+          "x": 48,
+          "y": 151.0,
+          "w": 173,
+          "h": 44.666666666666664,
+          "size": 17,
+          "color": "173449",
+          "bold": false,
+          "align": "left"
+        },
+        {
+          "type": "rect",
+          "x": 233,
+          "y": 150.0,
+          "w": 533.43528,
+          "h": 24,
+          "color": "2465A3"
+        },
+        {
+          "type": "text",
+          "text": "306,572",
+          "x": 773.43528,
+          "y": 147.0,
+          "w": 72,
+          "h": 33,
+          "size": 16,
+          "color": "2465A3",
+          "bold": true,
+          "align": "left"
+        },
+        {
+          "type": "text",
+          "text": "DC",
+          "x": 48,
+          "y": 197.66666666666666,
+          "w": 173,
+          "h": 44.666666666666664,
+          "size": 17,
+          "color": "173449",
+          "bold": false,
+          "align": "left"
+        },
+        {
+          "type": "rect",
+          "x": 233,
+          "y": 196.66666666666666,
+          "w": 397.0941,
+          "h": 24,
+          "color": "2465A3"
+        },
+        {
+          "type": "text",
+          "text": "228,215",
+          "x": 637.0941,
+          "y": 193.66666666666666,
+          "w": 72,
+          "h": 33,
+          "size": 16,
+          "color": "2465A3",
+          "bold": true,
+          "align": "left"
+        },
+        {
+          "type": "text",
+          "text": "PS5",
+          "x": 48,
+          "y": 244.33333333333331,
+          "w": 173,
+          "h": 44.666666666666664,
+          "size": 17,
+          "color": "173449",
+          "bold": false,
+          "align": "left"
+        },
+        {
+          "type": "rect",
+          "x": 233,
+          "y": 243.33333333333331,
+          "w": 299.39832,
+          "h": 24,
+          "color": "2465A3"
+        },
+        {
+          "type": "text",
+          "text": "172,068",
+          "x": 539.39832,
+          "y": 240.33333333333331,
+          "w": 72,
+          "h": 33,
+          "size": 16,
+          "color": "2465A3",
+          "bold": true,
+          "align": "left"
+        },
+        {
+          "type": "text",
+          "text": "Xbox",
+          "x": 48,
+          "y": 291.0,
+          "w": 173,
+          "h": 44.666666666666664,
+          "size": 17,
+          "color": "173449",
+          "bold": false,
+          "align": "left"
+        },
+        {
+          "type": "rect",
+          "x": 233,
+          "y": 290.0,
+          "w": 316.44336,
+          "h": 24,
+          "color": "2465A3"
+        },
+        {
+          "type": "text",
+          "text": "181,864",
+          "x": 556.44336,
+          "y": 287.0,
+          "w": 72,
+          "h": 33,
+          "size": 16,
+          "color": "2465A3",
+          "bold": true,
+          "align": "left"
+        },
+        {
+          "type": "text",
+          "text": "StarWars",
+          "x": 48,
+          "y": 337.66666666666663,
+          "w": 173,
+          "h": 44.666666666666664,
+          "size": 17,
+          "color": "173449",
+          "bold": false,
+          "align": "left"
+        },
+        {
+          "type": "rect",
+          "x": 233,
+          "y": 336.66666666666663,
+          "w": 350.27592,
+          "h": 24,
+          "color": "2465A3"
+        },
+        {
+          "type": "text",
+          "text": "201,308",
+          "x": 590.27592,
+          "y": 333.66666666666663,
+          "w": 72,
+          "h": 33,
+          "size": 16,
+          "color": "2465A3",
+          "bold": true,
+          "align": "left"
+        },
+        {
+          "type": "text",
+          "text": "lotr",
+          "x": 48,
+          "y": 384.3333333333333,
+          "w": 173,
+          "h": 44.666666666666664,
+          "size": 17,
+          "color": "173449",
+          "bold": false,
+          "align": "left"
+        },
+        {
+          "type": "rect",
+          "x": 233,
+          "y": 383.3333333333333,
+          "w": 136.78314,
+          "h": 24,
+          "color": "2465A3"
+        },
+        {
+          "type": "text",
+          "text": "78,611",
+          "x": 376.78314,
+          "y": 380.3333333333333,
+          "w": 72,
+          "h": 33,
+          "size": 16,
+          "color": "2465A3",
+          "bold": true,
+          "align": "left"
+        },
+        {
+          "type": "text",
+          "text": "1,168,638 raw archive records across all six communities. Detailed content analysis uses four communities.",
+          "x": 48,
+          "y": 470,
+          "w": 864,
+          "h": 43,
+          "size": 17,
+          "color": "586873",
+          "bold": false,
+          "align": "left"
+        }
+      ],
+      "chart_data": [
+        {
+          "categories": [
+            "Marvel",
+            "DC",
+            "PS5",
+            "Xbox",
+            "StarWars",
+            "lotr"
+          ],
+          "series": [
+            {
+              "name": "Archive records",
+              "color": "2465A3",
+              "values": [
+                306572,
+                228215,
+                172068,
+                181864,
+                201308,
+                78611
+              ]
+            }
+          ],
+          "maximum": 350000,
+          "unit": ""
+        }
+      ]
+    },
+    {
+      "title": "Sampling changes the apparent audience boundary",
+      "notes": "We reran overlap calculations after random comment subsampling and with nested observation durations. For Marvel/DC in the first window, the mean Jaccard overlap with 10 percent of comments is 3.15 percent, compared with 6.78 percent for the full collected window. A shared account can look exclusive if one side of its activity is missed. These seeded experiments show observation sensitivity. They do not exactly reproduce the original pilot sampling design, and the replicate range is not an inferential confidence interval.",
+      "source": "outputs/study/tables/superheroes_sampling.csv; outputs/study/tables/superheroes_overlap.csv; outputs/study/tables/*_duration.csv",
+      "section": "main",
+      "elements": [
+        {
+          "type": "line",
+          "x": 233.0,
+          "y": 145,
+          "x2": 233.0,
+          "y2": 388,
+          "color": "E3E8EB",
+          "arrow": false,
+          "width": 0.7
+        },
+        {
+          "type": "text",
+          "text": "0%",
+          "x": 205.0,
+          "y": 395,
+          "w": 62,
+          "h": 23,
+          "size": 13,
+          "color": "586873",
+          "bold": false,
+          "align": "center"
+        },
+        {
+          "type": "line",
+          "x": 537.5,
+          "y": 145,
+          "x2": 537.5,
+          "y2": 388,
+          "color": "E3E8EB",
+          "arrow": false,
+          "width": 0.7
+        },
+        {
+          "type": "text",
+          "text": "4%",
+          "x": 509.5,
+          "y": 395,
+          "w": 62,
+          "h": 23,
+          "size": 13,
+          "color": "586873",
+          "bold": false,
+          "align": "center"
+        },
+        {
+          "type": "line",
+          "x": 842.0,
+          "y": 145,
+          "x2": 842.0,
+          "y2": 388,
+          "color": "E3E8EB",
+          "arrow": false,
+          "width": 0.7
+        },
+        {
+          "type": "text",
+          "text": "8%",
+          "x": 814.0,
+          "y": 395,
+          "w": 62,
+          "h": 23,
+          "size": 13,
+          "color": "586873",
+          "bold": false,
+          "align": "center"
+        },
+        {
+          "type": "text",
+          "text": "10% retained",
+          "x": 48,
+          "y": 151.0,
+          "w": 173,
+          "h": 58.0,
+          "size": 17,
+          "color": "173449",
+          "bold": false,
+          "align": "left"
+        },
+        {
+          "type": "rect",
+          "x": 233,
+          "y": 150.0,
+          "w": 240.15440656609408,
+          "h": 24,
+          "color": "2465A3"
+        },
+        {
+          "type": "text",
+          "text": "3.15%",
+          "x": 480.15440656609405,
+          "y": 147.0,
+          "w": 72,
+          "h": 33,
+          "size": 16,
+          "color": "2465A3",
+          "bold": true,
+          "align": "left"
+        },
+        {
+          "type": "text",
+          "text": "25% retained",
+          "x": 48,
+          "y": 211.0,
+          "w": 173,
+          "h": 58.0,
+          "size": 17,
+          "color": "173449",
+          "bold": false,
+          "align": "left"
+        },
+        {
+          "type": "rect",
+          "x": 233,
+          "y": 210.0,
+          "w": 348.62304982688744,
+          "h": 24,
+          "color": "2465A3"
+        },
+        {
+          "type": "text",
+          "text": "4.58%",
+          "x": 588.6230498268874,
+          "y": 207.0,
+          "w": 72,
+          "h": 33,
+          "size": 16,
+          "color": "2465A3",
+          "bold": true,
+          "align": "left"
+        },
+        {
+          "type": "text",
+          "text": "50% retained",
+          "x": 48,
+          "y": 271.0,
+          "w": 173,
+          "h": 58.0,
+          "size": 17,
+          "color": "173449",
+          "bold": false,
+          "align": "left"
+        },
+        {
+          "type": "rect",
+          "x": 233,
+          "y": 270.0,
+          "w": 431.8528951467007,
+          "h": 24,
+          "color": "2465A3"
+        },
+        {
+          "type": "text",
+          "text": "5.67%",
+          "x": 671.8528951467007,
+          "y": 267.0,
+          "w": 72,
+          "h": 33,
+          "size": 16,
+          "color": "2465A3",
+          "bold": true,
+          "align": "left"
+        },
+        {
+          "type": "text",
+          "text": "Full window",
+          "x": 48,
+          "y": 331.0,
+          "w": 173,
+          "h": 58.0,
+          "size": 17,
+          "color": "173449",
+          "bold": false,
+          "align": "left"
+        },
+        {
+          "type": "rect",
+          "x": 233,
+          "y": 330.0,
+          "w": 516.2975786587349,
+          "h": 24,
+          "color": "2465A3"
+        },
+        {
+          "type": "text",
+          "text": "6.78%",
+          "x": 756.2975786587349,
+          "y": 327.0,
+          "w": 72,
+          "h": 33,
+          "size": 16,
+          "color": "2465A3",
+          "bold": true,
+          "align": "left"
+        },
+        {
+          "type": "text",
+          "text": "Marvel/DC, first window. Sampling means use five seeded draws below 100% of comments.",
+          "x": 48,
+          "y": 470,
+          "w": 864,
+          "h": 43,
+          "size": 17,
+          "color": "586873",
+          "bold": false,
+          "align": "left"
+        }
+      ],
+      "chart_data": [
+        {
+          "categories": [
+            "10% retained",
+            "25% retained",
+            "50% retained",
+            "Full window"
+          ],
+          "series": [
+            {
+              "name": "Jaccard overlap",
+              "color": "2465A3",
+              "values": [
+                3.1547376888813674,
+                4.5796131340149415,
+                5.67294443542464,
+                6.782234202413595
+              ]
+            }
+          ],
+          "maximum": 8,
+          "unit": "%"
+        }
+      ]
+    },
+    {
+      "title": "How we build a reply network",
+      "notes": "Use this toy example slowly. A replies to B twice, so A to B has weight two. B replies to A once, so B to A has weight one. These are two directed edges representing three reply events. For the undirected Louvain projection, reciprocal weights sum to three. A node is an account. A directed edge links the replier to the parent author. Same-thread presence or shared community participation does not create an edge. Self-replies are excluded and counted. Observed commenters remain nodes even when isolated. Parent-only accounts have an explicit marker.",
+      "source": "src/study_network.py; src/study_network_review.py; MENTOR_STORY.md",
+      "section": "main",
+      "elements": [
+        {
+          "type": "ellipse",
+          "x": 190,
+          "y": 155,
+          "w": 100,
+          "h": 100,
+          "color": "2465A3"
+        },
+        {
+          "type": "text",
+          "text": "A",
+          "x": 190,
+          "y": 173,
+          "w": 100,
+          "h": 65,
+          "size": 40,
+          "color": "FFFFFF",
+          "bold": true,
+          "align": "center"
+        },
+        {
+          "type": "ellipse",
+          "x": 600,
+          "y": 155,
+          "w": 100,
+          "h": 100,
+          "color": "2465A3"
+        },
+        {
+          "type": "text",
+          "text": "B",
+          "x": 600,
+          "y": 173,
+          "w": 100,
+          "h": 65,
+          "size": 40,
+          "color": "FFFFFF",
+          "bold": true,
+          "align": "center"
+        },
+        {
+          "type": "line",
+          "x": 300,
+          "y": 180,
+          "x2": 590,
+          "y2": 180,
+          "color": "2465A3",
+          "arrow": true,
+          "width": 3
+        },
+        {
+          "type": "text",
+          "text": "2 replies",
+          "x": 385,
+          "y": 140,
+          "w": 150,
+          "h": 35,
+          "size": 22,
+          "color": "2465A3",
+          "bold": true,
+          "align": "center"
+        },
+        {
+          "type": "line",
+          "x": 590,
+          "y": 235,
+          "x2": 300,
+          "y2": 235,
+          "color": "C46129",
+          "arrow": true,
+          "width": 3
+        },
+        {
+          "type": "text",
+          "text": "1 reply",
+          "x": 385,
+          "y": 257,
+          "w": 150,
+          "h": 35,
+          "size": 22,
+          "color": "C46129",
+          "bold": true,
+          "align": "center"
+        },
+        {
+          "type": "table",
+          "headers": [
+            "Element",
+            "Operational definition"
+          ],
+          "rows": [
+            [
+              "Node",
+              "An account"
+            ],
+            [
+              "Directed edge",
+              "Replier to parent author"
+            ],
+            [
+              "Weight",
+              "Number of observed replies in that direction"
+            ]
+          ],
+          "widths": [
+            210,
+            654
+          ],
+          "x": 48,
+          "y": 325,
+          "w": 864,
+          "h": 115,
+          "size": 18
+        },
+        {
+          "type": "text",
+          "text": "Toy example: 2 directed edges, 3 reply events. The undirected projection has weight 3.",
+          "x": 48,
+          "y": 470,
+          "w": 864,
+          "h": 43,
+          "size": 17,
+          "color": "586873",
+          "bold": false,
+          "align": "left"
+        }
+      ]
+    },
+    {
+      "title": "Graph definitions and network measures",
+      "notes": "We construct sixteen original networks: four rivalry communities, two windows and two edge definitions. All-reply graphs include replies to original submissions and replies to comments. Comment-only graphs exclude replies to submissions. Degree measures distinct neighbors, strength counts reply events, and weighted PageRank describes incoming prominence. Directed betweenness uses unweighted paths and up to 128 sampled sources. Louvain uses the undirected reciprocal-sum graph. Reciprocity, components and k-core provide additional structure. Reply frequency is not interpreted as a distance.",
+      "source": "src/study_network.py; outputs/study/tables/*_networks.csv",
+      "section": "main",
+      "elements": [
+        {
+          "type": "text",
+          "text": "16 networks = 4 communities × 2 windows × 2 definitions",
+          "x": 48,
+          "y": 130,
+          "w": 864,
+          "h": 55,
+          "size": 26,
+          "color": "2465A3",
+          "bold": true,
+          "align": "left"
+        },
+        {
+          "type": "table",
+          "headers": [
+            "Measure",
+            "What it describes"
+          ],
+          "rows": [
+            [
+              "Degree and strength",
+              "Distinct reply partners and total reply events"
+            ],
+            [
+              "Weighted PageRank",
+              "Prominence through incoming reply links"
+            ],
+            [
+              "Betweenness",
+              "Potential connectors along directed shortest paths"
+            ],
+            [
+              "Louvain modularity",
+              "Organization in the undirected weighted projection"
+            ],
+            [
+              "Components and reciprocity",
+              "Connectivity and mutual reply relationships"
+            ]
+          ],
+          "widths": [
+            270,
+            594
+          ],
+          "x": 48,
+          "y": 205,
+          "w": 864,
+          "h": 240,
+          "size": 18
+        },
+        {
+          "type": "text",
+          "text": "All replies and comment-only replies test how thread starters affect apparent connectivity.",
+          "x": 48,
+          "y": 470,
+          "w": 864,
+          "h": 43,
+          "size": 17,
+          "color": "586873",
+          "bold": false,
+          "align": "left"
+        }
+      ]
+    },
+    {
+      "title": "Gephi analysis and verification",
+      "notes": "Gephi serves two purposes: inspecting exported graphs and visualizing their structure. The official Gephi Toolkit imports the graph, verifies counts and degrees, recomputes weighted PageRank, and saves and reopens native projects. We have eight individual-community projects and four combined second-window projects. The FULL workspace retains the original graph. The FOCUS workspace applies a display filter and ForceAtlas2. Numerical study measures come from full graphs. A separate algorithm reconstructs all sixteen original graphs from raw parent-author joins and confirms exact edges and weights.",
+      "source": "tools/GephiStudy.java; tools/build_gephi.py; tools/build_combined_gephi.py; outputs/study/network_review/edge_audit.csv; outputs/study/gephi_validation.csv; GEPHI_GUIDE.md",
+      "section": "main",
+      "elements": [
+        {
+          "type": "table",
+          "headers": [
+            "Purpose",
+            "What we do"
+          ],
+          "rows": [
+            [
+              "Verify the export",
+              "Check node, edge and degree counts after import"
+            ],
+            [
+              "Inspect full structure",
+              "Retain a FULL workspace with original attributes"
+            ],
+            [
+              "Create readable views",
+              "Use a separate FOCUS workspace and ForceAtlas2"
+            ],
+            [
+              "Preserve the analysis",
+              "Save and reopen native .gephi projects"
+            ]
+          ],
+          "widths": [
+            250,
+            614
+          ],
+          "x": 48,
+          "y": 137,
+          "w": 864,
+          "h": 260,
+          "size": 21
+        },
+        {
+          "type": "text",
+          "text": "12 native Gephi projects are available. Independent raw-record reconstruction verifies all 16 original graphs.",
+          "x": 48,
+          "y": 470,
+          "w": 864,
+          "h": 43,
+          "size": 17,
+          "color": "586873",
+          "bold": false,
+          "align": "left"
+        }
+      ]
+    },
+    {
+      "title": "Gephi view of Marvel and DC",
+      "notes": "This is the combined second-window comment-reply network for superheroes. The full graph has 61,356 nodes and 138,992 directed edges. The display has 782 nodes and 2,801 edges. Blue and orange describe first-window participation in only one side, green describes participation in both, and gray indicates no observed first-window participation. These are prior participation categories, not Louvain classes or fan allegiance. Node size uses log-scaled full incoming strength. The display selects prominent accounts and repeated interactions. Visually concentrated colors coexist with connections, but layout distances and the display composition cannot establish population segregation or exceptional brokerage. Numerical mixing follows later.",
+      "source": "outputs/study/figures/gephi_combined_superheroes_oct_comment_replies.png; outputs/study/network_review/combined_exports.csv; tools/GephiStudy.java",
+      "section": "main",
+      "elements": [
+        {
+          "type": "image",
+          "path": "outputs/study/figures/gephi_combined_superheroes_oct_comment_replies.png",
+          "x": 48,
+          "y": 113,
+          "w": 540,
+          "h": 345
+        },
+        {
+          "type": "text",
+          "text": "Prior participation",
+          "x": 623,
+          "y": 130,
+          "w": 290,
+          "h": 35,
+          "size": 24,
+          "color": "173449",
+          "bold": true,
+          "align": "left"
+        },
+        {
+          "type": "text",
+          "text": "Marvel-only",
+          "x": 623,
+          "y": 185,
+          "w": 285,
+          "h": 35,
+          "size": 22,
+          "color": "2465A3",
+          "bold": true,
+          "align": "left"
+        },
+        {
+          "type": "text",
+          "text": "DC-only",
+          "x": 623,
+          "y": 228,
+          "w": 285,
+          "h": 35,
+          "size": 22,
+          "color": "C46129",
+          "bold": true,
+          "align": "left"
+        },
+        {
+          "type": "text",
+          "text": "Both",
+          "x": 623,
+          "y": 271,
+          "w": 285,
+          "h": 35,
+          "size": 22,
+          "color": "258576",
+          "bold": true,
+          "align": "left"
+        },
+        {
+          "type": "text",
+          "text": "Unobserved",
+          "x": 623,
+          "y": 314,
+          "w": 285,
+          "h": 35,
+          "size": 22,
+          "color": "999999",
+          "bold": true,
+          "align": "left"
+        },
+        {
+          "type": "text",
+          "text": "Displayed\n782 nodes   2,801 edges",
+          "x": 623,
+          "y": 376,
+          "w": 285,
+          "h": 70,
+          "size": 21,
+          "color": "173449",
+          "bold": false,
+          "align": "left"
+        },
+        {
+          "type": "text",
+          "text": "October comment replies. Full graph: 61,356 nodes and 138,992 directed edges. Display selection limits interpretation.",
+          "x": 48,
+          "y": 470,
+          "w": 864,
+          "h": 43,
+          "size": 17,
+          "color": "586873",
+          "bold": false,
+          "align": "left"
+        }
+      ]
+    },
+    {
+      "title": "Gephi view of PS5 and Xbox",
+      "notes": "This is the combined second-window comment-reply network for consoles. The full graph has 50,692 nodes and 85,515 directed edges. The display has 577 nodes and 1,058 edges. Blue and orange describe first-window participation in only one side, green describes participation in both, and gray indicates no observed first-window participation. These are prior participation categories, not Louvain classes or fan allegiance. Node size uses log-scaled full incoming strength. The display selects prominent accounts and repeated interactions. Visually concentrated colors coexist with connections, but layout distances and the display composition cannot establish population segregation or exceptional brokerage. Numerical mixing follows later.",
+      "source": "outputs/study/figures/gephi_combined_consoles_oct_comment_replies.png; outputs/study/network_review/combined_exports.csv; tools/GephiStudy.java",
+      "section": "main",
+      "elements": [
+        {
+          "type": "image",
+          "path": "outputs/study/figures/gephi_combined_consoles_oct_comment_replies.png",
+          "x": 48,
+          "y": 113,
+          "w": 540,
+          "h": 345
+        },
+        {
+          "type": "text",
+          "text": "Prior participation",
+          "x": 623,
+          "y": 130,
+          "w": 290,
+          "h": 35,
+          "size": 24,
+          "color": "173449",
+          "bold": true,
+          "align": "left"
+        },
+        {
+          "type": "text",
+          "text": "PS5-only",
+          "x": 623,
+          "y": 185,
+          "w": 285,
+          "h": 35,
+          "size": 22,
+          "color": "2465A3",
+          "bold": true,
+          "align": "left"
+        },
+        {
+          "type": "text",
+          "text": "Xbox-only",
+          "x": 623,
+          "y": 228,
+          "w": 285,
+          "h": 35,
+          "size": 22,
+          "color": "C46129",
+          "bold": true,
+          "align": "left"
+        },
+        {
+          "type": "text",
+          "text": "Both",
+          "x": 623,
+          "y": 271,
+          "w": 285,
+          "h": 35,
+          "size": 22,
+          "color": "258576",
+          "bold": true,
+          "align": "left"
+        },
+        {
+          "type": "text",
+          "text": "Unobserved",
+          "x": 623,
+          "y": 314,
+          "w": 285,
+          "h": 35,
+          "size": 22,
+          "color": "999999",
+          "bold": true,
+          "align": "left"
+        },
+        {
+          "type": "text",
+          "text": "Displayed\n577 nodes   1,058 edges",
+          "x": 623,
+          "y": 376,
+          "w": 285,
+          "h": 70,
+          "size": 21,
+          "color": "173449",
+          "bold": false,
+          "align": "left"
+        },
+        {
+          "type": "text",
+          "text": "October comment replies. Full graph: 50,692 nodes and 85,515 directed edges. Display selection limits interpretation.",
+          "x": 48,
+          "y": 470,
+          "w": 864,
+          "h": 43,
+          "size": 17,
+          "color": "586873",
+          "bold": false,
+          "align": "left"
+        }
+      ]
+    },
+    {
+      "title": "Thread starters explain much of the connectivity",
+      "notes": "This chart compares the percentage of nodes in the largest weak component under the two graph definitions. A weak component ignores direction when assessing connectivity. The denominator retains all observed commenters, including isolates. In September Xbox the component falls from 98.61 percent in the all-reply graph to 53.33 percent after removing replies to original posts. Across communities, all-reply coverage is approximately 96–99 percent, versus 53–72 percent for comment-only graphs. This identifies thread architecture as an important explanation for apparent cohesion.",
+      "source": "outputs/study/tables/superheroes_networks.csv; outputs/study/tables/consoles_networks.csv",
+      "section": "main",
+      "elements": [
+        {
+          "type": "line",
+          "x": 198.0,
+          "y": 145,
+          "x2": 198.0,
+          "y2": 436,
+          "color": "E3E8EB",
+          "arrow": false,
+          "width": 0.7
+        },
+        {
+          "type": "text",
+          "text": "0%",
+          "x": 170.0,
+          "y": 443,
+          "w": 62,
+          "h": 23,
+          "size": 13,
+          "color": "586873",
+          "bold": false,
+          "align": "center"
+        },
+        {
+          "type": "line",
+          "x": 520.0,
+          "y": 145,
+          "x2": 520.0,
+          "y2": 436,
+          "color": "E3E8EB",
+          "arrow": false,
+          "width": 0.7
+        },
+        {
+          "type": "text",
+          "text": "50%",
+          "x": 492.0,
+          "y": 443,
+          "w": 62,
+          "h": 23,
+          "size": 13,
+          "color": "586873",
+          "bold": false,
+          "align": "center"
+        },
+        {
+          "type": "line",
+          "x": 842.0,
+          "y": 145,
+          "x2": 842.0,
+          "y2": 436,
+          "color": "E3E8EB",
+          "arrow": false,
+          "width": 0.7
+        },
+        {
+          "type": "text",
+          "text": "100%",
+          "x": 814.0,
+          "y": 443,
+          "w": 62,
+          "h": 23,
+          "size": 13,
+          "color": "586873",
+          "bold": false,
+          "align": "center"
+        },
+        {
+          "type": "text",
+          "text": "Marvel Sep",
+          "x": 48,
+          "y": 151.0,
+          "w": 138,
+          "h": 34.0,
+          "size": 17,
+          "color": "173449",
+          "bold": false,
+          "align": "left"
+        },
+        {
+          "type": "rect",
+          "x": 198,
+          "y": 150.0,
+          "w": 617.1270838806151,
+          "h": 13.5,
+          "color": "2465A3"
+        },
+        {
+          "type": "text",
+          "text": "95.8%",
+          "x": 822.1270838806151,
+          "y": 147.0,
+          "w": 72,
+          "h": 22.5,
+          "size": 16,
+          "color": "2465A3",
+          "bold": true,
+          "align": "left"
+        },
+        {
+          "type": "rect",
+          "x": 198,
+          "y": 166.5,
+          "w": 381.9330405237425,
+          "h": 13.5,
+          "color": "C46129"
+        },
+        {
+          "type": "text",
+          "text": "59.3%",
+          "x": 586.9330405237424,
+          "y": 163.5,
+          "w": 72,
+          "h": 22.5,
+          "size": 16,
+          "color": "C46129",
+          "bold": true,
+          "align": "left"
+        },
+        {
+          "type": "text",
+          "text": "Marvel Oct",
+          "x": 48,
+          "y": 187.0,
+          "w": 138,
+          "h": 34.0,
+          "size": 17,
+          "color": "173449",
+          "bold": false,
+          "align": "left"
+        },
+        {
+          "type": "rect",
+          "x": 198,
+          "y": 186.0,
+          "w": 618.522535390894,
+          "h": 13.5,
+          "color": "2465A3"
+        },
+        {
+          "type": "text",
+          "text": "96.0%",
+          "x": 823.522535390894,
+          "y": 183.0,
+          "w": 72,
+          "h": 22.5,
+          "size": 16,
+          "color": "2465A3",
+          "bold": true,
+          "align": "left"
+        },
+        {
+          "type": "rect",
+          "x": 198,
+          "y": 202.5,
+          "w": 417.9078812691914,
+          "h": 13.5,
+          "color": "C46129"
+        },
+        {
+          "type": "text",
+          "text": "64.9%",
+          "x": 622.9078812691914,
+          "y": 199.5,
+          "w": 72,
+          "h": 22.5,
+          "size": 16,
+          "color": "C46129",
+          "bold": true,
+          "align": "left"
+        },
+        {
+          "type": "text",
+          "text": "DC Sep",
+          "x": 48,
+          "y": 223.0,
+          "w": 138,
+          "h": 34.0,
+          "size": 17,
+          "color": "173449",
+          "bold": false,
+          "align": "left"
+        },
+        {
+          "type": "rect",
+          "x": 198,
+          "y": 222.0,
+          "w": 634.9496610935382,
+          "h": 13.5,
+          "color": "2465A3"
+        },
+        {
+          "type": "text",
+          "text": "98.6%",
+          "x": 839.9496610935382,
+          "y": 219.0,
+          "w": 72,
+          "h": 22.5,
+          "size": 16,
+          "color": "2465A3",
+          "bold": true,
+          "align": "left"
+        },
+        {
+          "type": "rect",
+          "x": 198,
+          "y": 238.5,
+          "w": 416.38895492365367,
+          "h": 13.5,
+          "color": "C46129"
+        },
+        {
+          "type": "text",
+          "text": "64.7%",
+          "x": 621.3889549236537,
+          "y": 235.5,
+          "w": 72,
+          "h": 22.5,
+          "size": 16,
+          "color": "C46129",
+          "bold": true,
+          "align": "left"
+        },
+        {
+          "type": "text",
+          "text": "DC Oct",
+          "x": 48,
+          "y": 259.0,
+          "w": 138,
+          "h": 34.0,
+          "size": 17,
+          "color": "173449",
+          "bold": false,
+          "align": "left"
+        },
+        {
+          "type": "rect",
+          "x": 198,
+          "y": 258.0,
+          "w": 639.0732991744948,
+          "h": 13.5,
+          "color": "2465A3"
+        },
+        {
+          "type": "text",
+          "text": "99.2%",
+          "x": 844.0732991744948,
+          "y": 255.0,
+          "w": 72,
+          "h": 22.5,
+          "size": 16,
+          "color": "2465A3",
+          "bold": true,
+          "align": "left"
+        },
+        {
+          "type": "rect",
+          "x": 198,
+          "y": 274.5,
+          "w": 446.38125314002724,
+          "h": 13.5,
+          "color": "C46129"
+        },
+        {
+          "type": "text",
+          "text": "69.3%",
+          "x": 651.3812531400272,
+          "y": 271.5,
+          "w": 72,
+          "h": 22.5,
+          "size": 16,
+          "color": "C46129",
+          "bold": true,
+          "align": "left"
+        },
+        {
+          "type": "text",
+          "text": "PS5 Sep",
+          "x": 48,
+          "y": 295.0,
+          "w": 138,
+          "h": 34.0,
+          "size": 17,
+          "color": "173449",
+          "bold": false,
+          "align": "left"
+        },
+        {
+          "type": "rect",
+          "x": 198,
+          "y": 294.0,
+          "w": 621.9141539995017,
+          "h": 13.5,
+          "color": "2465A3"
+        },
+        {
+          "type": "text",
+          "text": "96.6%",
+          "x": 826.9141539995017,
+          "y": 291.0,
+          "w": 72,
+          "h": 22.5,
+          "size": 16,
+          "color": "2465A3",
+          "bold": true,
+          "align": "left"
+        },
+        {
+          "type": "rect",
+          "x": 198,
+          "y": 310.5,
+          "w": 447.7546734145184,
+          "h": 13.5,
+          "color": "C46129"
+        },
+        {
+          "type": "text",
+          "text": "69.5%",
+          "x": 652.7546734145184,
+          "y": 307.5,
+          "w": 72,
+          "h": 22.5,
+          "size": 16,
+          "color": "C46129",
+          "bold": true,
+          "align": "left"
+        },
+        {
+          "type": "text",
+          "text": "PS5 Oct",
+          "x": 48,
+          "y": 331.0,
+          "w": 138,
+          "h": 34.0,
+          "size": 17,
+          "color": "173449",
+          "bold": false,
+          "align": "left"
+        },
+        {
+          "type": "rect",
+          "x": 198,
+          "y": 330.0,
+          "w": 624.2877107701655,
+          "h": 13.5,
+          "color": "2465A3"
+        },
+        {
+          "type": "text",
+          "text": "96.9%",
+          "x": 829.2877107701655,
+          "y": 327.0,
+          "w": 72,
+          "h": 22.5,
+          "size": 16,
+          "color": "2465A3",
+          "bold": true,
+          "align": "left"
+        },
+        {
+          "type": "rect",
+          "x": 198,
+          "y": 346.5,
+          "w": 461.5973820981713,
+          "h": 13.5,
+          "color": "C46129"
+        },
+        {
+          "type": "text",
+          "text": "71.7%",
+          "x": 666.5973820981712,
+          "y": 343.5,
+          "w": 72,
+          "h": 22.5,
+          "size": 16,
+          "color": "C46129",
+          "bold": true,
+          "align": "left"
+        },
+        {
+          "type": "text",
+          "text": "Xbox Sep",
+          "x": 48,
+          "y": 367.0,
+          "w": 138,
+          "h": 34.0,
+          "size": 17,
+          "color": "173449",
+          "bold": false,
+          "align": "left"
+        },
+        {
+          "type": "rect",
+          "x": 198,
+          "y": 366.0,
+          "w": 635.0171187037689,
+          "h": 13.5,
+          "color": "2465A3"
+        },
+        {
+          "type": "text",
+          "text": "98.6%",
+          "x": 840.0171187037689,
+          "y": 363.0,
+          "w": 72,
+          "h": 22.5,
+          "size": 16,
+          "color": "2465A3",
+          "bold": true,
+          "align": "left"
+        },
+        {
+          "type": "rect",
+          "x": 198,
+          "y": 382.5,
+          "w": 343.435499092559,
+          "h": 13.5,
+          "color": "C46129"
+        },
+        {
+          "type": "text",
+          "text": "53.3%",
+          "x": 548.435499092559,
+          "y": 379.5,
+          "w": 72,
+          "h": 22.5,
+          "size": 16,
+          "color": "C46129",
+          "bold": true,
+          "align": "left"
+        },
+        {
+          "type": "text",
+          "text": "Xbox Oct",
+          "x": 48,
+          "y": 403.0,
+          "w": 138,
+          "h": 34.0,
+          "size": 17,
+          "color": "173449",
+          "bold": false,
+          "align": "left"
+        },
+        {
+          "type": "rect",
+          "x": 198,
+          "y": 402.0,
+          "w": 635.9615164520743,
+          "h": 13.5,
+          "color": "2465A3"
+        },
+        {
+          "type": "text",
+          "text": "98.8%",
+          "x": 840.9615164520743,
+          "y": 399.0,
+          "w": 72,
+          "h": 22.5,
+          "size": 16,
+          "color": "2465A3",
+          "bold": true,
+          "align": "left"
+        },
+        {
+          "type": "rect",
+          "x": 198,
+          "y": 418.5,
+          "w": 391.9938219394697,
+          "h": 13.5,
+          "color": "C46129"
+        },
+        {
+          "type": "text",
+          "text": "60.9%",
+          "x": 596.9938219394696,
+          "y": 415.5,
+          "w": 72,
+          "h": 22.5,
+          "size": 16,
+          "color": "C46129",
+          "bold": true,
+          "align": "left"
+        },
+        {
+          "type": "text",
+          "text": "All replies",
+          "x": 198,
+          "y": 110,
+          "w": 280,
+          "h": 28,
+          "size": 17,
+          "color": "2465A3",
+          "bold": true,
+          "align": "left"
+        },
+        {
+          "type": "text",
+          "text": "Comment replies only",
+          "x": 488,
+          "y": 110,
+          "w": 280,
+          "h": 28,
+          "size": 17,
+          "color": "C46129",
+          "bold": true,
+          "align": "left"
+        },
+        {
+          "type": "text",
+          "text": "Largest weak component as a percentage of nodes. Removing replies to posts changes the network substantially.",
+          "x": 48,
+          "y": 470,
+          "w": 864,
+          "h": 43,
+          "size": 17,
+          "color": "586873",
+          "bold": false,
+          "align": "left"
+        }
+      ],
+      "chart_data": [
+        {
+          "categories": [
+            "Marvel Sep",
+            "Marvel Oct",
+            "DC Sep",
+            "DC Oct",
+            "PS5 Sep",
+            "PS5 Oct",
+            "Xbox Sep",
+            "Xbox Oct"
+          ],
+          "series": [
+            {
+              "name": "All replies",
+              "color": "2465A3",
+              "values": [
+                95.82718693798371,
+                96.04387195510776,
+                98.59466787166743,
+                99.23498434386565,
+                96.57052080737603,
+                96.93908552331763,
+                98.60514265586474,
+                98.75178826895565
+              ]
+            },
+            {
+              "name": "Comment replies only",
+              "color": "C46129",
+              "values": [
+                59.30637275213392,
+                64.89252814738997,
+                64.65667001920087,
+                69.31385918323404,
+                69.52712320101217,
+                71.67661212704523,
+                53.328493647912886,
+                60.868605891222
+              ]
+            }
+          ],
+          "maximum": 100,
+          "unit": "%"
+        }
+      ]
+    },
+    {
+      "title": "Matched comparisons qualify the connector claim",
+      "notes": "Some unadjusted top-betweenness selections contain more shared accounts than their community baseline. The question is whether this remains surprising among accounts with similar activity and degree. We compare top-20 positive-betweenness selections, including ties, to random selections preserving matching strata. Across 32 matching, graph and period comparisons, none passes the Holm-adjusted 0.05 enrichment threshold. This does not establish equivalence or no connector role. Approximate betweenness, coarse matching and small selected sets limit power. The displayed chart shows all-reply networks with activity-and-degree matching.",
+      "source": "outputs/study/advanced/matched_connectors.csv; src/study_advanced.py",
+      "section": "main",
+      "elements": [
+        {
+          "type": "line",
+          "x": 198.0,
+          "y": 145,
+          "x2": 198.0,
+          "y2": 436,
+          "color": "E3E8EB",
+          "arrow": false,
+          "width": 0.7
+        },
+        {
+          "type": "text",
+          "text": "0%",
+          "x": 170.0,
+          "y": 443,
+          "w": 62,
+          "h": 23,
+          "size": 13,
+          "color": "586873",
+          "bold": false,
+          "align": "center"
+        },
+        {
+          "type": "line",
+          "x": 520.0,
+          "y": 145,
+          "x2": 520.0,
+          "y2": 436,
+          "color": "E3E8EB",
+          "arrow": false,
+          "width": 0.7
+        },
+        {
+          "type": "text",
+          "text": "50%",
+          "x": 492.0,
+          "y": 443,
+          "w": 62,
+          "h": 23,
+          "size": 13,
+          "color": "586873",
+          "bold": false,
+          "align": "center"
+        },
+        {
+          "type": "line",
+          "x": 842.0,
+          "y": 145,
+          "x2": 842.0,
+          "y2": 436,
+          "color": "E3E8EB",
+          "arrow": false,
+          "width": 0.7
+        },
+        {
+          "type": "text",
+          "text": "100%",
+          "x": 814.0,
+          "y": 443,
+          "w": 62,
+          "h": 23,
+          "size": 13,
+          "color": "586873",
+          "bold": false,
+          "align": "center"
+        },
+        {
+          "type": "text",
+          "text": "Marvel Sep",
+          "x": 48,
+          "y": 151.0,
+          "w": 138,
+          "h": 34.0,
+          "size": 17,
+          "color": "173449",
+          "bold": false,
+          "align": "left"
+        },
+        {
+          "type": "rect",
+          "x": 198,
+          "y": 150.0,
+          "w": 161.0,
+          "h": 13.5,
+          "color": "2465A3"
+        },
+        {
+          "type": "text",
+          "text": "25.0%",
+          "x": 366.0,
+          "y": 147.0,
+          "w": 72,
+          "h": 22.5,
+          "size": 16,
+          "color": "2465A3",
+          "bold": true,
+          "align": "left"
+        },
+        {
+          "type": "rect",
+          "x": 198,
+          "y": 166.5,
+          "w": 127.09934038316392,
+          "h": 13.5,
+          "color": "C46129"
+        },
+        {
+          "type": "text",
+          "text": "19.7%",
+          "x": 332.0993403831639,
+          "y": 163.5,
+          "w": 72,
+          "h": 22.5,
+          "size": 16,
+          "color": "C46129",
+          "bold": true,
+          "align": "left"
+        },
+        {
+          "type": "text",
+          "text": "Marvel Oct",
+          "x": 48,
+          "y": 187.0,
+          "w": 138,
+          "h": 34.0,
+          "size": 17,
+          "color": "173449",
+          "bold": false,
+          "align": "left"
+        },
+        {
+          "type": "rect",
+          "x": 198,
+          "y": 186.0,
+          "w": 96.6,
+          "h": 13.5,
+          "color": "2465A3"
+        },
+        {
+          "type": "text",
+          "text": "15.0%",
+          "x": 301.6,
+          "y": 183.0,
+          "w": 72,
+          "h": 22.5,
+          "size": 16,
+          "color": "2465A3",
+          "bold": true,
+          "align": "left"
+        },
+        {
+          "type": "rect",
+          "x": 198,
+          "y": 202.5,
+          "w": 114.05018518518517,
+          "h": 13.5,
+          "color": "C46129"
+        },
+        {
+          "type": "text",
+          "text": "17.7%",
+          "x": 319.05018518518517,
+          "y": 199.5,
+          "w": 72,
+          "h": 22.5,
+          "size": 16,
+          "color": "C46129",
+          "bold": true,
+          "align": "left"
+        },
+        {
+          "type": "text",
+          "text": "DC Sep",
+          "x": 48,
+          "y": 223.0,
+          "w": 138,
+          "h": 34.0,
+          "size": 17,
+          "color": "173449",
+          "bold": false,
+          "align": "left"
+        },
+        {
+          "type": "rect",
+          "x": 198,
+          "y": 222.0,
+          "w": 193.2,
+          "h": 13.5,
+          "color": "2465A3"
+        },
+        {
+          "type": "text",
+          "text": "30.0%",
+          "x": 398.2,
+          "y": 219.0,
+          "w": 72,
+          "h": 22.5,
+          "size": 16,
+          "color": "2465A3",
+          "bold": true,
+          "align": "left"
+        },
+        {
+          "type": "rect",
+          "x": 198,
+          "y": 238.5,
+          "w": 172.55380116959063,
+          "h": 13.5,
+          "color": "C46129"
+        },
+        {
+          "type": "text",
+          "text": "26.8%",
+          "x": 377.55380116959066,
+          "y": 235.5,
+          "w": 72,
+          "h": 22.5,
+          "size": 16,
+          "color": "C46129",
+          "bold": true,
+          "align": "left"
+        },
+        {
+          "type": "text",
+          "text": "DC Oct",
+          "x": 48,
+          "y": 259.0,
+          "w": 138,
+          "h": 34.0,
+          "size": 17,
+          "color": "173449",
+          "bold": false,
+          "align": "left"
+        },
+        {
+          "type": "rect",
+          "x": 198,
+          "y": 258.0,
+          "w": 96.6,
+          "h": 13.5,
+          "color": "2465A3"
+        },
+        {
+          "type": "text",
+          "text": "15.0%",
+          "x": 301.6,
+          "y": 255.0,
+          "w": 72,
+          "h": 22.5,
+          "size": 16,
+          "color": "2465A3",
+          "bold": true,
+          "align": "left"
+        },
+        {
+          "type": "rect",
+          "x": 198,
+          "y": 274.5,
+          "w": 186.315444773958,
+          "h": 13.5,
+          "color": "C46129"
+        },
+        {
+          "type": "text",
+          "text": "28.9%",
+          "x": 391.315444773958,
+          "y": 271.5,
+          "w": 72,
+          "h": 22.5,
+          "size": 16,
+          "color": "C46129",
+          "bold": true,
+          "align": "left"
+        },
+        {
+          "type": "text",
+          "text": "PS5 Sep",
+          "x": 48,
+          "y": 295.0,
+          "w": 138,
+          "h": 34.0,
+          "size": 17,
+          "color": "173449",
+          "bold": false,
+          "align": "left"
+        },
+        {
+          "type": "rect",
+          "x": 198,
+          "y": 294.0,
+          "w": 64.4,
+          "h": 13.5,
+          "color": "2465A3"
+        },
+        {
+          "type": "text",
+          "text": "10.0%",
+          "x": 269.4,
+          "y": 291.0,
+          "w": 72,
+          "h": 22.5,
+          "size": 16,
+          "color": "2465A3",
+          "bold": true,
+          "align": "left"
+        },
+        {
+          "type": "rect",
+          "x": 198,
+          "y": 310.5,
+          "w": 153.58261078998078,
+          "h": 13.5,
+          "color": "C46129"
+        },
+        {
+          "type": "text",
+          "text": "23.8%",
+          "x": 358.5826107899808,
+          "y": 307.5,
+          "w": 72,
+          "h": 22.5,
+          "size": 16,
+          "color": "C46129",
+          "bold": true,
+          "align": "left"
+        },
+        {
+          "type": "text",
+          "text": "PS5 Oct",
+          "x": 48,
+          "y": 331.0,
+          "w": 138,
+          "h": 34.0,
+          "size": 17,
+          "color": "173449",
+          "bold": false,
+          "align": "left"
+        },
+        {
+          "type": "rect",
+          "x": 198,
+          "y": 330.0,
+          "w": 193.2,
+          "h": 13.5,
+          "color": "2465A3"
+        },
+        {
+          "type": "text",
+          "text": "30.0%",
+          "x": 398.2,
+          "y": 327.0,
+          "w": 72,
+          "h": 22.5,
+          "size": 16,
+          "color": "2465A3",
+          "bold": true,
+          "align": "left"
+        },
+        {
+          "type": "rect",
+          "x": 198,
+          "y": 346.5,
+          "w": 221.23829605182738,
+          "h": 13.5,
+          "color": "C46129"
+        },
+        {
+          "type": "text",
+          "text": "34.4%",
+          "x": 426.2382960518274,
+          "y": 343.5,
+          "w": 72,
+          "h": 22.5,
+          "size": 16,
+          "color": "C46129",
+          "bold": true,
+          "align": "left"
+        },
+        {
+          "type": "text",
+          "text": "Xbox Sep",
+          "x": 48,
+          "y": 367.0,
+          "w": 138,
+          "h": 34.0,
+          "size": 17,
+          "color": "173449",
+          "bold": false,
+          "align": "left"
+        },
+        {
+          "type": "rect",
+          "x": 198,
+          "y": 366.0,
+          "w": 193.2,
+          "h": 13.5,
+          "color": "2465A3"
+        },
+        {
+          "type": "text",
+          "text": "30.0%",
+          "x": 398.2,
+          "y": 363.0,
+          "w": 72,
+          "h": 22.5,
+          "size": 16,
+          "color": "2465A3",
+          "bold": true,
+          "align": "left"
+        },
+        {
+          "type": "rect",
+          "x": 198,
+          "y": 382.5,
+          "w": 225.10310457516337,
+          "h": 13.5,
+          "color": "C46129"
+        },
+        {
+          "type": "text",
+          "text": "35.0%",
+          "x": 430.10310457516334,
+          "y": 379.5,
+          "w": 72,
+          "h": 22.5,
+          "size": 16,
+          "color": "C46129",
+          "bold": true,
+          "align": "left"
+        },
+        {
+          "type": "text",
+          "text": "Xbox Oct",
+          "x": 48,
+          "y": 403.0,
+          "w": 138,
+          "h": 34.0,
+          "size": 17,
+          "color": "173449",
+          "bold": false,
+          "align": "left"
+        },
+        {
+          "type": "rect",
+          "x": 198,
+          "y": 402.0,
+          "w": 225.4,
+          "h": 13.5,
+          "color": "2465A3"
+        },
+        {
+          "type": "text",
+          "text": "35.0%",
+          "x": 430.4,
+          "y": 399.0,
+          "w": 72,
+          "h": 22.5,
+          "size": 16,
+          "color": "2465A3",
+          "bold": true,
+          "align": "left"
+        },
+        {
+          "type": "rect",
+          "x": 198,
+          "y": 418.5,
+          "w": 185.9571189279732,
+          "h": 13.5,
+          "color": "C46129"
+        },
+        {
+          "type": "text",
+          "text": "28.9%",
+          "x": 390.95711892797317,
+          "y": 415.5,
+          "w": 72,
+          "h": 22.5,
+          "size": 16,
+          "color": "C46129",
+          "bold": true,
+          "align": "left"
+        },
+        {
+          "type": "text",
+          "text": "Observed among connectors",
+          "x": 198,
+          "y": 110,
+          "w": 280,
+          "h": 28,
+          "size": 17,
+          "color": "2465A3",
+          "bold": true,
+          "align": "left"
+        },
+        {
+          "type": "text",
+          "text": "Matched expectation",
+          "x": 488,
+          "y": 110,
+          "w": 280,
+          "h": 28,
+          "size": 17,
+          "color": "C46129",
+          "bold": true,
+          "align": "left"
+        },
+        {
+          "type": "text",
+          "text": "No enrichment comparison survives Holm adjustment across 32 tests. This is not an equivalence result.",
+          "x": 48,
+          "y": 470,
+          "w": 864,
+          "h": 43,
+          "size": 17,
+          "color": "586873",
+          "bold": false,
+          "align": "left"
+        }
+      ],
+      "chart_data": [
+        {
+          "categories": [
+            "Marvel Sep",
+            "Marvel Oct",
+            "DC Sep",
+            "DC Oct",
+            "PS5 Sep",
+            "PS5 Oct",
+            "Xbox Sep",
+            "Xbox Oct"
+          ],
+          "series": [
+            {
+              "name": "Observed among connectors",
+              "color": "2465A3",
+              "values": [
+                25.0,
+                15.0,
+                30.0,
+                15.0,
+                10.0,
+                30.0,
+                30.0,
+                35.0
+              ]
+            },
+            {
+              "name": "Matched expectation",
+              "color": "C46129",
+              "values": [
+                19.73592241974595,
+                17.709656084656082,
+                26.794068504594815,
+                28.93096968539721,
+                23.84823148912745,
+                34.35377267885519,
+                34.95389822595705,
+                28.875329026082795
+              ]
+            }
+          ],
+          "maximum": 100,
+          "unit": "%"
+        }
+      ]
+    },
+    {
+      "title": "Rival audiences have measurable overlap",
+      "notes": "The pooled 56-day calculation deduplicates accounts across both windows. Marvel/DC shares 8,807 commenters. That is 12.84 percent of Marvel commenters and 22.07 percent of DC commenters. The asymmetry matters because the audience sizes differ. PS5/Xbox shares 4,978 accounts, representing 10.70 and 11.23 percent. Jaccard divides shared accounts by the union. Marvel/DC has the largest Jaccard overlap among the fifteen selected community pairs in each window. This is conditional on our six-community comparison set, not a Reddit-wide ranking.",
+      "source": "outputs/study/tables/superheroes_overlap.csv; outputs/study/tables/consoles_overlap.csv; outputs/study/tables/all_pair_overlap.csv",
+      "section": "main",
+      "elements": [
+        {
+          "type": "table",
+          "headers": [
+            "56-day pair",
+            "Shared accounts",
+            "Shared / A",
+            "Shared / B",
+            "Jaccard"
+          ],
+          "rows": [
+            [
+              "Marvel / DC",
+              "8,807",
+              "12.84%",
+              "22.07%",
+              "8.83%"
+            ],
+            [
+              "PS5 / Xbox",
+              "4,978",
+              "10.70%",
+              "11.23%",
+              "5.80%"
+            ]
+          ],
+          "widths": [
+            230,
+            180,
+            150,
+            150,
+            154
+          ],
+          "x": 48,
+          "y": 137,
+          "w": 864,
+          "h": 177,
+          "size": 21
+        },
+        {
+          "type": "text",
+          "text": "Directional overlap reveals asymmetry",
+          "x": 48,
+          "y": 355,
+          "w": 864,
+          "h": 40,
+          "size": 25,
+          "color": "2465A3",
+          "bold": true,
+          "align": "left"
+        },
+        {
+          "type": "text",
+          "text": "A larger fraction of DC commenters also appears in Marvel than the reverse.",
+          "x": 48,
+          "y": 408,
+          "w": 864,
+          "h": 60,
+          "size": 24,
+          "color": "173449",
+          "bold": false,
+          "align": "left"
+        },
+        {
+          "type": "text",
+          "text": "Threshold: at least one comment in each community. A and B follow the pair order shown.",
+          "x": 48,
+          "y": 470,
+          "w": 864,
+          "h": 43,
+          "size": 17,
+          "color": "586873",
+          "bold": false,
+          "align": "left"
+        }
+      ]
+    },
+    {
+      "title": "Pooled sharing rarely means persistent sharing",
+      "notes": "Persistent sharing means commenting in both communities in each of the two windows. Among all pooled shared accounts, only 1,577 of 8,807 superhero accounts, or 17.9 percent, meet this definition. For consoles it is 945 of 4,978, or 19.0 percent. Most pooled shared accounts qualify in only one window or participate sequentially across the windows without sharing in either individual window. About 36 percent of the first-window shared cohort is shared again in the second, but that uses a different denominator. Do not substitute these percentages for one another.",
+      "source": "outputs/study/advanced/persistence.csv; outputs/study/advanced/transitions.csv",
+      "section": "main",
+      "elements": [
+        {
+          "type": "line",
+          "x": 238.0,
+          "y": 155,
+          "x2": 238.0,
+          "y2": 288,
+          "color": "E3E8EB",
+          "arrow": false,
+          "width": 0.7
+        },
+        {
+          "type": "text",
+          "text": "0%",
+          "x": 210.0,
+          "y": 295,
+          "w": 62,
+          "h": 23,
+          "size": 13,
+          "color": "586873",
+          "bold": false,
+          "align": "center"
+        },
+        {
+          "type": "line",
+          "x": 540.0,
+          "y": 155,
+          "x2": 540.0,
+          "y2": 288,
+          "color": "E3E8EB",
+          "arrow": false,
+          "width": 0.7
+        },
+        {
+          "type": "text",
+          "text": "50%",
+          "x": 512.0,
+          "y": 295,
+          "w": 62,
+          "h": 23,
+          "size": 13,
+          "color": "586873",
+          "bold": false,
+          "align": "center"
+        },
+        {
+          "type": "line",
+          "x": 842.0,
+          "y": 155,
+          "x2": 842.0,
+          "y2": 288,
+          "color": "E3E8EB",
+          "arrow": false,
+          "width": 0.7
+        },
+        {
+          "type": "text",
+          "text": "100%",
+          "x": 814.0,
+          "y": 295,
+          "w": 62,
+          "h": 23,
+          "size": 13,
+          "color": "586873",
+          "bold": false,
+          "align": "center"
+        },
+        {
+          "type": "text",
+          "text": "Marvel / DC",
+          "x": 48,
+          "y": 161.0,
+          "w": 178,
+          "h": 63.0,
+          "size": 17,
+          "color": "173449",
+          "bold": false,
+          "align": "left"
+        },
+        {
+          "type": "rect",
+          "x": 238,
+          "y": 160.0,
+          "w": 108.15351425002838,
+          "h": 24,
+          "color": "258576"
+        },
+        {
+          "type": "text",
+          "text": "17.9%",
+          "x": 353.15351425002837,
+          "y": 157.0,
+          "w": 72,
+          "h": 33,
+          "size": 16,
+          "color": "258576",
+          "bold": true,
+          "align": "left"
+        },
+        {
+          "type": "text",
+          "text": "PS5 / Xbox",
+          "x": 48,
+          "y": 226.0,
+          "w": 178,
+          "h": 63.0,
+          "size": 17,
+          "color": "173449",
+          "bold": false,
+          "align": "left"
+        },
+        {
+          "type": "rect",
+          "x": 238,
+          "y": 225.0,
+          "w": 114.66050622740055,
+          "h": 24,
+          "color": "258576"
+        },
+        {
+          "type": "text",
+          "text": "19.0%",
+          "x": 359.66050622740056,
+          "y": 222.0,
+          "w": 72,
+          "h": 33,
+          "size": 16,
+          "color": "258576",
+          "bold": true,
+          "align": "left"
+        },
+        {
+          "type": "text",
+          "text": "1,577 of 8,807\nMarvel/DC shared accounts",
+          "x": 48,
+          "y": 365,
+          "w": 400,
+          "h": 75,
+          "size": 25,
+          "color": "2465A3",
+          "bold": true,
+          "align": "left"
+        },
+        {
+          "type": "text",
+          "text": "945 of 4,978\nPS5/Xbox shared accounts",
+          "x": 510,
+          "y": 365,
+          "w": 400,
+          "h": 75,
+          "size": 25,
+          "color": "C46129",
+          "bold": true,
+          "align": "left"
+        },
+        {
+          "type": "text",
+          "text": "Persistent means both communities in both windows. All percentages here use pooled shared accounts as the denominator.",
+          "x": 48,
+          "y": 470,
+          "w": 864,
+          "h": 43,
+          "size": 17,
+          "color": "586873",
+          "bold": false,
+          "align": "left"
+        }
+      ],
+      "chart_data": [
+        {
+          "categories": [
+            "Marvel / DC",
+            "PS5 / Xbox"
+          ],
+          "series": [
+            {
+              "name": "Persistent among pooled shared accounts",
+              "color": "258576",
+              "values": [
+                17.906210968547747,
+                18.983527521092807
+              ]
+            }
+          ],
+          "maximum": 100,
+          "unit": "%"
+        }
+      ]
+    },
+    {
+      "title": "Prior-participation assortativity rises in the union",
+      "notes": "We measure reply-event-weighted categorical assortativity using known first-window participation labels. For October comment replies, Marvel and DC separately have coefficients 0.013 and 0.003, while the union reaches 0.347. PS5 and Xbox separately are 0.013 and 0.032, while their union reaches 0.387. Different groups prefer different discussion spaces, which changes the combined structure. This is an aggregation effect, not a causal test of avoidance or an ideology measure. Only 52.50 percent and 50.09 percent of reply events have both endpoints observed in the first window. Opposite prior-exclusive groups still exchange 4,908 superhero and 2,240 console reply events.",
+      "source": "outputs/study/network_review/mixing_summary.csv; src/study_network_review.py",
+      "section": "main",
+      "elements": [
+        {
+          "type": "table",
+          "headers": [
+            "Comment-reply graph",
+            "A layer",
+            "B layer",
+            "Combined",
+            "Known-event coverage"
+          ],
+          "rows": [
+            [
+              "Marvel / DC",
+              "0.013",
+              "0.003",
+              "0.347",
+              "52.50%"
+            ],
+            [
+              "PS5 / Xbox",
+              "0.013",
+              "0.032",
+              "0.387",
+              "50.09%"
+            ]
+          ],
+          "widths": [
+            260,
+            120,
+            120,
+            140,
+            224
+          ],
+          "x": 48,
+          "y": 137,
+          "w": 864,
+          "h": 170,
+          "size": 19
+        },
+        {
+          "type": "text",
+          "text": "Combined coefficients greatly exceed the within-subreddit coefficients.",
+          "x": 48,
+          "y": 351,
+          "w": 864,
+          "h": 66,
+          "size": 27,
+          "color": "2465A3",
+          "bold": true,
+          "align": "left"
+        },
+        {
+          "type": "text",
+          "text": "Coefficients condition on known prior labels. The combined picture does not isolate selective avoidance within discussions.",
+          "x": 48,
+          "y": 470,
+          "w": 864,
+          "h": 43,
+          "size": 17,
+          "color": "586873",
+          "bold": false,
+          "align": "left"
+        }
+      ]
+    },
+    {
+      "title": "Rival attention is asymmetric",
+      "notes": "Our dictionaries identify explicit franchise references. DC commenters mention Marvel more often than Marvel commenters mention DC. Xbox commenters mention PlayStation more often than PS5 commenters mention Xbox. These percentages divide comments with rival mentions, including both-franchise mentions, by usable content comments. They depend on dictionary coverage and alias ambiguity. A mention indicates attention, and the following slide examines tone. It does not by itself indicate hostility.",
+      "source": "outputs/study/tables/*_corpus.csv; study.json",
+      "section": "main",
+      "elements": [
+        {
+          "type": "line",
+          "x": 283.0,
+          "y": 150,
+          "x2": 283.0,
+          "y2": 413,
+          "color": "E3E8EB",
+          "arrow": false,
+          "width": 0.7
+        },
+        {
+          "type": "text",
+          "text": "0%",
+          "x": 255.0,
+          "y": 420,
+          "w": 62,
+          "h": 23,
+          "size": 13,
+          "color": "586873",
+          "bold": false,
+          "align": "center"
+        },
+        {
+          "type": "line",
+          "x": 562.5,
+          "y": 150,
+          "x2": 562.5,
+          "y2": 413,
+          "color": "E3E8EB",
+          "arrow": false,
+          "width": 0.7
+        },
+        {
+          "type": "text",
+          "text": "4%",
+          "x": 534.5,
+          "y": 420,
+          "w": 62,
+          "h": 23,
+          "size": 13,
+          "color": "586873",
+          "bold": false,
+          "align": "center"
+        },
+        {
+          "type": "line",
+          "x": 842.0,
+          "y": 150,
+          "x2": 842.0,
+          "y2": 413,
+          "color": "E3E8EB",
+          "arrow": false,
+          "width": 0.7
+        },
+        {
+          "type": "text",
+          "text": "8%",
+          "x": 814.0,
+          "y": 420,
+          "w": 62,
+          "h": 23,
+          "size": 13,
+          "color": "586873",
+          "bold": false,
+          "align": "center"
+        },
+        {
+          "type": "text",
+          "text": "Marvel mentions DC",
+          "x": 48,
+          "y": 156.0,
+          "w": 223,
+          "h": 63.0,
+          "size": 17,
+          "color": "173449",
+          "bold": false,
+          "align": "left"
+        },
+        {
+          "type": "rect",
+          "x": 283,
+          "y": 155.0,
+          "w": 63.29790410691947,
+          "h": 24,
+          "color": "2465A3"
+        },
+        {
+          "type": "text",
+          "text": "0.91%",
+          "x": 353.2979041069195,
+          "y": 152.0,
+          "w": 72,
+          "h": 33,
+          "size": 16,
+          "color": "2465A3",
+          "bold": true,
+          "align": "left"
+        },
+        {
+          "type": "rect",
+          "x": 283,
+          "y": 182.0,
+          "w": 53.521410173857056,
+          "h": 24,
+          "color": "C46129"
+        },
+        {
+          "type": "text",
+          "text": "0.77%",
+          "x": 343.5214101738571,
+          "y": 179.0,
+          "w": 72,
+          "h": 33,
+          "size": 16,
+          "color": "C46129",
+          "bold": true,
+          "align": "left"
+        },
+        {
+          "type": "text",
+          "text": "DC mentions Marvel",
+          "x": 48,
+          "y": 221.0,
+          "w": 223,
+          "h": 63.0,
+          "size": 17,
+          "color": "173449",
+          "bold": false,
+          "align": "left"
+        },
+        {
+          "type": "rect",
+          "x": 283,
+          "y": 220.0,
+          "w": 183.63630628357186,
+          "h": 24,
+          "color": "2465A3"
+        },
+        {
+          "type": "text",
+          "text": "2.63%",
+          "x": 473.63630628357186,
+          "y": 217.0,
+          "w": 72,
+          "h": 33,
+          "size": 16,
+          "color": "2465A3",
+          "bold": true,
+          "align": "left"
+        },
+        {
+          "type": "rect",
+          "x": 283,
+          "y": 247.0,
+          "w": 238.193062295473,
+          "h": 24,
+          "color": "C46129"
+        },
+        {
+          "type": "text",
+          "text": "3.41%",
+          "x": 528.193062295473,
+          "y": 244.0,
+          "w": 72,
+          "h": 33,
+          "size": 16,
+          "color": "C46129",
+          "bold": true,
+          "align": "left"
+        },
+        {
+          "type": "text",
+          "text": "PS5 mentions Xbox",
+          "x": 48,
+          "y": 286.0,
+          "w": 223,
+          "h": 63.0,
+          "size": 17,
+          "color": "173449",
+          "bold": false,
+          "align": "left"
+        },
+        {
+          "type": "rect",
+          "x": 283,
+          "y": 285.0,
+          "w": 233.04939646687043,
+          "h": 24,
+          "color": "2465A3"
+        },
+        {
+          "type": "text",
+          "text": "3.34%",
+          "x": 523.0493964668705,
+          "y": 282.0,
+          "w": 72,
+          "h": 33,
+          "size": 16,
+          "color": "2465A3",
+          "bold": true,
+          "align": "left"
+        },
+        {
+          "type": "rect",
+          "x": 283,
+          "y": 312.0,
+          "w": 134.07563780093426,
+          "h": 24,
+          "color": "C46129"
+        },
+        {
+          "type": "text",
+          "text": "1.92%",
+          "x": 424.07563780093426,
+          "y": 309.0,
+          "w": 72,
+          "h": 33,
+          "size": 16,
+          "color": "C46129",
+          "bold": true,
+          "align": "left"
+        },
+        {
+          "type": "text",
+          "text": "Xbox mentions PS",
+          "x": 48,
+          "y": 351.0,
+          "w": 223,
+          "h": 63.0,
+          "size": 17,
+          "color": "173449",
+          "bold": false,
+          "align": "left"
+        },
+        {
+          "type": "rect",
+          "x": 283,
+          "y": 350.0,
+          "w": 431.2081339712919,
+          "h": 24,
+          "color": "2465A3"
+        },
+        {
+          "type": "text",
+          "text": "6.17%",
+          "x": 721.2081339712919,
+          "y": 347.0,
+          "w": 72,
+          "h": 33,
+          "size": 16,
+          "color": "2465A3",
+          "bold": true,
+          "align": "left"
+        },
+        {
+          "type": "rect",
+          "x": 283,
+          "y": 377.0,
+          "w": 435.22018300925447,
+          "h": 24,
+          "color": "C46129"
+        },
+        {
+          "type": "text",
+          "text": "6.23%",
+          "x": 725.2201830092545,
+          "y": 374.0,
+          "w": 72,
+          "h": 33,
+          "size": 16,
+          "color": "C46129",
+          "bold": true,
+          "align": "left"
+        },
+        {
+          "type": "text",
+          "text": "First window",
+          "x": 283,
+          "y": 115,
+          "w": 280,
+          "h": 28,
+          "size": 17,
+          "color": "2465A3",
+          "bold": true,
+          "align": "left"
+        },
+        {
+          "type": "text",
+          "text": "Second window",
+          "x": 573,
+          "y": 115,
+          "w": 280,
+          "h": 28,
+          "size": 17,
+          "color": "C46129",
+          "bold": true,
+          "align": "left"
+        },
+        {
+          "type": "text",
+          "text": "Explicit rival mentions as a percentage of usable content comments, under the specified dictionaries.",
+          "x": 48,
+          "y": 470,
+          "w": 864,
+          "h": 43,
+          "size": 17,
+          "color": "586873",
+          "bold": false,
+          "align": "left"
+        }
+      ],
+      "chart_data": [
+        {
+          "categories": [
+            "Marvel mentions DC",
+            "DC mentions Marvel",
+            "PS5 mentions Xbox",
+            "Xbox mentions PS"
+          ],
+          "series": [
+            {
+              "name": "First window",
+              "color": "2465A3",
+              "values": [
+                0.9058734040346257,
+                2.628068784022495,
+                3.3352328653577166,
+                6.171136085456771
+              ]
+            },
+            {
+              "name": "Second window",
+              "color": "C46129",
+              "values": [
+                0.7659593584809596,
+                3.40884525646473,
+                1.9187926697808122,
+                6.2285536029946975
+              ]
+            }
+          ],
+          "maximum": 8,
+          "unit": "%"
+        }
+      ]
+    },
+    {
+      "title": "Automated sentiment gives a mixed account of rivalry",
+      "notes": "The main tests compare own-only comments to rival-mentioning comments with original and adapted VADER. Three of eight main adapted-VADER any-rival comparisons survive Holm adjustment under both author and thread clustering sensitivities: DC in both windows and Marvel in October. All have negative own-minus-rival differences, meaning rival-mentioning comments score more positively on average. The displayed paired-author figure is a separate sensitivity that gives each eligible author equal weight. Its descriptive bootstrap intervals are unadjusted. Negative overall text sentiment is not equivalent to target-directed opposition, so independent human validation remains necessary.",
+      "source": "outputs/study/figures/within_author_sentiment.png; outputs/study/advanced/paired_sentiment.csv; outputs/study/tables/*_tests.csv; https://doi.org/10.1017/psrm.2024.35",
+      "section": "main",
+      "elements": [
+        {
+          "type": "image",
+          "path": "outputs/study/figures/within_author_sentiment.png",
+          "x": 48,
+          "y": 118,
+          "w": 585,
+          "h": 326
+        },
+        {
+          "type": "text",
+          "text": "Whole-comment tone",
+          "x": 665,
+          "y": 145,
+          "w": 245,
+          "h": 40,
+          "size": 24,
+          "color": "2465A3",
+          "bold": true,
+          "align": "left"
+        },
+        {
+          "type": "text",
+          "text": "No consistent evidence that rival mentions are more negative.",
+          "x": 665,
+          "y": 205,
+          "w": 245,
+          "h": 110,
+          "size": 23,
+          "color": "173449",
+          "bold": false,
+          "align": "left"
+        },
+        {
+          "type": "text",
+          "text": "Target-specific human validation remains unfinished.",
+          "x": 665,
+          "y": 340,
+          "w": 245,
+          "h": 100,
+          "size": 22,
+          "color": "C46129",
+          "bold": true,
+          "align": "left"
+        },
+        {
+          "type": "text",
+          "text": "Figure: paired authors, own-only minus rival-mentioning sentiment. Intervals are descriptive and unadjusted.",
+          "x": 48,
+          "y": 470,
+          "w": 864,
+          "h": 43,
+          "size": 17,
+          "color": "586873",
+          "bold": false,
+          "align": "left"
+        }
+      ]
+    },
+    {
+      "title": "Topic models describe recurring discussion themes",
+      "notes": "We fit one pooled TF-IDF and NMF model per rivalry across both periods, using balanced sampling. Candidate topic counts are six, eight, ten and twelve, compared with in-sample coherence. The selected models have six superhero and ten console factors. Keywords suggest character/franchise discussions, Green Lantern, Game Pass, physical versus digital purchases and hardware. Some factors capture generic conversation or moderation. Between 31.7 and 37.4 percent of content comments lack sufficient topical vocabulary and remain unassigned. These are exploratory model factors rather than validated semantic classes.",
+      "source": "outputs/study/tables/superheroes_topics.csv; outputs/study/tables/consoles_topics.csv; src/study_analysis.py",
+      "section": "main",
+      "elements": [
+        {
+          "type": "table",
+          "headers": [
+            "Model",
+            "Illustrative keywords",
+            "Interpretation"
+          ],
+          "rows": [
+            [
+              "Superheroes, 6 factors",
+              "batman, superman, dcu, gunn",
+              "Franchise and character discussion"
+            ],
+            [
+              "Superheroes",
+              "green, lantern, lanterns, ring",
+              "Green Lantern discussion"
+            ],
+            [
+              "Consoles, 10 factors",
+              "game, pass, game pass",
+              "Game Pass and games"
+            ],
+            [
+              "Consoles",
+              "disc, digital, physical, drive",
+              "Ownership and purchase format"
+            ]
+          ],
+          "widths": [
+            235,
+            330,
+            299
+          ],
+          "x": 48,
+          "y": 137,
+          "w": 864,
+          "h": 255,
+          "size": 19
+        },
+        {
+          "type": "text",
+          "text": "31.7–37.4% of content comments remain unassigned. Generic factors limit substantive topic labels.",
+          "x": 48,
+          "y": 470,
+          "w": 864,
+          "h": 43,
+          "size": 17,
+          "color": "586873",
+          "bold": false,
+          "align": "left"
+        }
+      ]
+    },
+    {
+      "title": "Shared participants return more often",
+      "notes": "Return means at least one observed comment in either community of the pair during the next window. We compare initially shared and exclusive participants after standardizing first-window activity within common-support bins. The adjusted differences remain 13.08 percentage points relative to Marvel-only, 7.23 relative to DC-only, 15.28 relative to PS5-only and 10.95 relative to Xbox-only. One-comment exclusive accounts lack a comparable shared group and are excluded from the adjusted population. The intervals use 5,000 bootstrap draws with fixed stratum weights and are descriptive, without multiplicity adjustment. This supports an association with later engagement, not a causal effect of cross-participation.",
+      "source": "outputs/study/advanced/retention.csv; src/study_advanced.py",
+      "section": "main",
+      "elements": [
+        {
+          "type": "table",
+          "headers": [
+            "Shared compared with",
+            "Adjusted difference",
+            "Descriptive 95% interval"
+          ],
+          "rows": [
+            [
+              "Marvel-only",
+              "+13.08 pp",
+              "11.39 to 14.74 pp"
+            ],
+            [
+              "DC-only",
+              "+7.23 pp",
+              "5.50 to 8.92 pp"
+            ],
+            [
+              "PS5-only",
+              "+15.28 pp",
+              "13.02 to 17.49 pp"
+            ],
+            [
+              "Xbox-only",
+              "+10.95 pp",
+              "8.84 to 13.17 pp"
+            ]
+          ],
+          "widths": [
+            310,
+            240,
+            314
+          ],
+          "x": 48,
+          "y": 137,
+          "w": 864,
+          "h": 235,
+          "size": 22
+        },
+        {
+          "type": "text",
+          "text": "The association remains after observed activity adjustment.",
+          "x": 48,
+          "y": 399,
+          "w": 864,
+          "h": 60,
+          "size": 25,
+          "color": "2465A3",
+          "bold": true,
+          "align": "left"
+        },
+        {
+          "type": "text",
+          "text": "Return = observed again anywhere in the pair. Common-support restriction changes the target population.",
+          "x": 48,
+          "y": 470,
+          "w": 864,
+          "h": 43,
+          "size": 17,
+          "color": "586873",
+          "bold": false,
+          "align": "left"
+        }
+      ]
+    },
+    {
+      "title": "Answers to our research questions",
+      "notes": "Return explicitly to the original questions. For content we identify asymmetric attention and exploratory themes, but target-directed attitudes remain only partially addressed. For structure we find organized reply networks whose connectivity is sensitive to thread starters. Shared-account connector enrichment is not supported after the specified activity and degree matching. For boundaries we find measurable but often temporary overlap, along with direct replies between prior participation groups. These are bounded claims about observed commenting in the selected windows.",
+      "source": "reports/course_report.html; MENTOR_STORY.md; research revision 61ae796",
+      "section": "main",
+      "elements": [
+        {
+          "type": "table",
+          "headers": [
+            "Question",
+            "What the evidence supports",
+            "Boundary of the claim"
+          ],
+          "rows": [
+            [
+              "RQ1  Content",
+              "Asymmetric rival attention and exploratory themes",
+              "Rival-directed hostility still needs validation"
+            ],
+            [
+              "RQ2  Structure",
+              "Thread-sensitive connectivity and measurable organization",
+              "Centrality does not establish causal influence"
+            ],
+            [
+              "RQ3  Boundaries",
+              "Measurable overlap, limited persistence and group interaction",
+              "Commenting is distinct from allegiance or readership"
+            ]
+          ],
+          "widths": [
+            140,
+            385,
+            339
+          ],
+          "x": 48,
+          "y": 137,
+          "w": 864,
+          "h": 285,
+          "size": 20
+        }
+      ]
+    },
+    {
+      "title": "Limitations and the next useful evidence",
+      "notes": "Two purposively chosen rivalries and adjacent windows cannot establish seasonal stability or generality across all fandoms. Archive completeness, alias coverage and undocumented bots remain uncertain. The null ensemble is small, betweenness is approximate and matching is coarse. We should prioritize independent human annotation of overall tone and target-specific stance. The prepared blinded sheets are not labelled yet. If those labels inform tuning, evaluation requires a separate untouched sample. Broader temporal claims would need separated or event-aligned windows chosen before collection. Another rivalry should answer a substantive comparison question, not be selected to obtain a stronger effect.",
+      "source": "PROJECT_STATUS.md; ANNOTATION_GUIDE.md; ADVANCED_METHODS.md",
+      "section": "main",
+      "elements": [
+        {
+          "type": "text",
+          "text": "Current limits",
+          "x": 48,
+          "y": 140,
+          "w": 400,
+          "h": 40,
+          "size": 25,
+          "color": "C46129",
+          "bold": true,
+          "align": "left"
+        },
+        {
+          "type": "text",
+          "text": "Two rivalries and 56 adjacent days",
+          "x": 48,
+          "y": 202,
+          "w": 400,
+          "h": 46,
+          "size": 21,
+          "color": "173449",
+          "bold": false,
+          "align": "left"
+        },
+        {
+          "type": "text",
+          "text": "Archive and dictionary coverage",
+          "x": 48,
+          "y": 260,
+          "w": 400,
+          "h": 46,
+          "size": 21,
+          "color": "173449",
+          "bold": false,
+          "align": "left"
+        },
+        {
+          "type": "text",
+          "text": "Approximate centrality and coarse matching",
+          "x": 48,
+          "y": 318,
+          "w": 400,
+          "h": 46,
+          "size": 21,
+          "color": "173449",
+          "bold": false,
+          "align": "left"
+        },
+        {
+          "type": "text",
+          "text": "Unfinished human stance validation",
+          "x": 48,
+          "y": 376,
+          "w": 400,
+          "h": 46,
+          "size": 21,
+          "color": "173449",
+          "bold": false,
+          "align": "left"
+        },
+        {
+          "type": "text",
+          "text": "Next evidence",
+          "x": 510,
+          "y": 140,
+          "w": 400,
+          "h": 40,
+          "size": 25,
+          "color": "2465A3",
+          "bold": true,
+          "align": "left"
+        },
+        {
+          "type": "text",
+          "text": "Independent blinded annotation",
+          "x": 510,
+          "y": 202,
+          "w": 400,
+          "h": 46,
+          "size": 21,
+          "color": "173449",
+          "bold": false,
+          "align": "left"
+        },
+        {
+          "type": "text",
+          "text": "Untouched evaluation sample",
+          "x": 510,
+          "y": 260,
+          "w": 400,
+          "h": 46,
+          "size": 21,
+          "color": "173449",
+          "bold": false,
+          "align": "left"
+        },
+        {
+          "type": "text",
+          "text": "Separated or event-aligned windows",
+          "x": 510,
+          "y": 318,
+          "w": 400,
+          "h": 46,
+          "size": 21,
+          "color": "173449",
+          "bold": false,
+          "align": "left"
+        },
+        {
+          "type": "text",
+          "text": "A justified additional comparison",
+          "x": 510,
+          "y": 376,
+          "w": 400,
+          "h": 46,
+          "size": 21,
+          "color": "173449",
+          "bold": false,
+          "align": "left"
+        },
+        {
+          "type": "text",
+          "text": "More comments alone cannot resolve a mismatch between whole-comment sentiment and target-directed attitudes.",
+          "x": 48,
+          "y": 470,
+          "w": 864,
+          "h": 43,
+          "size": 17,
+          "color": "586873",
+          "bold": false,
+          "align": "left"
+        }
+      ]
+    },
+    {
+      "title": "What we finally learned",
+      "notes": "Closing, about 45 seconds. The project moved beyond a small pilot and an expected rivalry narrative. Rival audiences are distinct but overlapping. Most pooled shared participation is not persistent in both windows. Reply connectivity depends on the role of thread starters, and the combined graph requires comparison with its individual layers. The strongest contribution is an auditable joint analysis that distinguishes audiences, interactions and attitudes. Invite questions. If time permits, demonstrate the FULL and FOCUS workspaces in Gephi using the backup checklist on slide 30.",
+      "source": "reports/course_report.html; MENTOR_STORY.md; research revision 61ae796",
+      "section": "main",
+      "elements": [
+        {
+          "type": "text",
+          "text": "Rival audiences overlap,\nbut the overlap changes over time.",
+          "x": 48,
+          "y": 140,
+          "w": 864,
+          "h": 110,
+          "size": 34,
+          "color": "2465A3",
+          "bold": true,
+          "align": "left"
+        },
+        {
+          "type": "text",
+          "text": "Reply structure depends strongly on thread mechanics.",
+          "x": 48,
+          "y": 295,
+          "w": 850,
+          "h": 50,
+          "size": 23,
+          "color": "173449",
+          "bold": false,
+          "align": "left"
+        },
+        {
+          "type": "text",
+          "text": "Gephi makes the graph inspectable when its construction and filters are explicit.",
+          "x": 48,
+          "y": 357,
+          "w": 850,
+          "h": 50,
+          "size": 23,
+          "color": "173449",
+          "bold": false,
+          "align": "left"
+        },
+        {
+          "type": "text",
+          "text": "Our contribution is a reproducible, bounded account of these relationships.",
+          "x": 48,
+          "y": 419,
+          "w": 850,
+          "h": 50,
+          "size": 23,
+          "color": "173449",
+          "bold": false,
+          "align": "left"
+        }
+      ]
+    },
+    {
+      "title": "Backup  Full network statistics",
+      "notes": "All values describe full all-reply graphs. Nodes may include parent-only accounts, so their count can exceed the number of observed commenters. Edges count distinct ordered account pairs. Modularity is weighted Louvain on the reciprocal-sum undirected projection. Modularity from an unweighted null comparison must not be compared directly to this weighted statistic. Reciprocity concerns directed edge pairs. Source CSVs include density, components, isolates and clustering if mentors ask.",
+      "source": "outputs/study/tables/*_networks.csv",
+      "section": "backup",
+      "elements": [
+        {
+          "type": "table",
+          "headers": [
+            "Graph",
+            "Nodes",
+            "Edges",
+            "Reciprocity",
+            "Weighted Q"
+          ],
+          "rows": [
+            [
+              "Marvel Sep",
+              "49,487",
+              "147,982",
+              "0.217",
+              "0.458"
+            ],
+            [
+              "Marvel Oct",
+              "39,205",
+              "121,963",
+              "0.240",
+              "0.463"
+            ],
+            [
+              "DC Sep",
+              "22,130",
+              "71,108",
+              "0.275",
+              "0.474"
+            ],
+            [
+              "DC Oct",
+              "28,104",
+              "111,636",
+              "0.294",
+              "0.407"
+            ],
+            [
+              "PS5 Sep",
+              "32,104",
+              "86,348",
+              "0.243",
+              "0.521"
+            ],
+            [
+              "PS5 Oct",
+              "26,332",
+              "62,263",
+              "0.252",
+              "0.582"
+            ],
+            [
+              "Xbox Sep",
+              "28,390",
+              "80,906",
+              "0.249",
+              "0.494"
+            ],
+            [
+              "Xbox Oct",
+              "27,960",
+              "77,402",
+              "0.269",
+              "0.518"
+            ]
+          ],
+          "widths": [
+            230,
+            165,
+            165,
+            155,
+            149
+          ],
+          "x": 48,
+          "y": 137,
+          "w": 864,
+          "h": 310,
+          "size": 18
+        }
+      ]
+    },
+    {
+      "title": "Backup  The Gephi display is a selected subset",
+      "notes": "The combined display first selects the top 1,000 accounts by full-graph PageRank, keeps the largest weak component of that cap, retains repeated edges with weight at least two, and removes resulting isolates. For the superhero comment-reply display, 30.1 percent of shown accounts have prior both participation compared with 5.4 percent of the full graph. Unobserved prior accounts decline from 58.1 percent to 13.9 percent. This large shift demonstrates why a visualization cannot estimate the prevalence of shared participation. Metrics and mixing use full graphs.",
+      "source": "reports/course_report.html, Table 5; tools/GephiStudy.java; outputs/study/networks/combined_superheroes_oct_comment_replies_full.gexf",
+      "section": "backup",
+      "elements": [
+        {
+          "type": "table",
+          "headers": [
+            "Prior participation",
+            "Full graph",
+            "Display"
+          ],
+          "rows": [
+            [
+              "Marvel-only",
+              "14,917 (24.3%)",
+              "225 (28.8%)"
+            ],
+            [
+              "DC-only",
+              "7,481 (12.2%)",
+              "213 (27.2%)"
+            ],
+            [
+              "Both",
+              "3,322 (5.4%)",
+              "235 (30.1%)"
+            ],
+            [
+              "Unobserved",
+              "35,636 (58.1%)",
+              "109 (13.9%)"
+            ]
+          ],
+          "widths": [
+            330,
+            267,
+            267
+          ],
+          "x": 48,
+          "y": 137,
+          "w": 864,
+          "h": 235,
+          "size": 20
+        },
+        {
+          "type": "text",
+          "text": "Top 1,000 by PageRank, largest weak component, edge weight ≥ 2, then remove resulting isolates.",
+          "x": 48,
+          "y": 470,
+          "w": 864,
+          "h": 43,
+          "size": 17,
+          "color": "586873",
+          "bold": false,
+          "align": "left"
+        }
+      ]
+    },
+    {
+      "title": "Backup  Gephi demonstration sequence",
+      "notes": "Prepare the local files before presenting. Open combined_superheroes_oct_comment_replies_native.gephi, then show the FULL workspace counts and the directed graph type. Use Data Laboratory to explain prior_group, current_group, weight_a, weight_b and total weight. Switch to FOCUS and state the filter before discussing the layout. Explain the color legend and log-scaled full incoming-strength size. Open the console counterpart for comparison. Keep the all-reply variants available to explain graph-definition sensitivity. The saved native workspaces already contain their layouts. Do not rerun a layout merely to change the expected appearance.",
+      "source": "GEPHI_GUIDE.md; outputs/study/networks/combined_superheroes_oct_comment_replies_native.gephi; outputs/study/networks/combined_consoles_oct_comment_replies_native.gephi",
+      "section": "backup",
+      "elements": [
+        {
+          "type": "table",
+          "headers": [
+            "Step",
+            "What to show"
+          ],
+          "rows": [
+            [
+              "1",
+              "FULL workspace: directed graph, node and edge counts"
+            ],
+            [
+              "2",
+              "Data Laboratory: prior_group, weight_a, weight_b and weight"
+            ],
+            [
+              "3",
+              "FOCUS workspace: explain the display selection"
+            ],
+            [
+              "4",
+              "Preview: colours, node size and ForceAtlas2 layout"
+            ],
+            [
+              "5",
+              "Console counterpart and all-reply sensitivity"
+            ]
+          ],
+          "widths": [
+            110,
+            754
+          ],
+          "x": 48,
+          "y": 137,
+          "w": 864,
+          "h": 280,
+          "size": 21
+        },
+        {
+          "type": "text",
+          "text": "Numerical checks belong to the full graph. Layout distance is illustrative.",
+          "x": 48,
+          "y": 470,
+          "w": 864,
+          "h": 43,
+          "size": 17,
+          "color": "586873",
+          "bold": false,
+          "align": "left"
+        }
+      ]
+    },
+    {
+      "title": "Backup  Statistical choices and validation",
+      "notes": "The main content tests use rank-biserial effects and separate author and thread cluster bootstrap sensitivities with 1,000 draws. Holm adjustment spans scorer, mention definition and community contrasts within each pair-period. These are not simultaneous two-way cluster estimates. Advanced paired-author and return analyses use 5,000 draws and descriptive unadjusted intervals. The matched connector family applies Holm across 32 comparisons. Network nulls use ten requested degree-preserving rewires on an unweighted projection and are descriptive. The offline test record is 64 passing and one optional pretrained-model skip. Blinded human labels remain blank.",
+      "source": "ADVANCED_METHODS.md; src/study_analysis.py; src/study_advanced.py; PROJECT_STATUS.md",
+      "section": "backup",
+      "elements": [
+        {
+          "type": "table",
+          "headers": [
+            "Analysis",
+            "Choice",
+            "Interpretation"
+          ],
+          "rows": [
+            [
+              "Content comparisons",
+              "Author and thread cluster sensitivities, Holm adjustment",
+              "Whole-comment sentiment only"
+            ],
+            [
+              "Matched connectors",
+              "Activity / degree strata, 32-test Holm family",
+              "No corrected enrichment"
+            ],
+            [
+              "Return and paired authors",
+              "5,000 bootstrap draws",
+              "Descriptive unadjusted intervals"
+            ],
+            [
+              "Network null",
+              "10 degree-preserving rewires",
+              "Descriptive topology comparison"
+            ],
+            [
+              "Verification",
+              "64 tests pass, 1 optional skip",
+              "Implementation checks"
+            ]
+          ],
+          "widths": [
+            230,
+            390,
+            244
+          ],
+          "x": 48,
+          "y": 137,
+          "w": 864,
+          "h": 285,
+          "size": 18
+        }
+      ]
+    },
+    {
+      "title": "Backup  Code and evidence map",
+      "notes": "The canonical study runner is run_study.py with study.json. The legacy pilot runner remains for provenance. Collection and validation live in study_data.py. Study analysis produces corpus summaries, overlap, content tests and topics. Network construction and connector measures live in their respective modules. Advanced analysis computes temporal and adjusted comparisons. Network review independently reconstructs edges and measures prior participation mixing. Java Gephi helpers create native projects. Published outputs are aggregates and unlabelled figures, while raw text and detailed account networks remain local.",
+      "source": "README.md; run_study.py; src/; tools/",
+      "section": "backup",
+      "elements": [
+        {
+          "type": "table",
+          "headers": [
+            "Stage",
+            "Implementation",
+            "Evidence"
+          ],
+          "rows": [
+            [
+              "Collection",
+              "src/study_data.py",
+              "collection_inventory.csv"
+            ],
+            [
+              "Content and overlap",
+              "src/study_analysis.py",
+              "tables/*_corpus, overlap, tests, topics.csv"
+            ],
+            [
+              "Reply networks",
+              "src/study_network.py",
+              "tables/*_networks.csv"
+            ],
+            [
+              "Temporal and adjusted",
+              "src/study_advanced.py",
+              "advanced/*.csv"
+            ],
+            [
+              "Independent audit",
+              "src/study_network_review.py",
+              "network_review/edge_audit.csv"
+            ],
+            [
+              "Gephi",
+              "tools/GephiStudy.java",
+              "Native projects and validation tables"
+            ]
+          ],
+          "widths": [
+            210,
+            330,
+            324
+          ],
+          "x": 48,
+          "y": 137,
+          "w": 864,
+          "h": 295,
+          "size": 17
+        }
+      ]
+    },
+    {
+      "title": "Backup  Research that informed the design",
+      "notes": "The report reviews twelve recent papers from 2024–2026. These first six motivate separating participation, interaction and community structure. Cirulli and colleagues use validated Reddit communities and content to examine polarization. Goglia and Vega model evolving Reddit threads. Blondel and colleagues discuss Louvain after fifteen years. Yuan and colleagues examine behavioral homophily. Xia and colleagues study cross-party interactions and subsequent participation. Russo and colleagues use matched comparisons to study fringe recruitment. Their contexts do not determine expected effects for entertainment fandoms.",
+      "source": "https://doi.org/10.1140/epjds/s13688-026-00707-5\nhttps://doi.org/10.1007/s41109-024-00654-y\nhttps://doi.org/10.1088/1742-5468/ad6139\nhttps://doi.org/10.1145/3696410.3714618\nhttps://doi.org/10.1609/icwsm.v19i1.35918\nhttps://doi.org/10.1609/icwsm.v18i1.31393",
+      "section": "backup",
+      "elements": [
+        {
+          "type": "table",
+          "headers": [
+            "Study",
+            "Design implication"
+          ],
+          "rows": [
+            [
+              "Cirulli et al., 2026, EPJ Data Science (in press)",
+              "Separate participation and interaction boundaries"
+            ],
+            [
+              "Goglia & Vega, 2024, Applied Network Science",
+              "Model reply threads explicitly"
+            ],
+            [
+              "Blondel et al., 2024, JSTAT",
+              "Interpret Louvain as structural optimization"
+            ],
+            [
+              "Yuan et al., 2025, The Web Conference",
+              "Distinguish behavior from topical similarity"
+            ],
+            [
+              "Xia et al., 2025, ICWSM",
+              "Order participation observations over time"
+            ],
+            [
+              "Russo et al., 2024, ICWSM",
+              "Use suitable comparison groups"
+            ]
+          ],
+          "widths": [
+            490,
+            374
+          ],
+          "x": 48,
+          "y": 137,
+          "w": 864,
+          "h": 300,
+          "size": 18
+        }
+      ]
+    },
+    {
+      "title": "Backup  Participation and attitude measurement",
+      "notes": "Machado and colleagues provide a 2025 preprint on contribution concentration, and Oswald and colleagues experimentally study participation in online political discussion. Burnham distinguishes sentiment and stance and discusses practical validation. Jamadi Khiabani and Zubiaga survey cross-target stance detection. Nguyen and Kim show that external information can degrade language-model stance performance. Gera and Neal study linguistic complexity and stance errors. These studies support measurement caution, not a claim that language models cannot work. Foundational method references are Hutto and Gilbert 2014 for VADER and Jacomy and colleagues 2014 for ForceAtlas2. Full citations and DOI links appear in the report.",
+      "source": "https://doi.org/10.48550/arXiv.2503.02661\nhttps://doi.org/10.1126/sciadv.ady8022\nhttps://doi.org/10.1017/psrm.2024.35\nhttps://doi.org/10.1016/j.eswa.2025.127790\nhttps://doi.org/10.18653/v1/2025.findings-acl.764\nhttps://doi.org/10.18653/v1/2026.starsem-conference.20\nhttps://doi.org/10.1609/icwsm.v8i1.14550\nhttps://doi.org/10.1371/journal.pone.0098679",
+      "section": "backup",
+      "elements": [
+        {
+          "type": "table",
+          "headers": [
+            "Study",
+            "Design implication"
+          ],
+          "rows": [
+            [
+              "Machado et al., 2025, arXiv preprint",
+              "Account for concentrated activity"
+            ],
+            [
+              "Oswald et al., 2025, Science Advances",
+              "Visible participants differ from silent readers"
+            ],
+            [
+              "Burnham, 2025, PSRM",
+              "Validate target-directed attitude measures"
+            ],
+            [
+              "Jamadi Khiabani & Zubiaga, 2025, ESWA",
+              "Check target transfer and evaluation"
+            ],
+            [
+              "Nguyen & Kim, 2025, Findings of ACL",
+              "Avoid assuming LLM labels are ground truth"
+            ],
+            [
+              "Gera & Neal, 2026, *SEM",
+              "Inspect linguistic sources of stance errors"
+            ]
+          ],
+          "widths": [
+            490,
+            374
+          ],
+          "x": 48,
+          "y": 137,
+          "w": 864,
+          "h": 300,
+          "size": 18
+        },
+        {
+          "type": "text",
+          "text": "Foundational methods: Hutto & Gilbert (2014), VADER. Jacomy et al. (2014), ForceAtlas2. Full citations are in the report.",
+          "x": 48,
+          "y": 470,
+          "w": 864,
+          "h": 43,
+          "size": 17,
+          "color": "586873",
+          "bold": false,
+          "align": "left"
+        }
+      ]
+    },
+    {
+      "title": "Backup  Questions we can answer precisely",
+      "notes": "Use these as short answers, then point to the relevant evidence. We do not claim the source archive is complete. Sixteen exact graph reconstructions validate our implementation. We do not call the detected communities ideological factions. The all-reply versus comment-only comparison measures sensitivity to thread starters. Stronger target-specific attitude claims need independent annotation. We would justify new periods or communities through a research design rather than searching for significant results. If asked about individual contributions, use the report allocation only after all members confirm it against their actual work.",
+      "source": "MENTOR_STORY.md; PROJECT_STATUS.md; GEPHI_GUIDE.md",
+      "section": "backup",
+      "elements": [
+        {
+          "type": "table",
+          "headers": [
+            "Likely question",
+            "Short answer"
+          ],
+          "rows": [
+            [
+              "Is the graph correct?",
+              "Exact reconstruction checks nodes, directed edges and weights."
+            ],
+            [
+              "Does a Gephi cluster prove an echo chamber?",
+              "The layout and prior participation labels do not establish ideology."
+            ],
+            [
+              "Are shared users exceptional connectors?",
+              "The specified matched tests do not support corrected enrichment."
+            ],
+            [
+              "Have we proved hostility?",
+              "No. Independent target-specific human validation is unfinished."
+            ],
+            [
+              "Would longer periods help?",
+              "They could address temporal generality with a specified design."
+            ]
+          ],
+          "widths": [
+            340,
+            524
+          ],
+          "x": 48,
+          "y": 137,
+          "w": 864,
+          "h": 290,
+          "size": 19
+        }
+      ]
+    }
+  ],
+  "evidence_hashes": {
+    "outputs\\study\\advanced\\matched_connectors.csv": "5713c52c9e7d27b473ddfb8a936c73c28c8db94b81b53caf9cede588fdb7923c",
+    "outputs\\study\\advanced\\paired_sentiment.csv": "6aedf7c39eff2ee50833e34f38449b528e9d30d29b6bb72ffc7cfb8797575943",
+    "outputs\\study\\advanced\\persistence.csv": "efde77cd6a38d73816dc10d47a455244fb155a5f313c3dc4406f26d8065e2f24",
+    "outputs\\study\\advanced\\retention.csv": "cc740afba74efe59d6150f0cb43f98f56003c910ebfb850d2af4c064f15be402",
+    "outputs\\study\\advanced\\retention_strata.csv": "98ccfa65e5f2f43115a262d570dfb684cdb926f06822a47c3e6511da698caa2d",
+    "outputs\\study\\advanced\\transitions.csv": "37107404e358542ffdd64d62c33acb6a23119cee28c2f70b5038ea7fdd6a7ec7",
+    "outputs\\study\\collection_inventory.csv": "32b68c307fab3026f7fd5171eee1ed11fe4600e6b072fe5deb9646fe906cd559",
+    "outputs\\study\\consoles_connector_roles.csv": "32acc11d3f4bae2c5fcf88d8104d37ff393540300c8034f1a61c2e3f72a12eef",
+    "outputs\\study\\gephi_validation.csv": "98d99feedf875dd309d88550cd645f4d4d0bc11738687173f5c78d5b5143287c",
+    "outputs\\study\\legacy_tracking_review.csv": "505fa91d450217db124ac72c7a5c55d045207e92b233fc9b30fa103ae880938c",
+    "outputs\\study\\network_review\\combined_exports.csv": "277302f8331484a7b850e03231f9740511cdd0e771bb9cb26803175fdde39a3a",
+    "outputs\\study\\network_review\\edge_audit.csv": "2c055afff72decd50d15d34e9d403392ef839bdbb0298520ccf3846c583871eb",
+    "outputs\\study\\network_review\\gephi_validation.csv": "09c438f72c31be762701d4b17b4c9e06fa643a2da497aa3714af8aed093964af",
+    "outputs\\study\\network_review\\mixing_cells.csv": "025f488c8048c19ff21261672814556da5b899d87f5c886314c5e3b27dbebb05",
+    "outputs\\study\\network_review\\mixing_summary.csv": "b8c4624348ca8d54288381a6368bb88e68761c8d904ce35077b36464f2d009a2",
+    "outputs\\study\\superheroes_connector_roles.csv": "994820e8a3e1c70c6f6f178ff1b223e9bc2ac1652815d5f20163d200129c2029",
+    "outputs\\study\\tables\\all_pair_overlap.csv": "51bae3456372e0f473adf282355096927eddacee76b3cea25b96060269fc64d0",
+    "outputs\\study\\tables\\consoles_corpus.csv": "b94a3cfdcc91a09faa59e7107915ee35db8d56796c180b010ba19f3ef107c679",
+    "outputs\\study\\tables\\consoles_duration.csv": "64e12ffabd9d808ad2ddbe27a10de799ffbf75d36164a4e312f06f55551762d2",
+    "outputs\\study\\tables\\consoles_gephi.csv": "1e07f039e5a453ea0bd3efe944c8176b6e6bd6bc0e255d12d01d9c26f37ee004",
+    "outputs\\study\\tables\\consoles_networks.csv": "5be7b5758e9910ad812579ee49f1c9e05d3ab0f7432f6f36e83c55cc0324ca90",
+    "outputs\\study\\tables\\consoles_overlap.csv": "e819e9f10266f8f03e7a0816b7638623cfba6d2832491c91c26ae769b3a4bc61",
+    "outputs\\study\\tables\\consoles_sampling.csv": "c6557423ac8811f4e523f8f61e74f339d162498e8739dbcd0e9df784b99724bf",
+    "outputs\\study\\tables\\consoles_sentiment.csv": "f37d7807ebba8b9c01109f06344f7c4bd710454950b122fc201be04d221b4de2",
+    "outputs\\study\\tables\\consoles_tests.csv": "57fb71001f5f489e1089afcb1649977b451ea7d4bede44cd8bd83910c60d48e2",
+    "outputs\\study\\tables\\consoles_topic_selection.csv": "a551b59e0eaa5d5040941bd7a7396e4759a4afa1f959246ff5d809a6485f9ffd",
+    "outputs\\study\\tables\\consoles_topics.csv": "aef508a8c4dd7bc32cbaafe54e6b669474842084b7985cc7292498d94a38f947",
+    "outputs\\study\\tables\\consoles_weekly.csv": "471831455cde9086c47e62fa75f2f39785bd629b7748e1bc4f8d29d70ea92d13",
+    "outputs\\study\\tables\\superheroes_corpus.csv": "ba74a366ab47eb967533cd7240ead653df2f7ed91488b34f1eda2ca35b8cd5e7",
+    "outputs\\study\\tables\\superheroes_duration.csv": "c0040e8aab8649cb9b0d554a0b533f1f0e6b77048f86ef49e51ffc59101505fb",
+    "outputs\\study\\tables\\superheroes_gephi.csv": "e94fab1b6508db77ec80e82a25e11021a04163198d90f14dc1c7ce91a603e752",
+    "outputs\\study\\tables\\superheroes_networks.csv": "702451c0ae66b97534ea04b4fd1f185c475a09ad003e6324fb1042fbc4a97084",
+    "outputs\\study\\tables\\superheroes_overlap.csv": "92aa059975de3dc5b69f2f5757f0400204d4703323258f529e5d6f69002ddf0d",
+    "outputs\\study\\tables\\superheroes_sampling.csv": "03f4cce249401f1423e36269a47206f5b356df62bb20361b53febd601ace7d51",
+    "outputs\\study\\tables\\superheroes_sentiment.csv": "c47f09eaa608fbf88d69617a7bfad56b0ed600ccc39392ed4854577d1d76c53a",
+    "outputs\\study\\tables\\superheroes_tests.csv": "ae1ac8b09cf860a05745ea13d3468c4d9a08055013b9e1396374ce80096ee9b0",
+    "outputs\\study\\tables\\superheroes_topic_selection.csv": "1767c23edca3aecdace383ee1a3dae4c334a41212f9df92b405051a64da1e73a",
+    "outputs\\study\\tables\\superheroes_topics.csv": "78ee458d2a50e316b6dddcfac15e23aa97717f6105277380b312d898a8865858",
+    "outputs\\study\\tables\\superheroes_weekly.csv": "8347fc3821ebaabbc402fd3cb49bba5b001c1abf756a24000a4a21cb4ddf7bf5"
+  }
+}
