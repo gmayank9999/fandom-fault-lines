@@ -6,6 +6,8 @@ Repository maintainer: **gmayank9999**. Course: Computational Social Media Analy
 
 ## Research design
 
+**Main question:** To what extent do rival fan communities form separate versus overlapping audiences, and how do their content, internal reply structure and cross-group participation boundaries differ? RQ1–RQ3 retain the original content/structure/boundary objectives. RQ4 is an added robustness question; the longitudinal and adjusted analyses strengthen the original three questions.
+
 We compare Marvel/DC and PlayStation/Xbox communities over two adjacent 28-day UTC windows: 3 September–1 October and 1–29 October 2026 (ends exclusive), spanning 56 days. StarWars and lotr provide comparison audiences, not assumed hostile or rivalry-free controls. Pair selection reflects competing franchises/brands; individual users are not classified as fans or opponents. This extension was designed after inspecting the pilot and is exploratory, not preregistered.
 
 1. **RQ1 — Content:** How do topics, franchise mentions and whole-comment sentiment differ across communities and periods?
@@ -342,6 +344,93 @@ Selection uses the top 20 positive betweenness scores among observed commenters,
 **consoles:** 945 of 4,978 pooled shared users appear in both communities in each window (19.0%). 16.2% have only sequential cross-window participation.
 
 Across all 32 specified connector comparisons, 0 meet the Holm-adjusted .05 enrichment threshold. Read this together with the effect sizes and alternative matching definitions; an unadjusted top-20 percentage alone cannot establish unusual connector representation.
+
+## Network construction audit and observed interaction across prior participation groups
+
+All 16 original graphs were independently reconstructed from raw comment records using a parent-author join and grouped counts. Every saved directed edge, reply weight and node set matched. Where both comment records were available, the audit checked that the parent belongs to the same thread; top-level comments reference their thread post. This verifies consistency with the local archive records, not completeness or correctness of the archive itself.
+
+| window | subreddit | variant | edges | incorrect_or_missing_edges | extra_edges | node_set_difference |
+| --- | --- | --- | --- | --- | --- | --- |
+| sep | marvelstudios | all_replies | 147982 | 0 | 0 | 0 |
+| sep | DC_Cinematic | all_replies | 71108 | 0 | 0 | 0 |
+| sep | marvelstudios | comment_replies | 77474 | 0 | 0 | 0 |
+| sep | DC_Cinematic | comment_replies | 40848 | 0 | 0 | 0 |
+| oct | marvelstudios | all_replies | 121963 | 0 | 0 | 0 |
+| oct | DC_Cinematic | all_replies | 111636 | 0 | 0 | 0 |
+| oct | marvelstudios | comment_replies | 69141 | 0 | 0 | 0 |
+| oct | DC_Cinematic | comment_replies | 69853 | 0 | 0 | 0 |
+| sep | PS5 | all_replies | 86348 | 0 | 0 | 0 |
+| sep | xbox | all_replies | 80906 | 0 | 0 | 0 |
+| sep | PS5 | comment_replies | 58038 | 0 | 0 | 0 |
+| sep | xbox | comment_replies | 39161 | 0 | 0 | 0 |
+| oct | PS5 | all_replies | 62263 | 0 | 0 | 0 |
+| oct | xbox | all_replies | 77402 | 0 | 0 | 0 |
+| oct | PS5 | comment_replies | 43258 | 0 | 0 | 0 |
+| oct | xbox | comment_replies | 42264 | 0 | 0 | 0 |
+
+### From membership overlap to observed replies
+
+Users are labelled from the first window only: A-only, B-only, both, or unobserved. These are participation categories, not fan allegiance, opinion or hostility. We then combine the two communities' second-window reply graphs by merging identical account identifiers and summing only observed reply weights. Each edge retains its separate community-A/community-B reply counts. Shared membership creates no artificial edges. The same ordered dyad present in both layers is one combined dyad, with its reply events summed.
+
+A reply between prior A-only and prior B-only participants is direct observed interaction between those participation groups in the second window. It occurs inside a subreddit thread; it is not a comment physically replying across subreddits and does not establish information diffusion.
+
+| pair | variant | total | known_prior_endpoint_pct | prior_exclusive_opposite_count | prior_exclusive_opposite_pct_all | categorical_assortativity_known |
+| --- | --- | --- | --- | --- | --- | --- |
+| superheroes | all_replies | 270,428.00 | 47.95 | 7,428.00 | 2.75 | 0.348 |
+| superheroes | comment_replies | 167,617.00 | 52.50 | 4,908.00 | 2.93 | 0.347 |
+| consoles | all_replies | 156,727.00 | 45.63 | 3,438.00 | 2.19 | 0.349 |
+| consoles | comment_replies | 98,796.00 | 50.09 | 2,240.00 | 2.27 | 0.387 |
+
+![Prior participation mixing](outputs/study/figures/prior_participation_mixing.png)
+
+The matrix retains unobserved endpoints explicitly. Known-prior-endpoint coverage is the fraction of reply events for which both accounts were observed in the pair during the first window. The categorical assortativity coefficient is calculated only on that known subset: (observed same-group fraction minus the row/column marginal expectation) divided by (one minus that expectation). It is descriptive, with no null-model significance claim. It measures mixing by prior participation, not ideological homophily. Full matrices are also provided separately for each subreddit and for unweighted ordered dyads. Comment-only variants remove replies to original posts.
+
+### Separate subreddit layers versus their combination
+
+| pair | variant | layer | known_prior_endpoint_pct | categorical_assortativity_known |
+| --- | --- | --- | --- | --- |
+| superheroes | all_replies | marvelstudios | 49.49 | 0.012 |
+| superheroes | all_replies | DC_Cinematic | 46.39 | 0.001 |
+| superheroes | all_replies | combined | 47.95 | 0.348 |
+| superheroes | comment_replies | marvelstudios | 56.44 | 0.013 |
+| superheroes | comment_replies | DC_Cinematic | 48.96 | 0.003 |
+| superheroes | comment_replies | combined | 52.50 | 0.347 |
+| consoles | all_replies | PS5 | 48.75 | 0.003 |
+| consoles | all_replies | xbox | 43.10 | 0.040 |
+| consoles | all_replies | combined | 45.63 | 0.349 |
+| consoles | comment_replies | PS5 | 48.89 | 0.013 |
+| consoles | comment_replies | xbox | 51.30 | 0.032 |
+| consoles | comment_replies | combined | 50.09 | 0.387 |
+
+A combined coefficient can be much larger than either layer coefficient because different prior groups participate in different subreddit layers. This aggregation effect means combined segregation cannot automatically be interpreted as selective avoidance of particular users inside a discussion space. All coefficients here use prior participation categories and omit unknown endpoints; they do not measure opinions.
+
+### Combined Gephi exports
+
+| pair | window | variant | full_nodes | full_edges | full_reply_events | display_nodes | display_edges |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| superheroes | oct | all_replies | 62620 | 233557 | 270428 | 997 | 15053 |
+| superheroes | oct | comment_replies | 61356 | 138992 | 167617 | 982 | 10533 |
+| consoles | oct | all_replies | 51782 | 139519 | 156727 | 993 | 7638 |
+| consoles | oct | comment_replies | 50692 | 85515 | 98796 | 950 | 5343 |
+
+Local files `outputs/study/networks/combined_*_full.gexf` preserve all observed nodes and edges. The focus files cap nodes by combined PageRank and retain the largest weak component of that cap; these are display-only selections. Node colors encode prior participation: blue A-only, orange B-only, green both, grey unobserved. Node size encodes incoming reply strength. Group labels and per-layer edge weights are available in the Gephi data table. No conclusion is drawn from layout distance.
+
+Native combined projects were saved and reopened by the official Gephi Toolkit, with node/edge/weight and directed-degree checks. Their ForceAtlas2 display further keeps repeated replies (weight at least two) and removes resulting isolates; full workspaces remain intact.
+
+| pair | variant | nodes | edges | degree_mismatches | project_reopened |
+| --- | --- | --- | --- | --- | --- |
+| superheroes | all_replies | 62620 | 233557 | 0 | True |
+| superheroes | comment_replies | 61356 | 138992 | 0 | True |
+| consoles | all_replies | 51782 | 139519 | 0 | True |
+| consoles | comment_replies | 50692 | 85515 | 0 | True |
+
+![Combined superheroes comment-reply network](outputs/study/figures/gephi_combined_superheroes_oct_comment_replies.png)
+
+*Prior-participation colors; ForceAtlas2 400 iterations, seed 42. Display: 782 nodes/2,801 edges; full: 61,356 nodes/138,992 edges. Layout is illustrative.*
+
+![Combined consoles comment-reply network](outputs/study/figures/gephi_combined_consoles_oct_comment_replies.png)
+
+*Prior-participation colors; ForceAtlas2 400 iterations, seed 42. Display: 577 nodes/1,058 edges; full: 50,692 nodes/85,515 edges. Layout is illustrative.*
 
 ## Validation still needed before submission
 

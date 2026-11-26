@@ -1,0 +1,17 @@
+pair,window,subreddit,variant,parent_thread_mismatches,participation_comments,eligible_comments,missing_parent,self_replies_removed,excluded_top_level,reply_events,nodes,edges,incorrect_or_missing_edges,extra_edges,node_set_difference,exact_reconstruction
+superheroes,sep,marvelstudios,all_replies,0,164337,164337,205,541,0,163591,49487,147982,0,0,0,True
+superheroes,sep,DC_Cinematic,all_replies,0,83745,83745,41,235,0,83469,22130,71108,0,0,0,True
+superheroes,sep,marvelstudios,comment_replies,0,164337,89438,133,342,74899,88963,48268,77474,0,0,0,True
+superheroes,sep,DC_Cinematic,comment_replies,0,83745,50780,29,143,32965,50608,21874,40848,0,0,0,True
+superheroes,oct,marvelstudios,all_replies,0,137215,137215,500,458,0,136257,39205,121963,0,0,0,True
+superheroes,oct,DC_Cinematic,all_replies,0,134952,134952,465,316,0,134171,28104,111636,0,0,0,True
+superheroes,oct,marvelstudios,comment_replies,0,137215,79944,295,271,57271,79378,38103,69141,0,0,0,True
+superheroes,oct,DC_Cinematic,comment_replies,0,134952,88840,381,220,46112,88239,27866,69853,0,0,0,True
+consoles,sep,PS5,all_replies,0,98060,98060,245,262,0,97553,32104,86348,0,0,0,True
+consoles,sep,xbox,all_replies,0,90958,90958,93,462,0,90403,28390,80906,0,0,0,True
+consoles,sep,PS5,comment_replies,0,98060,66898,220,154,31162,66524,31615,58038,0,0,0,True
+consoles,sep,xbox,comment_replies,0,90958,46321,67,262,44637,45992,27550,39161,0,0,0,True
+consoles,oct,PS5,all_replies,0,70950,70950,582,218,0,70150,26332,62263,0,0,0,True
+consoles,oct,xbox,all_replies,0,87468,87468,523,368,0,86577,27960,77402,0,0,0,True
+consoles,oct,PS5,comment_replies,0,70950,50048,411,112,20902,49525,25975,43258,0,0,0,True
+consoles,oct,xbox,comment_replies,0,87468,49868,406,191,37600,49271,27193,42264,0,0,0,True

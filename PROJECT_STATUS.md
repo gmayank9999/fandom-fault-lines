@@ -103,7 +103,13 @@ fidelity to the local raw records; it does not certify archive completeness.
 
 Added four second-window combined pair graphs, retaining per-subreddit edge
 weights and prior-window participation labels. No shared-membership edges are
-invented. Weighted reply-event and unweighted dyad mixing are reported separately
+invented. All four combined graphs were imported into native Gephi projects,
+saved and reopened successfully, bringing the total to 12 verified projects.
+Node, edge, reply-weight and directed-degree checks match the Python exports;
+PageRank L1 differences are below 0.000021 for the four new graphs.
+Their filtered ForceAtlas2 previews were visually checked. Full graphs remain
+available in the projects alongside the explicitly filtered display workspaces.
+Weighted reply-event and unweighted dyad mixing are reported separately
 for each subreddit and their union. This distinguishes audience overlap from
 observed interactions among prior participation groups.
 

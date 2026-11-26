@@ -1,0 +1,45 @@
+{
+  "settings": {
+    "version": 1,
+    "status": "Exploratory network review specified before computing these results",
+    "audit": "Independently aggregate raw replier-parent-author records; compare every directed edge, integer weight, node and event category with all 16 saved full graphs",
+    "combined_graphs": "Second window only; union the pair's observed reply graphs; identical users merged; preserve reply weight separately by subreddit; create no membership edges",
+    "groups": "First-window observed participation: a_only, b_only, both, unobserved; threshold one comment; no fan/opinion labels",
+    "mixing": "Directed weighted reply-event matrices and unweighted ordered-dyad matrices, both per-layer and combined; retain unobserved endpoints explicitly",
+    "assortativity": "Descriptive categorical coefficient on known prior groups; normalize by endpoint marginals; no significance or causal claim",
+    "variants": [
+      "all_replies",
+      "comment_replies"
+    ],
+    "display_limit": 1000,
+    "seed": 42,
+    "limits": "Prior-period participation is not opinion or allegiance; replies occur within threads in each subreddit; combining layers does not demonstrate diffusion or off-platform contact"
+  },
+  "inputs_sha256": {
+    "superheroes_raw_records": "68e3c694985fe04aa6bae716029f8f4573459ee9b864190975d7ae43c33dc4a5",
+    "superheroes_sep_marvelstudios_all_replies_full.gexf": "33e969ff37e57dcb372cbcd79741fc389d749bdad59e53d246f7a4e940414752",
+    "superheroes_sep_DC_Cinematic_all_replies_full.gexf": "04f141200566f37664375c18abc1fba6c73eec0b23d1eb72a2f9f7e06df6abaa",
+    "superheroes_sep_marvelstudios_comment_replies_full.gexf": "3abb5e2999818ee174e145ac70cff862d2251ee162938e40f07406e2cd83a84d",
+    "superheroes_sep_DC_Cinematic_comment_replies_full.gexf": "aa255f7c61e995aa4224adcfd0a3ca15d98b574906e26d2f34c75fc6fb107d1c",
+    "superheroes_oct_marvelstudios_all_replies_full.gexf": "6ce6584667dab194114733ab45c52a7dd121476f9abc5e656bfa04842b94dba7",
+    "superheroes_oct_DC_Cinematic_all_replies_full.gexf": "f7878de886273d54195de23f58fa9afacc6d86a6fd7f5834de5a9ee6f43b57d6",
+    "superheroes_oct_marvelstudios_comment_replies_full.gexf": "592b393612cb017ac9872f21690ce43f4febde2037477a7db94cc9b7ecda2fc6",
+    "superheroes_oct_DC_Cinematic_comment_replies_full.gexf": "0da19b30cbce8e657793595f67206aa0f5cf399a6fd2c964f2028d79d831e4d3",
+    "consoles_raw_records": "9947ba8216f89c66822a29de69496a097e38581523c35408a3a0afb5e841d6e4",
+    "consoles_sep_PS5_all_replies_full.gexf": "8c780930e4dbf22e220f56c45e5e3d05fa40078ddbfa0cb8dd0363e3236c88dc",
+    "consoles_sep_xbox_all_replies_full.gexf": "00d7d50588c64144743cce6fe63e2aea74e701903c443123045136df5d0a6bc8",
+    "consoles_sep_PS5_comment_replies_full.gexf": "06234d0e2785a926c8169c2f57edfd6ac6ac11b7572ba573a8cb803d11c2a217",
+    "consoles_sep_xbox_comment_replies_full.gexf": "9a140d10299684a932063153722cb34d77d4b2e02f62c98426fb6c261a3bf60e",
+    "consoles_oct_PS5_all_replies_full.gexf": "62b40f63a5b8aee9c2d284866731f4c6c6dfd831f9be8924dabec852a6ca8c49",
+    "consoles_oct_xbox_all_replies_full.gexf": "f3503337bc6230cad4e1d59660c5d5f5b1cd7916e42b80a33bf6d223cd4044cc",
+    "consoles_oct_PS5_comment_replies_full.gexf": "21838b1b26feffcdf23bda8ddc4384ec1432f7d2610ebd9e6a3d31c1c08d1eaa",
+    "consoles_oct_xbox_comment_replies_full.gexf": "6e2f80539915d9b405c1a1ed2b63b3b8ad8b820e0b7e7e2659b6994719cd2ab2"
+  },
+  "source_sha256": "5f49488eb8ee79c3f6063af8b9da883b4a7894be81da3143f0c1a86d2fbdbe88",
+  "outputs_sha256": {
+    "edge_audit.csv": "d6a60acac85cdd1b49110c70b1c6fd4f1a26cbe9bcd4fe9afcece75d81897ea7",
+    "mixing_cells.csv": "c0ec936161d3a02d16e8020ba5109d1b90dcedaf8dd4dd8cebbec296aaaa5a55",
+    "mixing_summary.csv": "aad1cd9323e1ff6850c575946181963e7a14aecacc2524ae0bcb6d99bde1a181",
+    "combined_exports.csv": "255900b67f72d313892f122e848bf8b3631c978817b936de4ae33c0585a4fbe2"
+  }
+}
